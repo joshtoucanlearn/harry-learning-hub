@@ -1,0 +1,10 @@
+const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000}});
+await page.goto(process.env.HUB_URL || 'http://127.0.0.1:4173/harry-learning-hub/');await page.getByRole('button',{name:'Matchday',exact:true}).click();await page.getByRole('heading',{name:'Next on your radar'}).waitFor();
+console.log('Native WebMCP available:',await page.evaluate(()=>Boolean(document.modelContext?.registerTool)));
+await page.evaluate(()=>localStorage.setItem('harry-football-desk-v1','broken-json'));await page.reload();await page.getByText(/Saved data could not be read/).waitFor();await page.getByRole('button',{name:'Teacher',exact:true}).click();const [download]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Export backup'}).click()]);await download.saveAs('qa/corrupt-recovery.txt');assert.equal(await fs.readFile('qa/corrupt-recovery.txt','utf8'),'broken-json');
+await page.getByLabel('Import backup file').setInputFiles('qa/test-backup.json');await page.getByRole('button',{name:'Replace notebook with backup'}).click();await page.getByText('Backup restored.').waitFor();await page.getByLabel('Teaching note').fill('Restored and editable.');await page.getByRole('button',{name:'Save teaching note'}).click();assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('harry-football-desk-v1')).predictions[0].teacherNote),'Restored and editable.');
+await page.getByRole('button',{name:'Matchday',exact:true}).click();await page.evaluate(()=>document.documentElement.style.fontSize='200%');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:'qa/desktop-200-percent.png',fullPage:true});
+console.log('PASS: corrupt-storage preservation, raw export, valid-backup recovery, saving after recovery, 200% desktop text size.');await browser.close();
