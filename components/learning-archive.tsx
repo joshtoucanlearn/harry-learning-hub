@@ -9,24 +9,13 @@ export type ArchiveNotes = Record<
   string,
   { result: string; reflection: string }
 >;
-export type WritingSeed = {
-  key: string;
-  title: string;
-  kind: string;
-  original: string;
-  context: string;
-  sourceNote: string;
-  archived: boolean;
-};
 export function LearningArchive({
   notes,
   save,
-  write,
   review,
 }: {
   notes: ArchiveNotes;
   save: (notes: ArchiveNotes) => boolean;
-  write: (seed: WritingSeed) => void;
   review: (topic: string) => void;
 }) {
   const [view, setView] = useState('Predictions');
@@ -80,17 +69,6 @@ export function LearningArchive({
                 call={call}
                 note={notes[call.id]}
                 save={(note) => save({ ...notes, [call.id]: note })}
-                write={() =>
-                  write({
-                    key: crypto.randomUUID(),
-                    title: `${call.title}: looking back`,
-                    kind: 'The final-whistle report',
-                    original: '',
-                    sourceNote: call.source,
-                    context: `${call.author} predicted: ${call.call}.\nVerified result: ${call.result.label}. ${call.result.detail}\nComparison: ${call.result.verdict}\nSources: ${call.result.sources.map((s) => s.url).join(' \n')}\n${call.context}\n${call.events.map((e) => `${e.call}: ${e.result}${e.evidence ? ` — ${e.evidence}` : ''}`).join('\n')}${notes[call.id]?.result ? `\nMy result evidence: ${notes[call.id].result}` : ''}`,
-                    archived: false,
-                  })
-                }
               />
             ))}
           </div>
@@ -150,12 +128,10 @@ function HistoricalCard({
   call,
   note,
   save,
-  write,
 }: {
   call: HistoricalCall;
   note?: ArchiveNotes[string];
   save: (note: ArchiveNotes[string]) => boolean;
-  write: () => void;
 }) {
   const [result, setResult] = useState(note?.result || '');
   const [reflection, setReflection] = useState(note?.reflection || '');
@@ -259,9 +235,6 @@ function HistoricalCard({
           <p role="status">{message}</p>
         </form>
       </details>
-      <button className="plain-button" onClick={write}>
-        Write a follow-up →
-      </button>
     </article>
   );
 }

@@ -81,8 +81,8 @@ export function LearningHome({
           >
             <span className="desk-number">02</span>
             <div>
-              <h2>Write your take</h2>
-              <p>A preview, a report or a point of view.</p>
+              <h2>Read the football pages</h2>
+              <p>Harry’s opinions, analysis and match previews.</p>
             </div>
             <span aria-hidden="true">↗</span>
           </button>

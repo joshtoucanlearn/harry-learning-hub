@@ -299,9 +299,9 @@ export const archiveWriting: ArchiveWriting[] = [
     credit: 'Harry · lesson writing',
     source: 'English sessions 10 & 11',
     excerpt: historicalCalls[0].excerpt,
-    note: 'Original wording. The The Record now pairs this call with the verified match result: England won 2–1 after extra time, following a 1–1 draw at 90 minutes.',
+    note: 'Original wording. The Record now pairs this call with the verified match result: England won 2–1 after extra time, following a 1–1 draw at 90 minutes.',
     challenge:
-      'Use the sourced result in the The Record to write the follow-up. Distinguish normal time from extra time and explain which part of the call worked.',
+      'Use the sourced result in The Record to write the follow-up. Distinguish normal time from extra time and explain which part of the call worked.',
     brief: 'The final-whistle report',
   },
   {

@@ -4,7 +4,7 @@ Harry’s football and learning workspace:
 
 - **Review:** Maths recall cards, questions, worked feedback, retries and saved progress.
 - **Matchday:** score/event predictions, reasoning, actual-result comparison and statistics.
-- **Football Journalism:** four briefs, original/revised drafts, reading comparison, seven recovered pieces and match-report handoffs.
+- **Football Journalism:** a newspaper-style football page with an illustrated lead story, seven recovered pieces, topic filters and individual article links.
 - **The Record:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
 
 An editorial Home view connects these activities. Teacher provides lesson prompts, notes, printable records and JSON backups.
@@ -36,7 +36,7 @@ Review saves each question’s attempt count and most recent correctness. “Cor
 2. Lock the prediction. Its score, events and reasoning stay unchanged.
 3. After the match, open it from Your predictions, enter the actual result and mark each event Yes, No, Not checked or Void. Exclude extra time and shoot-outs.
 4. Compare and reflect. Exact score earns 3 points; otherwise correct win/draw/loss earns 1; otherwise 0. Each checked event earns 1 if correct. Pending/void events are excluded from the denominator. Pending events make totals provisional.
-5. Stats separates exact scores, outcomes and events. Football Journalism keeps first draft and revision for comparison. A Matchday review or historical call can supply reporting notes without inventing an article. Unsaved editor text survives ordinary section navigation, but save before reloading, starting another piece or leaving the site.
+5. Stats separates exact scores, outcomes and events. Football Journalism is a reading section: original excerpts, shared work and plans are labelled accurately. Article submission and revision forms were removed at the user’s request. Previously saved articles remain readable in Teacher and continue to round-trip in backups.
 
 Historical calls preserve their original classroom wording and now carry independently checked match dates, final scores, regulation/extra-time distinctions, event verdicts and external result citations. They do not receive invented lock times or confidence levels. England–Norway ended 1–1 at 90 minutes and 2–1 to England after extra time; Spain beat France 2–0; Argentina beat England 2–1. Leeds’ completed 2025/26 position is shown with the original target-season ambiguity. Archive result evidence and reflections persist locally and export in backups, but do not affect Matchday statistics. Josh’s Spain–France model remains credited to Josh.
 
@@ -90,3 +90,9 @@ The Record replaces the old Notebook navigation. The whole interface uses a quie
 Animation pauses with the **Pause sky** control, is off by default for reduced-motion preferences, and stops while the page is hidden. It is capped at 24 rendered frames per second, without multiplying resolution by device pixel ratio. A static render remains available when WebGL is unavailable or the context is lost. This preference has its own browser storage key and does not alter saved lessons or predictions.
 
 Additional motion/fallback verification: `node tests/galaxy-browser.mjs`.
+
+## Football pages and reading contrast
+
+Football Journalism uses hash links such as `#football/hydration` so individual stories support browser back/forward, reloads and direct links on GitHub Pages. The front page offers Opinion, Analysis and Match previews. New headlines/decks are editorial labels around preserved source text; provenance notes distinguish excerpts, predictions, shared paragraphs and summaries. No article-entry UI remains. To add a piece, update `data/learning-history.ts` and the editorial metadata in `components/journalism-library.tsx`.
+
+All reading content sits on an opaque midnight surface with warm off-white text. The galaxy stays visible in the surround, and key actions use amber. The lead illustration's source is recorded in `assets/NEWS-ART-SOURCE.md`.
