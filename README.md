@@ -1,11 +1,13 @@
-# Harry’s Learning Hub
+# Harry Hub
 
-A learning space with two distinct areas:
+Harry’s football and learning workspace:
 
-- **Review:** Maths and English recall cards, questions, worked feedback, retries and saved progress.
-- **Football desk:** score/event predictions, reasoning, actual-result comparison, probability activities and sports writing.
+- **Review:** Maths recall cards, questions, worked feedback, retries and saved progress.
+- **Matchday:** score/event predictions, reasoning, actual-result comparison and statistics.
+- **Football Journalism:** four briefs, original/revised drafts, reading comparison, seven recovered pieces and match-report handoffs.
+- **Notebook:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
 
-A Home view connects the two. Teacher provides lesson prompts, notes, printable records and JSON backups.
+An editorial Home view connects these activities. Teacher provides lesson prompts, notes, printable records and JSON backups.
 
 ## Run locally
 
@@ -20,9 +22,11 @@ Open http://localhost:3000/ and keep the terminal open. Stop with Ctrl+C.
 
 ## Review content
 
-The initial six topics are percentages/discounts, reverse percentages, fractions/missing wholes, PEEL paragraphs, thesis/essay shape and objective literary analysis. The topics were adapted from existing fractions/percentages and English Literature preparation lessons. The public content is newly worded instructional material, not learner records or copied student responses. Arithmetic was checked; the reverse-percentage TV example is **£120 ÷ 0.75 = £160**.
+There are 12 maths topics and 36 questions: percentages/discounts, reverse percentages, fractions, units, decimal order, arithmetic, speed/time, probability, averages, sequences, expressions/multiples and Pythagoras. The English review activities were removed at the user’s request. Existing backup records remain compatible; retired question progress is ignored in displayed totals. Recall questions and explanations are newly authored from documented topics, rather than represented as Harry’s past answers. The reverse-percentage TV example is **£120 ÷ 0.75 = £160**, and the eleven-player rating set has median **7**, not 7.5.
 
-Edit **`data/review-topics.ts`** to add or amend content. Each topic has a subject, title, source lesson label, summary, recall cards and questions. Each question has stable `id`, `prompt`, `choices`, zero-based `answer` index and `explanation`. If a question’s meaning changes, give it a new ID so older progress is not misrepresented. Keep source labels general and do not add private Drive links or learner details.
+`data/learning-history.ts` contains selected original classroom excerpts and explicitly labelled summaries. Source titles, lesson dates, attribution and tutoring support accompany them. Full documents, tutor reports, private identifiers and source links stay in a separate local research collection, outside this repository. An inaccessible early shared deck remains a documented gap.
+
+Edit **`data/review-topics.ts`** and **`data/recovered-topics.ts`** to add or amend content. Each topic has a subject, title, source lesson label, summary, recall cards and questions. Each question has stable `id`, `prompt`, `choices`, zero-based `answer` index and `explanation`. If a question’s meaning changes, give it a new ID so older progress is not misrepresented. Keep source labels general and do not add private Drive links or learner details.
 
 Review saves each question’s attempt count and most recent correctness. “Correct on latest checks” is a learning indicator, not an exam grade or a claim of long-term mastery. The retry flow targets questions not yet correct. Older backups without review progress remain supported.
 
@@ -32,13 +36,15 @@ Review saves each question’s attempt count and most recent correctness. “Cor
 2. Lock the prediction. Its score, events and reasoning stay unchanged.
 3. After the match, open it from the notebook, enter the actual result and mark each event Yes, No, Not checked or Void. Exclude extra time and shoot-outs.
 4. Compare and reflect. Exact score earns 3 points; otherwise correct win/draw/loss earns 1; otherwise 0. Each checked event earns 1 if correct. Pending/void events are excluded from the denominator. Pending events make totals provisional.
-5. Stats separates exact scores, outcomes and events. Pundit desk keeps first draft and revision side by side. Save writing before switching sections; unsaved drafts are not retained.
+5. Stats separates exact scores, outcomes and events. Football Journalism keeps first draft and revision for comparison. A Matchday review or historical call can supply reporting notes without inventing an article. Unsaved editor text survives ordinary section navigation, but save before reloading, starting another piece or leaving the site.
+
+Historical calls preserve their original classroom wording and now carry independently checked match dates, final scores, regulation/extra-time distinctions, event verdicts and external result citations. They do not receive invented lock times or confidence levels. England–Norway ended 1–1 at 90 minutes and 2–1 to England after extra time; Spain beat France 2–0; Argentina beat England 2–1. Leeds’ completed 2025/26 position is shown with the original target-season ambiguity. Archive result evidence and reflections persist locally and export in backups, but do not affect Matchday statistics. Josh’s Spain–France model remains credited to Josh.
 
 ## Data and access
 
-The hosted app is publicly accessible, but entered work stays in that browser’s localStorage. No account, cloud database, live sports API, analytics or paid service is required. No learner data is shipped in the repository or site. Teacher is a working view, not a password-protected role.
+The hosted app is publicly accessible, but entered work stays in that browser’s localStorage. No account, cloud database, live sports API, analytics or paid service is required. Only the selected historical work and general lesson trail are shipped publicly. Raw reports, contact details, other learners’ records and new browser-entered work are not included. Teacher is a working view, not a password-protected role.
 
-The website remains available when the development computer is off. **Saved work does not sync between browsers or devices.** Use Teacher → Export backup after lessons. Import validates a backup and asks before replacing existing work, including review progress. Backups can include personal writing and teaching notes; keep them private.
+The website remains available when the development computer is off. **Saved work does not sync between browsers or devices.** Use Teacher → Export backup after lessons. Import validates a backup and asks before replacing existing work, including review progress and archive notes. Backups can include personal writing and teaching notes; keep them private.
 
 Localhost and the hosted site have separate browser storage. To move existing local work, export from the local app and import on the hosted site. The storage key remains `harry-football-desk-v1` for compatibility. Corrupt stored data is preserved and can be exported before restoring a valid backup.
 
@@ -72,6 +78,7 @@ mkdir -p qa
 node tests/hub-browser.mjs
 node tests/browser.mjs
 node tests/recovery.mjs
+node tests/archive-browser.mjs
 ```
 
 QA output and downloaded backups are excluded from Git. The optional read-only WebMCP history tool is feature-detected; native WebMCP was unavailable in the test browser and is not required for normal use.

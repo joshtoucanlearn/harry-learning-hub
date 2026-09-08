@@ -1,3 +1,4 @@
+import { recoveredTopics } from './recovered-topics';
 // Public-safe teaching material, adapted from existing lesson topics.
 // Keep stable topic/question IDs. To change the meaning of a question, give it a new ID.
 export type Question = {
@@ -9,7 +10,7 @@ export type Question = {
 };
 export type Topic = {
   id: string;
-  subject: 'Maths' | 'English';
+  subject: 'Maths';
   title: string;
   source: string;
   summary: string;
@@ -156,180 +157,7 @@ export const topics: Topic[] = [
       },
     ],
   },
-  {
-    id: 'peel',
-    subject: 'English',
-    title: 'Build a PEEL paragraph',
-    source: 'English Literature preparation · June lesson',
-    summary: 'Turn a point into a supported explanation.',
-    cards: [
-      {
-        heading: 'Point → Evidence',
-        body: 'Make a point that answers the question. Then choose a relevant quotation or precise reference to the text.',
-      },
-      {
-        heading: 'Explanation → Link',
-        body: 'Explain how the evidence supports your point. Link the paragraph back to the question or your overall argument.',
-      },
-      {
-        heading: 'Quality over a fixed recipe',
-        body: 'PEEL is a planning aid from the lesson. Use the task and marks to guide the depth; there is no universal number of paragraphs for every exam question.',
-      },
-    ],
-    questions: [
-      {
-        id: 'peel-evidence',
-        prompt: 'Which step supports your point with something from the text?',
-        choices: ['Link', 'Evidence', 'Conclusion'],
-        answer: 1,
-        explanation:
-          'Evidence gives a quotation or specific textual detail that supports the point.',
-      },
-      {
-        id: 'peel-explain',
-        prompt: 'You have added a quotation. What should you do next?',
-        choices: [
-          'Add another quotation without comment',
-          'Repeat the question',
-          'Explain how its words support your point',
-        ],
-        answer: 2,
-        explanation:
-          'The explanation does the thinking: show how the evidence supports your interpretation.',
-      },
-      {
-        id: 'peel-link',
-        prompt: 'What does the Link in PEEL do?',
-        choices: [
-          'Connects the paragraph back to the question or argument',
-          'Adds a website address',
-          'Introduces an unrelated idea',
-        ],
-        answer: 0,
-        explanation:
-          'A link keeps the paragraph focused on what the question asks and your overall argument.',
-      },
-    ],
-  },
-  {
-    id: 'thesis',
-    subject: 'English',
-    title: 'Thesis & essay shape',
-    source: 'English Literature preparation · June lesson',
-    summary: 'Give an essay a clear argument and direction.',
-    cards: [
-      {
-        heading: 'A thesis is an argument',
-        body: 'A thesis gives your overall interpretation. For example: Shakespeare presents unchecked ambition as destructive in Macbeth.',
-      },
-      {
-        heading: 'Plan connected paragraphs',
-        body: 'Use the introduction to establish your argument. Develop it through supported paragraphs, then bring the ideas together in a conclusion.',
-      },
-      {
-        heading: 'Conclude with a judgement',
-        body: 'A conclusion returns to the main argument and shows what the discussion has established. Avoid introducing a completely new line of argument.',
-      },
-    ],
-    questions: [
-      {
-        id: 'thesis-choice',
-        prompt:
-          'Which is the strongest thesis for an essay about ambition in Macbeth?',
-        choices: [
-          'This essay is about a play.',
-          'Shakespeare presents unchecked ambition as a force that destroys Macbeth.',
-          'Macbeth has several characters.',
-        ],
-        answer: 1,
-        explanation:
-          'It offers a focused interpretation that the essay can support with evidence.',
-      },
-      {
-        id: 'essay-order',
-        prompt: 'Which plan gives the clearest essay structure?',
-        choices: [
-          'Conclusion → unrelated examples → title',
-          'Quotations only',
-          'Introduction and thesis → supported paragraphs → conclusion',
-        ],
-        answer: 2,
-        explanation:
-          'Start with a position, develop it using evidence, then draw the argument together.',
-      },
-      {
-        id: 'conclusion-role',
-        prompt: 'What should a conclusion mainly do?',
-        choices: [
-          'Bring the argument together into an overall judgement',
-          'Introduce several new themes',
-          'Repeat every quotation',
-        ],
-        answer: 0,
-        explanation:
-          'It should synthesise what you have shown and return to the thesis.',
-      },
-    ],
-  },
-  {
-    id: 'objective-analysis',
-    subject: 'English',
-    title: 'Objective literary analysis',
-    source: 'English Literature preparation · June lesson',
-    summary: 'Replace unsupported reactions with textual reasoning.',
-    cards: [
-      {
-        heading: 'Interpret, then support',
-        body: 'Literary analysis makes an interpretation and explains its textual basis. It can be thoughtful and debatable while remaining precise.',
-      },
-      {
-        heading: 'Use analytical phrasing',
-        body: 'Instead of “I hate Macbeth”, try a claim about how Shakespeare presents Macbeth, followed by evidence and explanation.',
-      },
-      {
-        heading: 'Match your purpose',
-        body: 'A persuasive sports article and a literature response have different aims. In literature, focus on the text, the writer’s choices and their effects.',
-      },
-    ],
-    questions: [
-      {
-        id: 'objective-sentence',
-        prompt: 'Which sentence is best suited to literary analysis?',
-        choices: [
-          'Macbeth is the worst and everyone must agree.',
-          'Shakespeare presents Macbeth’s ambition as increasingly destructive.',
-          'This play is so annoying!',
-        ],
-        answer: 1,
-        explanation:
-          'This makes an analytical claim about the writer’s presentation, ready to support with evidence.',
-      },
-      {
-        id: 'objective-support',
-        prompt: 'What best strengthens an interpretation?',
-        choices: [
-          'Saying it more forcefully',
-          'A relevant textual detail and an explanation of its effect',
-          'Calling other interpretations stupid',
-        ],
-        answer: 1,
-        explanation:
-          'Evidence and explanation make the reasoning clear and assessable.',
-      },
-      {
-        id: 'objective-purpose',
-        prompt: 'What is the main focus of a literature response?',
-        choices: [
-          'Selling the reader a football opinion',
-          'Retelling every event without analysis',
-          'Explaining how the text creates meaning',
-        ],
-        answer: 2,
-        explanation:
-          'Focus on the text, the writer’s choices and how they shape meaning.',
-      },
-    ],
-  },
+  ...recoveredTopics,
 ];
 export type ReviewProgress = Record<
   string,

@@ -1,3 +1,4 @@
+import type { ArchiveNotes } from '../components/learning-archive';
 import type { ReviewProgress } from '../data/review-topics';
 export type EventCall = {
   text: string;
@@ -31,12 +32,15 @@ export type Article = {
   original: string;
   revision: string;
   savedAt: string;
+  context?: string;
+  sourceNote?: string;
 };
 export type Data = {
   version: 1;
   predictions: Prediction[];
   articles: Article[];
   review?: ReviewProgress;
+  archiveNotes?: ArchiveNotes;
 };
 export const EMPTY: Data = { version: 1, predictions: [], articles: [] };
 export const STORAGE_KEY = 'harry-football-desk-v1';
@@ -155,7 +159,9 @@ export function parseBackup(raw: string): Data {
       !text(a.kind, 80) ||
       !text(a.original, 12000) ||
       !text(a.revision, 12000) ||
-      !date(a.savedAt)
+      !date(a.savedAt) ||
+      (a.context !== undefined && !text(a.context, 6000)) ||
+      (a.sourceNote !== undefined && !text(a.sourceNote, 2000))
     )
       throw Error('An article in this backup is invalid.');
   if (
@@ -187,6 +193,25 @@ export function parseBackup(raw: string): Data {
         !date(item.updatedAt)
       )
         throw Error('Invalid review progress.');
+    }
+  }
+  if (d.archiveNotes !== undefined) {
+    if (
+      !d.archiveNotes ||
+      typeof d.archiveNotes !== 'object' ||
+      Array.isArray(d.archiveNotes) ||
+      Object.keys(d.archiveNotes).length > 1000
+    )
+      throw Error('Invalid archive notes.');
+    for (const [key, value] of Object.entries(d.archiveNotes)) {
+      const note = value as { result: string; reflection: string };
+      if (
+        !text(key, 100) ||
+        !note ||
+        !text(note.result, 3000) ||
+        !text(note.reflection, 3000)
+      )
+        throw Error('Invalid archive notes.');
     }
   }
   return d;

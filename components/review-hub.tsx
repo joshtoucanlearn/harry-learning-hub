@@ -11,87 +11,124 @@ export function LearningHome({
   go,
 }: {
   progress: ReviewProgress;
-  go: (section: 'Review' | 'Matchday') => void;
+  go: (
+    section: 'Review' | 'Matchday' | 'Football Journalism' | 'Notebook',
+  ) => void;
 }) {
   const all = topics.flatMap((t) => t.questions);
-  const checked = all.filter((q) => progress[q.id]).length;
   const correct = all.filter((q) => progress[q.id]?.correct).length;
+  const checked = all.filter((q) => progress[q.id]).length;
   return (
     <>
-      <div className="page-heading">
+      <div className="home-heading">
         <div>
-          <p className="eyebrow">HARRY’S LEARNING HUB</p>
-          <h1>
-            Pick something up.
-            <br />
-            Take it a bit further.
-          </h1>
+          <p className="eyebrow">HARRY HUB / THE NEW EDITION</p>
+          <h1>Your call, Harry.</h1>
         </div>
-        <span className="edition">YOUR SPACE TO LEARN</span>
+        <span className="home-byline">
+          Football. A point of view.
+          <br />
+          Something to back it up.
+        </span>
       </div>
-      <div className="hub-choices">
+      <div className="home-lead-grid">
         <button
-          className="hub-choice review-choice"
-          onClick={() => go('Review')}
+          className="newsroom-feature"
+          onClick={() => go('Football Journalism')}
         >
-          <span className="eyebrow">01 / REVIEW</span>
+          <span className="eyebrow">
+            FOOTBALL JOURNALISM <span>↗</span>
+          </span>
+          <h2>
+            There’s a story
+            <br />
+            in every game.
+          </h2>
+          <p>
+            Write the preview. Call the turning point. Make the case that gets
+            people talking.
+          </p>
+          <div className="feature-teaser">
+            <span>FROM YOUR ARCHIVE</span>
+            <strong>“Hydration disaster”</strong>
+            <small>Your argument. Ready for its next edit.</small>
+          </div>
+          <strong className="feature-link">Open the newsroom →</strong>
+        </button>
+        <div className="home-right">
+          <button className="matchday-feature" onClick={() => go('Matchday')}>
+            <span className="eyebrow">
+              THE NEXT MATCH <span>↗</span>
+            </span>
+            <h2>Back your instinct.</h2>
+            <div className="score-motif" aria-hidden="true">
+              <span>?</span>
+              <i>:</i>
+              <span>?</span>
+            </div>
+            <p>
+              Score. Key events. Your reasoning.
+              <br />
+              Lock it in, then see how it went.
+            </p>
+            <strong>Make a prediction →</strong>
+          </button>
+          <button className="notebook-feature" onClick={() => go('Notebook')}>
+            <span className="eyebrow">THE NOTEBOOK</span>
+            <h2>Remember the Norway call?</h2>
+            <p>
+              Lesson review: no penalty, right. England first, missed.
+              <br />
+              Six old calls. A few things to learn.
+            </p>
+            <strong>Look back →</strong>
+          </button>
+        </div>
+      </div>
+      <section className="home-review-strip">
+        <div>
+          <p className="eyebrow">MATHS / {topics.length} TOPICS</p>
           <h2>Make it stick.</h2>
           <p>
-            Maths and English from your lessons. Refresh a topic, test your
-            recall, then revisit what needs another go.
+            {checked
+              ? `${checked} questions tried. ${checked - correct} to revisit.`
+              : 'Pick a short topic from your lessons and see what comes back.'}
           </p>
-          <strong>Open Review →</strong>
-        </button>
-        <button
-          className="hub-choice football-choice"
-          onClick={() => go('Matchday')}
-        >
-          <span className="eyebrow">02 / FOOTBALL DESK</span>
-          <h2>Make your call.</h2>
-          <p>
-            Predict the score. Back it with evidence. Compare the result,
-            explore the stats and write your take.
-          </p>
-          <strong>Open football →</strong>
-        </button>
-      </div>
-      <section className="panel top-space">
-        <div className="section-heading">
-          <h2>Your review so far</h2>
-          <span className="badge">
+        </div>
+        <div className="home-progress">
+          <strong>
+            {correct}
+            <span>/{all.length}</span>
+          </strong>
+          <span>
             {correct} / {all.length} correct on latest checks
           </span>
         </div>
-        <p>
-          {checked
-            ? `${checked} questions tried. ${checked - correct} to revisit.`
-            : 'A fresh start. Choose a short topic and see what you remember.'}{' '}
-          Progress saves on this browser.
-        </p>
-        <div className="topic-chips">
-          {topics.map((t) => (
-            <button
-              className="plain-button"
-              key={t.id}
-              onClick={() => go('Review')}
-            >
-              {t.subject} · {t.title}
-            </button>
-          ))}
-        </div>
+        <button className="action" onClick={() => go('Review')}>
+          Open Review →
+        </button>
       </section>
+      <div className="home-footer-note">
+        <span>Built from your lessons with Josh & Aaron.</span>
+        <span>
+          Your new work saves on this browser. Backups are in Teacher.
+        </span>
+      </div>
     </>
   );
 }
 export function ReviewHub({
   progress,
   save,
+  initialTopic,
 }: {
   progress: ReviewProgress;
+  initialTopic?: string;
   save: (next: ReviewProgress) => boolean;
 }) {
-  const [topic, setTopic] = useState<Topic | null>(null);
-  const [subject, setSubject] = useState('All');
+  const [topic, setTopic] = useState<Topic | null>(
+    topics.find((t) => t.id === initialTopic) || null,
+  );
   const [stage, setStage] = useState<'notes' | 'quiz' | 'done'>('notes');
   const [queue, setQueue] = useState<string[]>([]);
   const [index, setIndex] = useState(0);
@@ -118,51 +155,39 @@ export function ReviewHub({
           <p className="eyebrow">A LITTLE RECALL GOES A LONG WAY</p>
           <h1>Review.</h1>
         </div>
-        <span className="edition">MATHS + ENGLISH</span>
+        <span className="edition">MATHS</span>
       </div>
       {!topic ? (
         <>
-          <div className="filters stat-filter">
-            {['All', 'Maths', 'English'].map((s) => (
-              <button
-                key={s}
-                aria-pressed={s === subject}
-                className={s === subject ? 'selected' : ''}
-                onClick={() => setSubject(s)}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
           <div className="topic-grid">
-            {topics
-              .filter((t) => subject === 'All' || subject === t.subject)
-              .map((t) => {
-                const p = topicProgress(t, progress);
-                return (
-                  <button
-                    key={t.id}
-                    className="topic-card"
-                    onClick={() => {
-                      setTopic(t);
-                      setStage('notes');
-                    }}
-                  >
-                    <span className="eyebrow">{t.subject} · 3 QUESTIONS</span>
-                    <h2>{t.title}</h2>
-                    <p>{t.summary}</p>
-                    <div className="review-progress">
-                      <i style={{ width: `${(p.correct / p.total) * 100}%` }} />
-                    </div>
-                    <span>
-                      {p.checked
-                        ? `${p.correct}/${p.total} correct on latest checks`
-                        : 'Not tried yet'}{' '}
-                      <b>→</b>
-                    </span>
-                  </button>
-                );
-              })}
+            {topics.map((t) => {
+              const p = topicProgress(t, progress);
+              return (
+                <button
+                  key={t.id}
+                  className="topic-card"
+                  onClick={() => {
+                    setTopic(t);
+                    setStage('notes');
+                  }}
+                >
+                  <span className="eyebrow">
+                    {t.subject} · {t.questions.length} QUESTIONS
+                  </span>
+                  <h2>{t.title}</h2>
+                  <p>{t.summary}</p>
+                  <div className="review-progress">
+                    <i style={{ width: `${(p.correct / p.total) * 100}%` }} />
+                  </div>
+                  <span>
+                    {p.checked
+                      ? `${p.correct}/${p.total} correct on latest checks`
+                      : 'Not tried yet'}{' '}
+                    <b>→</b>
+                  </span>
+                </button>
+              );
+            })}
           </div>
           <p className="hint">
             Progress reflects your latest answers here, not an exam grade.

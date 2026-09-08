@@ -1,5 +1,10 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { JournalismLibrary } from '@/components/journalism-library';
+import {
+  LearningArchive,
+  type WritingSeed,
+} from '@/components/learning-archive';
 import { LearningHome, ReviewHub } from '@/components/review-hub';
 import { Button } from '@/components/ui/button';
 import {
@@ -32,7 +37,8 @@ const tabs = [
   { name: 'Home', icon: BookOpen },
   { name: 'Review', icon: BookOpen },
   { name: 'Matchday', icon: Target },
-  { name: 'Pundit desk', icon: PenLine },
+  { name: 'Football Journalism', icon: PenLine },
+  { name: 'Notebook', icon: BookOpen },
   { name: 'Stats lab', icon: ChartNoAxesCombined },
   { name: 'Teacher', icon: SlidersHorizontal },
 ] as const;
@@ -48,6 +54,18 @@ function Action({ children, ...props }: React.ComponentProps<typeof Button>) {
   );
 }
 export default function Home() {
+  const [reviewTopic, setReviewTopic] = useState<string | undefined>();
+  const [writingSeed, setWritingSeed] = useState<WritingSeed | undefined>();
+  function openWriting(seed: WritingSeed) {
+    setWritingSeed(seed);
+    setTab('Football Journalism');
+    setMessage('');
+    requestAnimationFrame(() =>
+      document
+        .getElementById('writing-desk')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+    );
+  }
   const [tab, setTab] = useState<Tab>('Home');
   const [data, setData] = useState<Data>(EMPTY);
   const [ready, setReady] = useState(false);
@@ -148,15 +166,17 @@ export default function Home() {
   const selected = data.predictions.find((p) => p.id === selection);
   const switchTab = (t: Tab) => {
     setTab(t);
+    if (t === 'Review') setReviewTopic(undefined);
     setMessage('');
+    window.scrollTo({ top: 0 });
   };
   return (
     <>
       <header className="masthead">
         <div className="brand">
-          H<span> / </span>HARRY’S LEARNING HUB
+          <span className="brand-mark">H.</span> HARRY HUB
         </div>
-        <span className="local-tag">REVIEW · EXPLORE · CREATE</span>
+        <span className="local-tag">THE GAME · THE WORDS · THE NUMBERS</span>
       </header>
       <nav aria-label="Main navigation">
         {tabs.map(({ name, icon: Icon }) => (
@@ -184,6 +204,8 @@ export default function Home() {
             )}
             {tab === 'Review' && (
               <ReviewHub
+                key={reviewTopic || 'all'}
+                initialTopic={reviewTopic}
                 progress={data.review || {}}
                 save={(review) => commit({ ...data, review })}
               />
@@ -210,6 +232,17 @@ export default function Home() {
                         update={update}
                         notify={setMessage}
                         close={() => setSelection(null)}
+                        write={() =>
+                          openWriting({
+                            key: crypto.randomUUID(),
+                            title: `${selected.home} v ${selected.away}: the verdict`,
+                            kind: 'The final-whistle report',
+                            original: '',
+                            sourceNote: 'From your saved Matchday prediction.',
+                            context: `${selected.author} predicted ${selected.homeGoals}–${selected.awayGoals}. Reasoning: ${selected.reasoning}\n${selected.result ? `Recorded result: ${selected.result.home}–${selected.result.away}. Source: ${selected.result.source || 'not supplied'}` : 'Result not entered: check the match before writing a report.'}\n${selected.events.map((e) => `${e.text}: ${e.actual}`).join('\n')}\nReflection: ${selected.reflection}`,
+                            archived: false,
+                          })
+                        }
                       />
                     ) : (
                       <PredictionForm
@@ -358,8 +391,11 @@ export default function Home() {
                 </section>
               </>
             )}
-            {tab === 'Pundit desk' && (
+            <div hidden={tab !== 'Football Journalism'}>
               <Pundit
+                key={writingSeed?.key || 'blank'}
+                seed={writingSeed}
+                startWriting={openWriting}
                 articles={data.articles}
                 save={(article) => {
                   const exists = data.articles.some((a) => a.id === article.id);
@@ -377,6 +413,18 @@ export default function Home() {
                     return true;
                   }
                   return false;
+                }}
+              />
+            </div>
+            {tab === 'Notebook' && (
+              <LearningArchive
+                notes={data.archiveNotes || {}}
+                save={(archiveNotes) => commit({ ...data, archiveNotes })}
+                write={openWriting}
+                review={(topic) => {
+                  setReviewTopic(topic);
+                  setTab('Review');
+                  window.scrollTo({ top: 0 });
                 }}
               />
             )}
@@ -428,7 +476,7 @@ export default function Home() {
                       </Action>
                       <button
                         className="plain-button"
-                        onClick={() => switchTab('Pundit desk')}
+                        onClick={() => switchTab('Football Journalism')}
                       >
                         Open writing desk
                       </button>
@@ -779,11 +827,13 @@ function Review({
   update,
   notify,
   close,
+  write,
 }: {
   prediction: Prediction;
   update: (p: Prediction) => boolean;
   notify: (s: string) => void;
   close: () => void;
+  write: () => void;
 }) {
   const [eventResults, setEventResults] = useState(
     p.events.map((e) => e.actual),
@@ -988,6 +1038,9 @@ function Review({
           Save reflection
         </button>
       </form>
+      <button className="action top-space" onClick={write}>
+        Write a match report <PenLine size={16} />
+      </button>
     </section>
   );
 }
@@ -1005,6 +1058,12 @@ const writingPrompts = [
     frame: 'Claim → example → effect on the game → counterargument → verdict',
   },
   {
+    title: 'The analysis column',
+    prompt:
+      'Explain a pattern in football. Use a specific example, test another explanation and say what your evidence can actually establish.',
+    frame: 'Question → evidence → explanation → limits → conclusion',
+  },
+  {
     title: 'The final-whistle report',
     prompt:
       'Tell the story of a match. Explain which moment changed it, and how the result compares with your prediction.',
@@ -1014,21 +1073,31 @@ const writingPrompts = [
 function Pundit({
   articles,
   save,
+  seed,
+  startWriting,
 }: {
   articles: Article[];
+  seed?: WritingSeed;
+  startWriting: (seed: WritingSeed) => void;
   save: (a: Article) => boolean;
 }) {
-  const [kind, setKind] = useState(writingPrompts[0].title);
-  const [title, setTitle] = useState('');
-  const [original, setOriginal] = useState('');
+  const [kind, setKind] = useState(seed?.kind || writingPrompts[0].title);
+  const [title, setTitle] = useState(seed?.title || '');
+  const [original, setOriginal] = useState(seed?.original || '');
+  const [sourceNote, setSourceNote] = useState(seed?.sourceNote || '');
+  const [context, setContext] = useState(seed?.context || '');
+  const [preview, setPreview] = useState(false);
   const [revision, setRevision] = useState('');
   const [id, setId] = useState<string | null>(null);
-  const [savedOriginal, setSavedOriginal] = useState(false);
+  const [savedOriginal, setSavedOriginal] = useState(seed?.archived || false);
   const [error, setError] = useState('');
   const prompt =
     writingPrompts.find((p) => p.title === kind) || writingPrompts[0];
   function clear() {
     setId(null);
+    setSourceNote('');
+    setContext('');
+    setPreview(false);
     setTitle('');
     setOriginal('');
     setRevision('');
@@ -1039,16 +1108,32 @@ function Pundit({
     <>
       <div className="page-heading">
         <div>
-          <p className="eyebrow">YOUR VIEW. MAKE IT COUNT.</p>
-          <h1>The pundit desk.</h1>
+          <p className="eyebrow">HARRY’S PRESS BOX</p>
+          <h1>Football Journalism.</h1>
         </div>
-        <span className="edition">02 / WRITING</span>
+        <span className="edition">PREVIEW · REPORT · OPINION</span>
       </div>
-      <div className="workspace">
-        <section className="panel">
+      <div className="journalism-deck">
+        <p>
+          Your voice belongs in the press box. Choose a brief, write your first
+          take, then give it an editor’s second look.
+        </p>
+        <button
+          className="plain-button"
+          onClick={() =>
+            document
+              .getElementById('back-pages')
+              ?.scrollIntoView({ behavior: 'smooth' })
+          }
+        >
+          Read your earlier work ↓
+        </button>
+      </div>
+      <div className="workspace" id="writing-desk">
+        <section className="panel writing-panel">
           <div className="section-heading">
             <h2>{id ? 'Your article' : 'A fresh take'}</h2>
-            {id && (
+            {(id || title || original) && (
               <button className="plain-button compact" onClick={clear}>
                 New article
               </button>
@@ -1067,6 +1152,8 @@ function Pundit({
                 kind,
                 original,
                 revision,
+                context,
+                sourceNote,
                 savedAt: new Date().toISOString(),
               };
               if (save(article)) {
@@ -1089,6 +1176,12 @@ function Pundit({
               <p>{prompt.prompt}</p>
               <span>{prompt.frame}</span>
             </div>
+            {context && (
+              <div className="report-context">
+                <h3>Your reporting notes</h3>
+                <p className="preserve">{context}</p>
+              </div>
+            )}
             <label>
               Your headline
               <input
@@ -1114,6 +1207,7 @@ function Pundit({
                 placeholder="Start with your view. Then show the reader why."
               />
             </label>
+            {sourceNote && <p className="source-caption">{sourceNote}</p>}
             <p className="hint">
               {wordCount(original)} words · Try a focused paragraph first.
             </p>
@@ -1139,10 +1233,41 @@ function Pundit({
                 {error}
               </p>
             )}
-            <Action type="submit">
-              <PenLine size={16} />
-              {savedOriginal ? 'Save revision' : 'Save first draft'}
-            </Action>
+            <div className="button-row">
+              <Action type="submit">
+                <PenLine size={16} />
+                {savedOriginal ? 'Save revision' : 'Save first draft'}
+              </Action>
+              <button
+                className="plain-button"
+                type="button"
+                disabled={!original.trim()}
+                onClick={() => setPreview(!preview)}
+              >
+                {preview ? 'Close reading view' : 'Read & compare drafts'}
+              </button>
+            </div>
+            {preview && (
+              <section
+                className="draft-comparison"
+                aria-label="Draft comparison"
+              >
+                <h3>{title || 'Untitled'}</h3>
+                <div className="draft-columns">
+                  <div>
+                    <h4>First draft · {wordCount(original)} words</h4>
+                    <p className="preserve">{original}</p>
+                  </div>
+                  <div>
+                    <h4>Second pass · {wordCount(revision)} words</h4>
+                    <p className="preserve">
+                      {revision ||
+                        'Save a first draft, then write your second pass to compare them here.'}
+                    </p>
+                  </div>
+                </div>
+              </section>
+            )}
           </form>
         </section>
         <aside>
@@ -1154,11 +1279,11 @@ function Pundit({
               Give a reason.
             </h2>
             <ul className="checklist">
-              <li>Is my main point clear?</li>
-              <li>What evidence supports it?</li>
-              <li>Have I explained the link?</li>
-              <li>Would the other side agree?</li>
-              <li>Which claim needs checking?</li>
+              <li>Lead with the result or your main claim.</li>
+              <li>Name the moment, stat or source that supports it.</li>
+              <li>Explain why it matters.</li>
+              <li>Separate what happened from what you think.</li>
+              <li>Check the facts and give the other side a fair hearing.</li>
             </ul>
           </div>
           <div className="mini-stats">
@@ -1172,6 +1297,9 @@ function Pundit({
                     setId(a.id);
                     setTitle(a.title);
                     setKind(a.kind);
+                    setSourceNote(a.sourceNote || '');
+                    setContext(a.context || '');
+                    setPreview(false);
                     setOriginal(a.original);
                     setRevision(a.revision);
                     setSavedOriginal(true);
@@ -1193,6 +1321,9 @@ function Pundit({
             )}
           </div>
         </aside>
+      </div>
+      <div id="back-pages">
+        <JournalismLibrary write={startWriting} />
       </div>
     </>
   );

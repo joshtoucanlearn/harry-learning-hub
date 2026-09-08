@@ -127,3 +127,44 @@ test('review progress survives backup and rejects invalid attempts', () => {
     ),
   );
 });
+
+test('archive notes and article provenance round-trip without entering scoring', () => {
+  const data = {
+    version: 1,
+    predictions: [],
+    articles: [
+      {
+        id: 'rewrite',
+        title: 'Second take',
+        kind: 'The big debate',
+        original: 'Source excerpt',
+        revision: 'My revision',
+        sourceNote: 'Harry with tutor support',
+        context: 'Check the claim',
+        savedAt: '2026-09-09T00:00:00Z',
+      },
+    ],
+    archiveNotes: {
+      norway: { result: 'Score unknown', reflection: 'Check the fixture' },
+    },
+  };
+  const restored = parseBackup(JSON.stringify(data));
+  assert.deepEqual(restored, data);
+  assert.equal(stats(restored.predictions).reviewed, 0);
+  assert.throws(() =>
+    parseBackup(
+      JSON.stringify({
+        ...data,
+        archiveNotes: { norway: { result: 12, reflection: '' } },
+      }),
+    ),
+  );
+  assert.throws(() =>
+    parseBackup(
+      JSON.stringify({
+        ...data,
+        articles: [{ ...data.articles[0], sourceNote: { bad: true } }],
+      }),
+    ),
+  );
+});
