@@ -226,7 +226,7 @@ export default function Home() {
           </nav>
         </SheetContent>
       </Sheet>
-      <main>
+      <main className={tab === 'Home' ? 'welcome-page' : undefined}>
         <div className="status" role="status" aria-live="polite">
           {message}
         </div>
@@ -234,9 +234,7 @@ export default function Home() {
           <p>Opening your desk…</p>
         ) : (
           <>
-            {tab === 'Home' && (
-              <LearningHome progress={data.review || {}} go={switchTab} />
-            )}
+            {tab === 'Home' && <LearningHome />}
             {tab === 'Review' && (
               <ReviewHub
                 key={reviewTopic || 'all'}
@@ -610,7 +608,7 @@ export default function Home() {
           </>
         )}
       </main>
-      <footer>
+      <footer hidden={tab === 'Home'}>
         Harry Baker MEDIA{' '}
         <span>Saved on this browser. Your desk, your calls.</span>
       </footer>

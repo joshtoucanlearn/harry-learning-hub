@@ -7,139 +7,14 @@ import {
   type Topic,
   type ReviewProgress,
 } from '@/data/review-topics';
-export function LearningHome({
-  progress,
-  go,
-}: {
-  progress: ReviewProgress;
-  go: (
-    section: 'Review' | 'Matchday' | 'Football Journalism' | 'The Record',
-  ) => void;
-}) {
-  const all = topics.flatMap((t) => t.questions);
-  const correct = all.filter((q) => progress[q.id]?.correct).length;
-  const checked = all.filter((q) => progress[q.id]).length;
+export function LearningHome() {
   return (
-    <>
-      <div className="home-heading">
-        <BrandIdentity className="home-identity" />
-        <h1>All yours, Harry.</h1>
-        <p>Pick up a thought. See where it takes you.</p>
-      </div>
-      <div className="home-layout">
-        <section className="home-stories">
-          <div className="home-section-label">
-            <span>FROM YOUR WRITING</span>
-            <span>01 / 07</span>
-          </div>
-          <button
-            className="featured-writing"
-            onClick={() => go('Football Journalism')}
-          >
-            <span className="article-category">OPINION / FOOTBALL</span>
-            <h2>
-              Hydration
-              <br />
-              <em>disaster.</em>
-            </h2>
-            <p>
-              “These hydration breaks need to stop. It ruins the flow of the
-              games and disrupts the tempo.”
-            </p>
-            <div className="featured-byline">
-              <span>
-                Harry, with Josh
-                <br />
-                <small>From the June–July lessons</small>
-              </span>
-              <span className="round-arrow" aria-hidden="true">
-                ↗
-              </span>
-            </div>
-          </button>
-          <div className="feature-caption">
-            <span>Your original argument, ready for another look.</span>
-            <button onClick={() => go('Football Journalism')}>
-              Open Journalism ↗
-            </button>
-          </div>
-        </section>
-        <section className="desk-actions">
-          <div className="home-section-label">
-            <span>WHERE NEXT?</span>
-          </div>
-          <button onClick={() => go('Matchday')} className="desk-action">
-            <span className="desk-number">01</span>
-            <div>
-              <h2>Make a prediction</h2>
-              <p>Score, key moments and your reasons.</p>
-            </div>
-            <span aria-hidden="true">↗</span>
-          </button>
-          <button
-            onClick={() => go('Football Journalism')}
-            className="desk-action"
-          >
-            <span className="desk-number">02</span>
-            <div>
-              <h2>Read the football pages</h2>
-              <p>Harry’s opinions, analysis and match previews.</p>
-            </div>
-            <span aria-hidden="true">↗</span>
-          </button>
-          <button onClick={() => go('Review')} className="desk-action">
-            <span className="desk-number">03</span>
-            <div>
-              <h2>Work something out</h2>
-              <p>A short maths topic from your lessons.</p>
-            </div>
-            <span aria-hidden="true">↗</span>
-          </button>
-          <button className="record-preview" onClick={() => go('The Record')}>
-            <span className="eyebrow">THE RECORD / A LOOK BACK</span>
-            <div className="record-teams">
-              <span>
-                England <b>2</b>
-              </span>
-              <span>
-                Norway <b>1</b>
-              </span>
-            </div>
-            <div className="record-caption">
-              <span>After extra time · 11 July 2026</span>
-              <span>View your call ↗</span>
-            </div>
-          </button>
-        </section>
-      </div>
-      <section className="home-review-strip">
-        <div>
-          <p className="eyebrow">MATHS / {topics.length} TOPICS</p>
-          <h2>Make it stick.</h2>
-          <p>
-            {checked
-              ? `${checked} questions tried. ${checked - correct} to revisit.`
-              : 'A little practice, whenever you feel like it.'}
-          </p>
-        </div>
-        <div className="home-progress">
-          <strong>
-            {correct}
-            <span> / {all.length}</span>
-          </strong>
-          <span>
-            {correct} / {all.length} correct on latest checks
-          </span>
-        </div>
-        <button className="plain-button" onClick={() => go('Review')}>
-          Open Review ↗
-        </button>
-      </section>
-      <div className="home-footer-note">
-        <span>From your lessons with Josh & Aaron.</span>
-        <span>Saved work stays on this browser. Backups are in Teacher.</span>
-      </div>
-    </>
+    <section className="welcome-home">
+      <h1 className="welcome-heading">
+        <span className="welcome-prefix">Welcome to</span>
+        <BrandIdentity className="welcome-identity" />
+      </h1>
+    </section>
   );
 }
 

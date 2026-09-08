@@ -56,13 +56,6 @@ function StoryCard({ story, lead = false }: { story: Story; lead?: boolean }) {
   return (
     <article className={`news-story ${lead ? 'news-lead' : ''}`}>
       <a className="news-story-link" href={storyUrl(story.id)}>
-        <div className="news-story-copy">
-          <span className="news-kicker">{detail.format}</span>
-          <h2>{story.title}</h2>
-          <p>{detail.deck}</p>
-          <span className="news-byline">{story.credit}</span>
-          <span className="news-date">{story.date}</span>
-        </div>
         {lead && (
           <img
             className="news-cover"
@@ -73,6 +66,13 @@ function StoryCard({ story, lead = false }: { story: Story; lead?: boolean }) {
             fetchPriority="high"
           />
         )}
+        <div className="news-story-copy">
+          <span className="news-kicker">{detail.format}</span>
+          <h2>{story.title}</h2>
+          <p>{detail.deck}</p>
+          <span className="news-byline">{story.credit}</span>
+          <span className="news-date">{story.date}</span>
+        </div>
       </a>
     </article>
   );

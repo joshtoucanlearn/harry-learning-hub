@@ -2372,7 +2372,7 @@ textarea::placeholder {
   height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
-  margin-top: auto;
+  margin: 0;
 }
 .news-side-stories {
   display: grid;
@@ -2875,5 +2875,52 @@ main {
   }
   .brand-identity {
     gap: 12px;
+  }
+}
+
+/* A simple welcome page, with everything else in the Menu. */
+main.welcome-page {
+  min-height: calc(100svh - 112px);
+  display: grid;
+  align-content: center;
+}
+.welcome-home {
+  text-align: center;
+  padding: 20px 0 60px;
+}
+.welcome-heading {
+  margin: 0;
+  letter-spacing: 0;
+}
+.welcome-prefix {
+  display: block;
+  font:
+    400 clamp(1.2rem, 2.8vw, 1.7rem)/1.4 Georgia,
+    serif;
+  color: var(--ink);
+  margin-bottom: 24px;
+  text-shadow: 0 2px 16px #06101a;
+}
+.welcome-identity {
+  text-align: left;
+  gap: clamp(16px, 3vw, 28px);
+  text-shadow: 0 2px 18px #06101a;
+}
+.welcome-identity .brand-crest {
+  width: clamp(72px, 12vw, 140px);
+  height: clamp(78px, 13vw, 154px);
+}
+.welcome-identity .identity-wordmark {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+}
+.welcome-identity .identity-wordmark > span {
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  letter-spacing: 0.3em;
+  margin-top: 13px;
+}
+@media (max-width: 480px) {
+  .welcome-identity {
+    flex-direction: column;
+    text-align: center;
   }
 }

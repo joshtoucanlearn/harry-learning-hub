@@ -7,7 +7,7 @@ Harry’s football and learning workspace:
 - **Football Journalism:** a newspaper-style football page with an illustrated lead story, seven recovered pieces, topic filters and individual article links.
 - **The Record:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
 
-An editorial Home view connects these activities. Teacher provides lesson prompts, notes, printable records and JSON backups.
+Home is a simple welcome with the combined crest and wordmark. The Menu opens each activity. Teacher provides lesson prompts, notes, printable records and JSON backups.
 
 ## Run locally
 
