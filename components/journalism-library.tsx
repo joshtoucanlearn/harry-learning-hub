@@ -19,7 +19,7 @@ export function JournalismLibrary({
     <section className="journalism-library">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">FROM HARRY’S NOTEBOOK</p>
+          <p className="eyebrow">FROM HARRY’S WRITING</p>
           <h2>The back pages.</h2>
         </div>
         <span className="meta">

@@ -5,7 +5,7 @@ Harry’s football and learning workspace:
 - **Review:** Maths recall cards, questions, worked feedback, retries and saved progress.
 - **Matchday:** score/event predictions, reasoning, actual-result comparison and statistics.
 - **Football Journalism:** four briefs, original/revised drafts, reading comparison, seven recovered pieces and match-report handoffs.
-- **Notebook:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
+- **The Record:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
 
 An editorial Home view connects these activities. Teacher provides lesson prompts, notes, printable records and JSON backups.
 
@@ -34,7 +34,7 @@ Review saves each question’s attempt count and most recent correctness. “Cor
 
 1. Enter two teams, optionally an upcoming kickoff, predicted 90-minute score and up to three checkable events. Choose Harry or Josh, add confidence in the outcome and explain the evidence.
 2. Lock the prediction. Its score, events and reasoning stay unchanged.
-3. After the match, open it from the notebook, enter the actual result and mark each event Yes, No, Not checked or Void. Exclude extra time and shoot-outs.
+3. After the match, open it from Your predictions, enter the actual result and mark each event Yes, No, Not checked or Void. Exclude extra time and shoot-outs.
 4. Compare and reflect. Exact score earns 3 points; otherwise correct win/draw/loss earns 1; otherwise 0. Each checked event earns 1 if correct. Pending/void events are excluded from the denominator. Pending events make totals provisional.
 5. Stats separates exact scores, outcomes and events. Football Journalism keeps first draft and revision for comparison. A Matchday review or historical call can supply reporting notes without inventing an article. Unsaved editor text survives ordinary section navigation, but save before reloading, starting another piece or leaving the site.
 
@@ -71,7 +71,7 @@ pnpm preview:pages --port 4173 --strictPort
 
 The preview URL is http://127.0.0.1:4173/harry-learning-hub/.
 
-Browser tests require Playwright and Chrome. Install Playwright separately or set `PLAYWRIGHT_MODULE` to an existing Playwright module. Set `HUB_URL` to test a hosted instance. Tests use isolated browser contexts and synthetic data, leaving the actual notebook untouched.
+Browser tests require Playwright and Chrome. Install Playwright separately or set `PLAYWRIGHT_MODULE` to an existing Playwright module. Set `HUB_URL` to test a hosted instance. Tests use isolated browser contexts and synthetic data, leaving the actual saved work untouched.
 
 ```sh
 mkdir -p qa
@@ -82,3 +82,11 @@ node tests/archive-browser.mjs
 ```
 
 QA output and downloaded backups are excluded from Git. The optional read-only WebMCP history tool is feature-detected; native WebMCP was unavailable in the test browser and is not required for normal use.
+
+## Galaxy redesign
+
+The Record replaces the old Notebook navigation. The whole interface uses a quiet midnight/slate palette, an editorial home layout and desktop side navigation. The background ports FLAME’s actual dithered pixel-galaxy shader to WebGL 2, including its exact seeded noise texture. See `assets/GALAXY-SOURCE.md` for provenance.
+
+Animation pauses with the **Pause sky** control, is off by default for reduced-motion preferences, and stops while the page is hidden. It is capped at 24 rendered frames per second, without multiplying resolution by device pixel ratio. A static render remains available when WebGL is unavailable or the context is lost. This preference has its own browser storage key and does not alter saved lessons or predictions.
+
+Additional motion/fallback verification: `node tests/galaxy-browser.mjs`.

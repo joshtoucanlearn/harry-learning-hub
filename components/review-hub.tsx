@@ -12,7 +12,7 @@ export function LearningHome({
 }: {
   progress: ReviewProgress;
   go: (
-    section: 'Review' | 'Matchday' | 'Football Journalism' | 'Notebook',
+    section: 'Review' | 'Matchday' | 'Football Journalism' | 'The Record',
   ) => void;
 }) {
   const all = topics.flatMap((t) => t.questions);
@@ -21,69 +21,95 @@ export function LearningHome({
   return (
     <>
       <div className="home-heading">
-        <div>
-          <p className="eyebrow">HARRY HUB / THE NEW EDITION</p>
-          <h1>Your call, Harry.</h1>
-        </div>
-        <span className="home-byline">
-          Football. A point of view.
-          <br />
-          Something to back it up.
-        </span>
+        <p className="eyebrow">YOUR DESK</p>
+        <h1>All yours, Harry.</h1>
+        <p>Pick up a thought. See where it takes you.</p>
       </div>
-      <div className="home-lead-grid">
-        <button
-          className="newsroom-feature"
-          onClick={() => go('Football Journalism')}
-        >
-          <span className="eyebrow">
-            FOOTBALL JOURNALISM <span>↗</span>
-          </span>
-          <h2>
-            There’s a story
-            <br />
-            in every game.
-          </h2>
-          <p>
-            Write the preview. Call the turning point. Make the case that gets
-            people talking.
-          </p>
-          <div className="feature-teaser">
-            <span>FROM YOUR ARCHIVE</span>
-            <strong>“Hydration disaster”</strong>
-            <small>Your argument. Ready for its next edit.</small>
+      <div className="home-layout">
+        <section className="home-stories">
+          <div className="home-section-label">
+            <span>FROM YOUR WRITING</span>
+            <span>01 / 07</span>
           </div>
-          <strong className="feature-link">Open the newsroom →</strong>
-        </button>
-        <div className="home-right">
-          <button className="matchday-feature" onClick={() => go('Matchday')}>
-            <span className="eyebrow">
-              THE NEXT MATCH <span>↗</span>
-            </span>
-            <h2>Back your instinct.</h2>
-            <div className="score-motif" aria-hidden="true">
-              <span>?</span>
-              <i>:</i>
-              <span>?</span>
+          <button
+            className="featured-writing"
+            onClick={() => go('Football Journalism')}
+          >
+            <span className="article-category">OPINION / FOOTBALL</span>
+            <h2>
+              Hydration
+              <br />
+              <em>disaster.</em>
+            </h2>
+            <p>
+              “These hydration breaks need to stop. It ruins the flow of the
+              games and disrupts the tempo.”
+            </p>
+            <div className="featured-byline">
+              <span>
+                Harry, with Josh
+                <br />
+                <small>From the June–July lessons</small>
+              </span>
+              <span className="round-arrow" aria-hidden="true">
+                ↗
+              </span>
             </div>
-            <p>
-              Score. Key events. Your reasoning.
-              <br />
-              Lock it in, then see how it went.
-            </p>
-            <strong>Make a prediction →</strong>
           </button>
-          <button className="notebook-feature" onClick={() => go('Notebook')}>
-            <span className="eyebrow">THE NOTEBOOK</span>
-            <h2>Remember the Norway call?</h2>
-            <p>
-              Lesson review: no penalty, right. England first, missed.
-              <br />
-              Six old calls. A few things to learn.
-            </p>
-            <strong>Look back →</strong>
+          <div className="feature-caption">
+            <span>Your original argument, ready for another look.</span>
+            <button onClick={() => go('Football Journalism')}>
+              Open Journalism ↗
+            </button>
+          </div>
+        </section>
+        <section className="desk-actions">
+          <div className="home-section-label">
+            <span>WHERE NEXT?</span>
+          </div>
+          <button onClick={() => go('Matchday')} className="desk-action">
+            <span className="desk-number">01</span>
+            <div>
+              <h2>Make a prediction</h2>
+              <p>Score, key moments and your reasons.</p>
+            </div>
+            <span aria-hidden="true">↗</span>
           </button>
-        </div>
+          <button
+            onClick={() => go('Football Journalism')}
+            className="desk-action"
+          >
+            <span className="desk-number">02</span>
+            <div>
+              <h2>Write your take</h2>
+              <p>A preview, a report or a point of view.</p>
+            </div>
+            <span aria-hidden="true">↗</span>
+          </button>
+          <button onClick={() => go('Review')} className="desk-action">
+            <span className="desk-number">03</span>
+            <div>
+              <h2>Work something out</h2>
+              <p>A short maths topic from your lessons.</p>
+            </div>
+            <span aria-hidden="true">↗</span>
+          </button>
+          <button className="record-preview" onClick={() => go('The Record')}>
+            <span className="eyebrow">THE RECORD / A LOOK BACK</span>
+            <div className="record-teams">
+              <span>
+                England <b>2</b>
+              </span>
+              <span>
+                Norway <b>1</b>
+              </span>
+            </div>
+            <div className="record-caption">
+              <span>After extra time · 11 July 2026</span>
+              <span>View your call ↗</span>
+            </div>
+          </button>
+        </section>
       </div>
       <section className="home-review-strip">
         <div>
@@ -92,31 +118,30 @@ export function LearningHome({
           <p>
             {checked
               ? `${checked} questions tried. ${checked - correct} to revisit.`
-              : 'Pick a short topic from your lessons and see what comes back.'}
+              : 'A little practice, whenever you feel like it.'}
           </p>
         </div>
         <div className="home-progress">
           <strong>
             {correct}
-            <span>/{all.length}</span>
+            <span> / {all.length}</span>
           </strong>
           <span>
             {correct} / {all.length} correct on latest checks
           </span>
         </div>
-        <button className="action" onClick={() => go('Review')}>
-          Open Review →
+        <button className="plain-button" onClick={() => go('Review')}>
+          Open Review ↗
         </button>
       </section>
       <div className="home-footer-note">
-        <span>Built from your lessons with Josh & Aaron.</span>
-        <span>
-          Your new work saves on this browser. Backups are in Teacher.
-        </span>
+        <span>From your lessons with Josh & Aaron.</span>
+        <span>Saved work stays on this browser. Backups are in Teacher.</span>
       </div>
     </>
   );
 }
+
 export function ReviewHub({
   progress,
   save,

@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { GalaxySky } from '@/components/galaxy-sky';
 import { JournalismLibrary } from '@/components/journalism-library';
 import {
   LearningArchive,
@@ -38,7 +39,7 @@ const tabs = [
   { name: 'Review', icon: BookOpen },
   { name: 'Matchday', icon: Target },
   { name: 'Football Journalism', icon: PenLine },
-  { name: 'Notebook', icon: BookOpen },
+  { name: 'The Record', icon: BookOpen },
   { name: 'Stats lab', icon: ChartNoAxesCombined },
   { name: 'Teacher', icon: SlidersHorizontal },
 ] as const;
@@ -172,13 +173,16 @@ export default function Home() {
   };
   return (
     <>
+      <GalaxySky />
       <header className="masthead">
         <div className="brand">
-          <span className="brand-mark">H.</span> HARRY HUB
+          <span className="brand-mark">h.</span>
+          <span className="wordmark">Harry Hub</span>
         </div>
-        <span className="local-tag">THE GAME · THE WORDS · THE NUMBERS</span>
+        <span className="local-tag">A SPACE FOR YOUR IDEAS</span>
       </header>
       <nav aria-label="Main navigation">
+        <p className="nav-label">YOUR WORKSPACE</p>
         {tabs.map(({ name, icon: Icon }) => (
           <button
             key={name}
@@ -215,11 +219,7 @@ export default function Home() {
                 <div className="page-heading">
                   <div>
                     <p className="eyebrow">MAKE YOUR CALL</p>
-                    <h1>
-                      The game starts
-                      <br />
-                      with your prediction.
-                    </h1>
+                    <h1>Matchday.</h1>
                   </div>
                   <span className="edition">01 / MATCHDAY</span>
                 </div>
@@ -309,7 +309,7 @@ export default function Home() {
                   <div className="section-heading">
                     <div>
                       <p className="eyebrow">YOUR CALLS, KEPT ON RECORD</p>
-                      <h2>Match notebook</h2>
+                      <h2>Your predictions</h2>
                     </div>
                     <div className="filters" aria-label="Filter predictions">
                       {['All', 'Awaiting result', 'Reviewed'].map((f) => (
@@ -416,7 +416,7 @@ export default function Home() {
                 }}
               />
             </div>
-            {tab === 'Notebook' && (
+            {tab === 'The Record' && (
               <LearningArchive
                 notes={data.archiveNotes || {}}
                 save={(archiveNotes) => commit({ ...data, archiveNotes })}
@@ -434,10 +434,7 @@ export default function Home() {
                 <div className="page-heading">
                   <div>
                     <p className="eyebrow">LESSON MODE</p>
-                    <h1>
-                      A good conversation.
-                      <br />A little more evidence.
-                    </h1>
+                    <h1>Lesson desk.</h1>
                   </div>
                   <span className="edition">04 / TEACHER</span>
                 </div>
@@ -483,7 +480,7 @@ export default function Home() {
                     </div>
                   </section>
                   <aside className="panel">
-                    <h2>Your local notebook</h2>
+                    <h2>Your saved work</h2>
                     <p>
                       Saved on this browser at this address. It does not sync
                       between devices. Export a backup before changing devices
@@ -537,8 +534,8 @@ export default function Home() {
                         <p>
                           {backup.predictions.length} predictions and{' '}
                           {backup.articles.length} articles. This replaces the
-                          current local notebook, including review progress.
-                          Export your current work first if you want to keep it.
+                          current saved work, including review progress. Export
+                          your current work first if you want to keep it.
                         </p>
                         <button
                           className="plain-button"
@@ -560,7 +557,7 @@ export default function Home() {
                             }
                           }}
                         >
-                          Replace notebook with backup
+                          Replace saved work with backup
                         </button>
                         <button
                           className="plain-button"

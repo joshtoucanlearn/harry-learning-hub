@@ -36,7 +36,7 @@ export function LearningArchive({
       <div className="page-heading">
         <div>
           <p className="eyebrow">APRIL → SEPTEMBER 2026</p>
-          <h1>The notebook.</h1>
+          <h1>The Record.</h1>
         </div>
         <span className="edition">REAL WORK, WORTH RETURNING TO</span>
       </div>

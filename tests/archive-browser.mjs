@@ -18,7 +18,7 @@ await page.getByRole('button',{name:'Save revision'}).click();
 await page.getByRole('button',{name:'Read & compare drafts'}).click();
 await page.getByRole('region',{name:'Draft comparison'}).waitFor();
 await page.screenshot({path:'qa/journalism-desktop.png',fullPage:true});
-await page.getByRole('button',{name:'Notebook',exact:true}).click();
+await page.getByRole('button',{name:'The Record',exact:true}).click();
 assert.equal(await page.locator('.history-card').count(),6);assert.equal(await page.locator('.verified-result').count(),6);await page.getByRole('heading',{name:'England 2–1 Norway',exact:true}).waitFor();await page.getByRole('heading',{name:'England 1–2 Argentina',exact:true}).waitFor();assert.equal(await page.getByRole('heading',{name:'Spain 2–0 France',exact:true}).count(),2);assert.equal(await page.getByText('Not recorded',{exact:true}).count(),0);
 const norway=page.locator('.history-card').filter({has:page.getByRole('heading',{name:'England v Norway',exact:true})});
 assert.equal(await norway.getByText('✓ Correct',{exact:true}).count(),1);
@@ -32,17 +32,17 @@ await page.getByRole('heading',{name:'Your reporting notes',exact:true}).waitFor
 assert.match(await page.locator('.report-context').innerText(),/Extra-time winner/);
 await page.getByLabel('First draft').fill('The recorded review says no penalty occurred and Norway scored first. The final score is not recorded in our notes.');
 await page.getByRole('button',{name:'Save first draft'}).click();
-await page.reload();await page.getByRole('button',{name:'Notebook',exact:true}).click();
+await page.reload();await page.getByRole('button',{name:'The Record',exact:true}).click();
 await norway.getByText('Add your reflection & extra evidence',{exact:true}).click();
 assert.match(await norway.getByLabel('Additional evidence or match notes').inputValue(),/Extra-time winner/);
 const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('harry-football-desk-v1')));
 assert.equal(saved.predictions.length,0);assert.equal(saved.articles.length,2);assert.match(saved.articles[1].sourceNote,/Harry/);
 await page.getByRole('button',{name:'Stats lab',exact:true}).click();await page.getByText('0 of 0 reviewed matches',{exact:true}).waitFor();
-await page.getByRole('button',{name:'Notebook',exact:true}).click();await page.getByRole('button',{name:'Lesson trail',exact:true}).click();
+await page.getByRole('button',{name:'The Record',exact:true}).click();await page.getByRole('button',{name:'Lesson trail',exact:true}).click();
 assert.equal(await page.locator('.lesson-timeline li').count(),26);
 await page.getByRole('button',{name:'Aaron',exact:true}).click();assert.equal(await page.locator('.lesson-timeline li').count(),15);
 const ratings=page.locator('.lesson-timeline li').filter({hasText:'Ratings become statistics'});await ratings.getByRole('button',{name:'Revisit topic'}).click();
 await page.getByRole('heading',{name:'The ratings desk'}).waitFor();await page.getByRole('button',{name:'Test my recall'}).click();await page.getByRole('radio',{name:'7',exact:true}).check();await page.getByRole('button',{name:'Check my answer'}).click();await page.getByText('That’s right.',{exact:true}).waitFor();
-for(const width of [1440,768,390]){await page.setViewportSize({width,height:1000});for(const tab of ['Home','Football Journalism','Notebook','Review']){await page.getByRole('button',{name:tab,exact:true}).click();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`${width} ${tab}`);await page.screenshot({path:`qa/new-${width}-${tab.replaceAll(' ','-')}.png`,fullPage:true});}}
+for(const width of [1440,768,390]){await page.setViewportSize({width,height:1000});for(const tab of ['Home','Football Journalism','The Record','Review']){await page.getByRole('button',{name:tab,exact:true}).click();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`${width} ${tab}`);await page.screenshot({path:`qa/new-${width}-${tab.replaceAll(' ','-')}.png`,fullPage:true});}}
 await page.getByRole('button',{name:'Football Journalism',exact:true}).click();await page.evaluate(()=>document.documentElement.style.fontSize='200%');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'200% text journalism');
 assert.deepEqual(errors,[]);await browser.close();console.log('PASS: source archive, provenance, preserve first draft, revision/reading comparison, unsaved navigation, historical reflection persistence, no fabricated statistics, both tutors, lesson-to-review navigation, mobile and 200% text.');
