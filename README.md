@@ -98,3 +98,11 @@ Football Journalism uses hash links such as `#football/hydration` so individual 
 The original prominent galaxy remains visible across all pages, without an enclosing main panel. Individual reading cards protect contrast, with warm off-white text and amber actions. The lead illustration's source is recorded in `assets/NEWS-ART-SOURCE.md`.
 
 Branding uses the Leeds-inspired pixel crest across the home page, football masthead, Menu drawer and favicon. Navigation is tucked into an accessible modal drawer. Final order: Home, The Record, Football Journalism, Review, Stats lab, Teacher, Matchday. The former full-width header is removed.
+
+Home adds one short pixel shooting star every 14 seconds and very faint blue/teal hues in the darker sky. These effects are confined to Home, use the same capped shader clock and obey Pause sky, page visibility and reduced-motion preferences.
+
+## Radio pet
+
+The corner radio plays the supplied 8-bit Paul Allen mix in its original 16-track order. Click the pet to start, then click it again to skip. The pet stands alone: hover or focus it to reveal play/pause and a volume slider above it; touchscreens have a small volume button. No song panel is displayed. The next track starts automatically and the playlist loops; navigating the site keeps the same player running. Nothing autoplays or downloads audio before a listener starts it. Only the volume preference is remembered, separately from learning data.
+
+The web copies are 128 kbps stereo MP3s derived from the existing FLAME cuts, with no normalization or changes to their order. Original audio files remain untouched. Track titles, durations and web-file hashes are in `data/radio-provenance.json`; update `data/radio-tracks.ts` to change the playlist. The original pixel radio illustration was created for this site. Its movement respects reduced-motion preferences. `node tests/radio-browser.mjs` checks real audio playback, volume/mute, skipping, automatic advance, navigation continuity and mobile layout.

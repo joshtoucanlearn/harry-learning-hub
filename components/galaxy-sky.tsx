@@ -10,6 +10,7 @@ const fragmentSource = `#version 300 es
 precision highp float;
 uniform vec2 resolution;
 uniform float clock;
+uniform float home_view;
 uniform sampler2D nebula_noise;
 out vec4 outputColour;
 const int BAYER[16]=int[](0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5);
@@ -42,6 +43,23 @@ vec3 stars(vec2 pixel,float cell_size,float salt,float t,float speed){
  vec3 colour=mix(vec3(.40,.53,.65),vec3(.85,.87,.81),seed);
  return colour*shape*twinkle*step(.30,seed);
 }
+// One brief meteor every fourteen seconds, away from the central wordmark.
+vec3 shooting_star(vec2 pixel,vec2 grid,float t){
+ float cycle=floor(t/14.0);
+ float phase=mod(t,14.0)-6.0;
+ if(phase<0.0||phase>1.15){return vec3(0.0);}
+ vec2 start=grid*vec2(.62+hash(vec2(cycle,13.0))*.25,.07+hash(vec2(cycle,29.0))*.12);
+ vec2 direction=normalize(vec2(-1.0,.42));
+ vec2 head=floor(start+direction*phase*grid.x*.25);
+ vec2 delta=pixel-head;
+ float behind=-dot(delta,direction);
+ float across=abs(dot(delta,vec2(-direction.y,direction.x)));
+ float tail_length=clamp(grid.x*.10,12.0,30.0);
+ float trail=step(0.0,behind)*step(behind,tail_length)*(1.0-smoothstep(.3,1.1,across))*pow(max(0.0,1.0-behind/tail_length),1.6);
+ float point=1.0-smoothstep(.3,1.4,length(delta));
+ float fade=smoothstep(0.0,.16,phase)*(1.0-smoothstep(.72,1.15,phase));
+ return vec3(.62,.78,.86)*max(trail*.58,point*.78)*fade;
+}
 void main(){
  float t=clock;
  vec2 grid=resolution;
@@ -63,15 +81,28 @@ void main(){
  colour+=stars(pixel,37.0,91.0,t,.27)*.70;
  float navigation=(1.0-smoothstep(.24,.42,uv.x))*(1.0-smoothstep(.46,.63,uv.y));
  colour*=1.0-navigation*.40;
+ if(home_view>.5){
+   float shadow=1.0-smoothstep(.09,.24,max(colour.r,max(colour.g,colour.b)));
+   float blue=exp(-dot((uv-vec2(.25,.28))*2.0,(uv-vec2(.25,.28))*2.0));
+   float teal=exp(-dot((uv-vec2(.8,.72))*2.2,(uv-vec2(.8,.72))*2.2));
+   float breathe=.82+.18*sin(t*.045);
+   colour+=shadow*breathe*(vec3(.012,.020,.043)*blue+vec3(.004,.027,.023)*teal);
+   colour+=shooting_star(pixel,grid,t);
+ }
  outputColour=vec4(colour,1.0);
 }`;
 const MOTION_KEY = 'harry-hub-sky-paused';
-export function GalaxySky() {
+export function GalaxySky({ home = false }: { home?: boolean }) {
+  const homeRef = useRef(home);
+  homeRef.current = home;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [paused, setPaused] = useState(true);
   const [available, setAvailable] = useState(false);
   const pausedRef = useRef(true);
   const redrawRef = useRef<(() => void) | null>(null);
+  useEffect(() => {
+    redrawRef.current?.();
+  }, [home]);
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     function preference() {
@@ -148,12 +179,14 @@ export function GalaxySky() {
       return;
     }
     const timeLocation = gl.getUniformLocation(program, 'clock'),
-      sizeLocation = gl.getUniformLocation(program, 'resolution');
+      sizeLocation = gl.getUniformLocation(program, 'resolution'),
+      homeLocation = gl.getUniformLocation(program, 'home_view');
     function draw() {
       if (stopped || !loaded || document.hidden) return;
       gl!.viewport(0, 0, canvas!.width, canvas!.height);
       gl!.uniform2f(sizeLocation, canvas!.width, canvas!.height);
       gl!.uniform1f(timeLocation, elapsed);
+      gl!.uniform1f(homeLocation, homeRef.current ? 1 : 0);
       gl!.drawArrays(gl!.TRIANGLES, 0, 6);
     }
     function tick(now: number) {

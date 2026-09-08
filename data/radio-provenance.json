@@ -1,0 +1,136 @@
+{
+  "mix": "Paul Allen's mix \u2014 8-bit ambient jungle / DnB",
+  "source": "Existing user-supplied FLAME Paul Allen cuts 39\u201354",
+  "sourceReference": "https://www.youtube.com/watch?v=HD9I4L5klGo",
+  "webEncoding": "MP3, 128 kbps stereo; original order and cuts, no normalization",
+  "tracks": [
+    {
+      "track": 1,
+      "artist": "Zorrovian",
+      "title": "BOOTUP",
+      "durationSeconds": 255,
+      "file": "01.mp3",
+      "sha256": "1fcee769a7d2b7c3f19256001301607a9f9c873cd17686a2a1435013f10aadfb"
+    },
+    {
+      "track": 2,
+      "artist": "Doc Scott",
+      "title": "Far Away (Fourteen Flavours of Funk)",
+      "durationSeconds": 171,
+      "file": "02.mp3",
+      "sha256": "8ba759bed07a02fc8deeb1aae75c1a6b1683e6207b7013e7e5ccc15310d94e8f"
+    },
+    {
+      "track": 3,
+      "artist": "The Alliance",
+      "title": "Virtual Heaven",
+      "durationSeconds": 160,
+      "file": "03.mp3",
+      "sha256": "5fdbffdd9565c65804827331cfcb9787fb7adfd27485116cae25e5530f6e8f6f"
+    },
+    {
+      "track": 4,
+      "artist": "Donna Jane",
+      "title": "Dust",
+      "durationSeconds": 359,
+      "file": "04.mp3",
+      "sha256": "66bed2b3fe13236c8ba3303807ec8e4308f49faca55e6441d45a916a60320ee3"
+    },
+    {
+      "track": 5,
+      "artist": "Organic Synthetic",
+      "title": "Procedural Blends",
+      "durationSeconds": 238,
+      "file": "05.mp3",
+      "sha256": "9d0b40e30155dd51ce166842930d73dd42f5bdf7d093dc62adb4ef7339dd64fa"
+    },
+    {
+      "track": 6,
+      "artist": "40 Lucky",
+      "title": "Jazz Vibes",
+      "durationSeconds": 174,
+      "file": "06.mp3",
+      "sha256": "7e650b981c3a0bc130099e9767daa17226181a1caced059c1fe053dbdfcc19ed"
+    },
+    {
+      "track": 7,
+      "artist": "Hidden Agenda",
+      "title": "Is It Love",
+      "durationSeconds": 115,
+      "file": "07.mp3",
+      "sha256": "037ffbd9b5d05fd37149ec84546d22e94b54a8363821980c5d86d7db6f4fc997"
+    },
+    {
+      "track": 8,
+      "artist": "Trashii",
+      "title": "Snowdream",
+      "durationSeconds": 92,
+      "file": "08.mp3",
+      "sha256": "e41e6ce79e853a62b91414505620190fd09a31570270d7cd53c8d160e936fa23"
+    },
+    {
+      "track": 9,
+      "artist": "Organic Synthetic",
+      "title": "Space Walkin",
+      "durationSeconds": 206,
+      "file": "09.mp3",
+      "sha256": "10586e4f42091582df5efffeb09168b9608d02a9676504792f753719832c61eb"
+    },
+    {
+      "track": 10,
+      "artist": "St Germain",
+      "title": "Alabama Blues (Wax Doctor Mix)",
+      "durationSeconds": 207,
+      "file": "10.mp3",
+      "sha256": "042006f2b6a9ac138990f5509289d4715e9be456d6673821de2c0e1c7e9d59f1"
+    },
+    {
+      "track": 11,
+      "artist": "Dj Biz",
+      "title": "Losing Track Of Time",
+      "durationSeconds": 241,
+      "file": "11.mp3",
+      "sha256": "f582fef225b1bb7cf3c0115ab74c7826bfc377f29ec15e27e3a018d104e09743"
+    },
+    {
+      "track": 12,
+      "artist": "The Sentinel",
+      "title": "Pulse of Life",
+      "durationSeconds": 104,
+      "file": "12.mp3",
+      "sha256": "e1ee267f6d62d75a23ff0388c0783df7ac54b5424e101313aa9f7f97dfa8a50a"
+    },
+    {
+      "track": 13,
+      "artist": "Nebula",
+      "title": "Sonic Waves",
+      "durationSeconds": 190,
+      "file": "13.mp3",
+      "sha256": "b3879b4ce1cb284e4ade9df16e3f5566fc734dd9b558befd0c16935f4a22e1bf"
+    },
+    {
+      "track": 14,
+      "artist": "Soichi Terada",
+      "title": "Grand Senshuraku",
+      "durationSeconds": 121,
+      "file": "14.mp3",
+      "sha256": "47adf21773ab0c6e59b35e44de757abcb2184dc4c118bd565be955a6acde930d"
+    },
+    {
+      "track": 15,
+      "artist": "SAWTEETH",
+      "title": "Fragments of Time",
+      "durationSeconds": 138,
+      "file": "15.mp3",
+      "sha256": "523269d639c071d977545b5c10259a35e208dfca814df168df41229b51a63b92"
+    },
+    {
+      "track": 16,
+      "artist": "ALFAXYSM SOFTWARE",
+      "title": "DIGITAL REALITY SIGNAL",
+      "durationSeconds": 190.055057,
+      "file": "16.mp3",
+      "sha256": "ae189c83e19c22b6ee193235b8b531a741d321c7456d9945f4d090a22ee1190a"
+    }
+  ]
+}

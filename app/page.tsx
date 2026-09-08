@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { BrandIdentity } from '@/components/brand-mark';
 import { GalaxySky } from '@/components/galaxy-sky';
+import { RadioPet } from '@/components/radio-pet';
 import { JournalismLibrary } from '@/components/journalism-library';
 import { LearningArchive } from '@/components/learning-archive';
 import { LearningHome, ReviewHub } from '@/components/review-hub';
@@ -196,7 +197,8 @@ export default function Home() {
   };
   return (
     <>
-      <GalaxySky />
+      <GalaxySky home={tab === 'Home'} />
+      <RadioPet />
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger className="menu-toggle">
           <Menu size={18} /> Menu
