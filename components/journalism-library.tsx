@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { BrandIdentity } from './brand-mark';
 import { archiveWriting } from '@/data/learning-history';
 const hydrationArt = new URL(
   '../assets/hydration-editorial.jpg',
@@ -83,11 +84,11 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
   const item = archiveWriting.find((a) => a.id === articleId);
   useEffect(() => {
     document.title = item
-      ? `${item.title} | Harry Hub`
-      : 'Football | Harry Hub';
+      ? `${item.title} | Harry Baker MEDIA`
+      : 'Football | Harry Baker MEDIA';
     titleRef.current?.focus({ preventScroll: true });
     return () => {
-      document.title = 'Harry Hub';
+      document.title = 'Harry Baker MEDIA';
     };
   }, [articleId, item]);
 
@@ -173,7 +174,7 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
     <section className="football-press" aria-label="Football Journalism">
       <header className="news-masthead">
         <div>
-          <p className="news-kicker">HARRY HUB / SPORT</p>
+          <BrandIdentity className="news-identity" />
           <h1 ref={titleRef} tabIndex={-1}>
             Football
           </h1>

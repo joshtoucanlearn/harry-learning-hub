@@ -1,12 +1,21 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { BrandIdentity } from '@/components/brand-mark';
 import { GalaxySky } from '@/components/galaxy-sky';
 import { JournalismLibrary } from '@/components/journalism-library';
 import { LearningArchive } from '@/components/learning-archive';
 import { LearningHome, ReviewHub } from '@/components/review-hub';
 import { Button } from '@/components/ui/button';
 import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
+import {
   ArrowUpRight,
+  Menu,
   Target,
   PenLine,
   ChartNoAxesCombined,
@@ -32,12 +41,12 @@ import {
 } from '@/lib/football';
 const tabs = [
   { name: 'Home', icon: BookOpen },
-  { name: 'Review', icon: BookOpen },
-  { name: 'Matchday', icon: Target },
-  { name: 'Football Journalism', icon: PenLine },
   { name: 'The Record', icon: BookOpen },
+  { name: 'Football Journalism', icon: PenLine },
+  { name: 'Review', icon: BookOpen },
   { name: 'Stats lab', icon: ChartNoAxesCombined },
   { name: 'Teacher', icon: SlidersHorizontal },
+  { name: 'Matchday', icon: Target },
 ] as const;
 type Tab = (typeof tabs)[number]['name'];
 const tabRoutes: Record<Tab, string> = {
@@ -59,6 +68,7 @@ function Action({ children, ...props }: React.ComponentProps<typeof Button>) {
   );
 }
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [reviewTopic, setReviewTopic] = useState<string | undefined>();
   const [articleId, setArticleId] = useState<string | null>(null);
   const [tab, setTab] = useState<Tab>('Home');
@@ -176,6 +186,7 @@ export default function Home() {
   );
   const selected = data.predictions.find((p) => p.id === selection);
   const switchTab = (t: Tab) => {
+    setMenuOpen(false);
     setTab(t);
     setArticleId(null);
     window.location.hash = tabRoutes[t];
@@ -186,27 +197,35 @@ export default function Home() {
   return (
     <>
       <GalaxySky />
-      <header className="masthead">
-        <div className="brand">
-          <span className="brand-mark">h.</span>
-          <span className="wordmark">Harry Hub</span>
-        </div>
-        <span className="local-tag">A SPACE FOR YOUR IDEAS</span>
-      </header>
-      <nav aria-label="Main navigation">
-        <p className="nav-label">YOUR WORKSPACE</p>
-        {tabs.map(({ name, icon: Icon }) => (
-          <button
-            key={name}
-            aria-current={tab === name ? 'page' : undefined}
-            className={tab === name ? 'active' : ''}
-            onClick={() => switchTab(name)}
-          >
-            <Icon size={18} />
-            {name}
-          </button>
-        ))}
-      </nav>
+      <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+        <SheetTrigger className="menu-toggle">
+          <Menu size={18} /> Menu
+        </SheetTrigger>
+        <SheetContent
+          side="left"
+          className="menu-panel"
+          aria-describedby={undefined}
+        >
+          <SheetHeader className="menu-heading">
+            <SheetTitle className="menu-brand">
+              <BrandIdentity />
+            </SheetTitle>
+          </SheetHeader>
+          <nav className="media-nav" aria-label="Main navigation">
+            {tabs.map(({ name, icon: Icon }) => (
+              <button
+                key={name}
+                aria-current={tab === name ? 'page' : undefined}
+                className={tab === name ? 'active' : ''}
+                onClick={() => switchTab(name)}
+              >
+                <Icon size={18} />
+                {name}
+              </button>
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
       <main>
         <div className="status" role="status" aria-live="polite">
           {message}
@@ -592,7 +611,8 @@ export default function Home() {
         )}
       </main>
       <footer>
-        TOUCAN LEARN <span>Saved on this browser. Your desk, your calls.</span>
+        Harry Baker MEDIA{' '}
+        <span>Saved on this browser. Your desk, your calls.</span>
       </footer>
     </>
   );

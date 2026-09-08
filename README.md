@@ -1,4 +1,4 @@
-# Harry Hub
+# Harry Baker MEDIA
 
 Harry’s football and learning workspace:
 
@@ -85,7 +85,7 @@ QA output and downloaded backups are excluded from Git. The optional read-only W
 
 ## Galaxy redesign
 
-The Record replaces the old Notebook navigation. The whole interface uses a quiet midnight/slate palette, an editorial home layout and desktop side navigation. The background ports FLAME’s actual dithered pixel-galaxy shader to WebGL 2, including its exact seeded noise texture. See `assets/GALAXY-SOURCE.md` for provenance.
+The Record replaces the old Notebook navigation. The whole interface uses a quiet midnight/slate palette, an editorial home layout and a tucked-away Menu drawer. The background ports FLAME’s actual dithered pixel-galaxy shader to WebGL 2, including its exact seeded noise texture. See `assets/GALAXY-SOURCE.md` for provenance.
 
 Animation pauses with the **Pause sky** control, is off by default for reduced-motion preferences, and stops while the page is hidden. It is capped at 24 rendered frames per second, without multiplying resolution by device pixel ratio. A static render remains available when WebGL is unavailable or the context is lost. This preference has its own browser storage key and does not alter saved lessons or predictions.
 
@@ -95,4 +95,6 @@ Additional motion/fallback verification: `node tests/galaxy-browser.mjs`.
 
 Football Journalism uses hash links such as `#football/hydration` so individual stories support browser back/forward, reloads and direct links on GitHub Pages. The front page offers Opinion, Analysis and Match previews. New headlines/decks are editorial labels around preserved source text; provenance notes distinguish excerpts, predictions, shared paragraphs and summaries. No article-entry UI remains. To add a piece, update `data/learning-history.ts` and the editorial metadata in `components/journalism-library.tsx`.
 
-All reading content sits on an opaque midnight surface with warm off-white text. The galaxy stays visible in the surround, and key actions use amber. The lead illustration's source is recorded in `assets/NEWS-ART-SOURCE.md`.
+The original prominent galaxy remains visible across all pages, without an enclosing main panel. Individual reading cards protect contrast, with warm off-white text and amber actions. The lead illustration's source is recorded in `assets/NEWS-ART-SOURCE.md`.
+
+Branding uses the Leeds-inspired pixel crest across the home page, football masthead, Menu drawer and favicon. Navigation is tucked into an accessible modal drawer. Final order: Home, The Record, Football Journalism, Review, Stats lab, Teacher, Matchday. The former full-width header is removed.

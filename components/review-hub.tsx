@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { BrandIdentity } from './brand-mark';
 import {
   topics,
   topicProgress,
@@ -21,7 +22,7 @@ export function LearningHome({
   return (
     <>
       <div className="home-heading">
-        <p className="eyebrow">YOUR DESK</p>
+        <BrandIdentity className="home-identity" />
         <h1>All yours, Harry.</h1>
         <p>Pick up a thought. See where it takes you.</p>
       </div>
