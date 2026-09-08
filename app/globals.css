@@ -1200,6 +1200,50 @@ details p {
   font-weight: 450;
   letter-spacing: -0.045em;
 }
+.prediction-heading {
+  margin-top: 24px;
+}
+.prediction-heading.has-photo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(110px, 38%);
+  align-items: start;
+  gap: 18px;
+}
+.history-card .prediction-heading h2 {
+  margin-top: 0;
+}
+.prediction-photo {
+  margin: 0;
+  min-width: 0;
+}
+.prediction-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 32 / 21;
+  object-fit: cover;
+  border-radius: 3px;
+}
+.prediction-photo figcaption {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: right;
+}
+.prediction-photo a {
+  color: var(--muted);
+  text-decoration-color: var(--line);
+}
+@media (max-width: 480px) {
+  .prediction-heading.has-photo {
+    grid-template-columns: minmax(0, 1fr) minmax(94px, 35%);
+    gap: 12px;
+  }
+  .history-card .prediction-heading h2 {
+    font-size: 1.5rem;
+    overflow-wrap: anywhere;
+  }
+}
 .verified-result {
   background: #1b2c3a;
   border: 1px solid #304758;

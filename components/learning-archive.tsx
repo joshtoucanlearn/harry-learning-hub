@@ -147,8 +147,30 @@ function HistoricalCard({
           {call.author === 'Josh' ? ' · MODEL' : ''}
         </span>
       </div>
-      <h2>{call.title}</h2>
-      <strong className="archive-call">{call.call}</strong>
+      <div className={`prediction-heading ${call.photo ? 'has-photo' : ''}`}>
+        <div>
+          <h2>{call.title}</h2>
+          <strong className="archive-call">{call.call}</strong>
+        </div>
+        {call.photo && (
+          <figure className="prediction-photo">
+            <img
+              src={call.photo.src}
+              alt={call.photo.alt}
+              width={640}
+              height={420}
+              loading="lazy"
+              decoding="async"
+              style={{ objectPosition: call.photo.position || 'center' }}
+            />
+            <figcaption>
+              <a href={call.photo.sourceUrl} target="_blank" rel="noreferrer">
+                {call.photo.credit} ↗
+              </a>
+            </figcaption>
+          </figure>
+        )}
+      </div>
       <div className="verified-result">
         <p className="eyebrow">THE RESULT</p>
         <h3>{call.result.label}</h3>

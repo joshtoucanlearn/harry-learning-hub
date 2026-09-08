@@ -1,3 +1,5 @@
+import { MATCH_PHOTOS } from './prediction-photos';
+
 // Selected learner work only. The private collection and original document links
 // live outside this repository. Dates below are lesson dates, not fixture dates.
 export type HistoricalCall = {
@@ -9,6 +11,13 @@ export type HistoricalCall = {
   excerpt: string;
   source: string;
   context: string;
+  photo: {
+    src: string;
+    alt: string;
+    credit: string;
+    sourceUrl: string;
+    position?: string;
+  };
   result: {
     label: string;
     date: string;
@@ -25,6 +34,7 @@ export type HistoricalCall = {
 export const historicalCalls: HistoricalCall[] = [
   {
     id: 'england-norway',
+    photo: MATCH_PHOTOS.norwayEngland,
     title: 'England v Norway',
     date: '7 July 2026',
     author: 'Harry',
@@ -63,6 +73,7 @@ export const historicalCalls: HistoricalCall[] = [
   },
   {
     id: 'spain-france-harry',
+    photo: MATCH_PHOTOS.spainFrance,
     title: 'Spain v France',
     date: '14 July 2026',
     author: 'Harry',
@@ -110,6 +121,7 @@ export const historicalCalls: HistoricalCall[] = [
   },
   {
     id: 'spain-france-josh',
+    photo: MATCH_PHOTOS.spainFrance,
     title: 'Spain v France',
     date: '14 July 2026',
     author: 'Josh',
@@ -153,6 +165,7 @@ export const historicalCalls: HistoricalCall[] = [
   },
   {
     id: 'england-argentina',
+    photo: MATCH_PHOTOS.englandArgentina,
     title: 'England v Argentina',
     date: '14 July 2026',
     author: 'Harry',
@@ -194,6 +207,7 @@ export const historicalCalls: HistoricalCall[] = [
   },
   {
     id: 'leeds-finish',
+    photo: MATCH_PHOTOS.leedsFinale,
     title: 'Where will Leeds finish?',
     date: '12 May 2026',
     author: 'Harry',
@@ -219,6 +233,7 @@ export const historicalCalls: HistoricalCall[] = [
   },
   {
     id: 'england-world-cup',
+    photo: MATCH_PHOTOS.englandArgentina,
     title: 'England’s World Cup chances',
     date: '30 June – 2 July 2026',
     author: 'Harry',
