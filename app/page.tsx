@@ -1,8 +1,8 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { BrandIdentity } from '@/components/brand-mark';
-import { GalaxySky } from '@/components/galaxy-sky';
-import { RadioPet } from '@/components/radio-pet';
+import { CosmicRadio } from '@/components/cosmic-radio';
+import { InteractiveSky } from '@/components/interactive-sky';
 import { JournalismLibrary } from '@/components/journalism-library';
 import { LearningArchive } from '@/components/learning-archive';
 import { LearningHome, ReviewHub } from '@/components/review-hub';
@@ -197,8 +197,17 @@ export default function Home() {
   };
   return (
     <>
-      <GalaxySky home={tab === 'Home'} />
-      <RadioPet />
+      <InteractiveSky
+        owner="Harry's"
+        storageKey="harry-media-sky-preset"
+        assetPrefix={
+          ((import.meta as unknown as { env?: { BASE_URL?: string } }).env
+            ?.BASE_URL || '/')
+            .replace(/\/$/, '')
+        }
+        defaultPreset="pixel"
+      />
+      <CosmicRadio />
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger className="menu-toggle">
           <Menu size={18} /> Menu
