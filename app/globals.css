@@ -2935,6 +2935,8 @@ main.welcome-page {
 .welcome-heading {
   margin: 0;
   letter-spacing: 0;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .welcome-prefix {
   display: block;
