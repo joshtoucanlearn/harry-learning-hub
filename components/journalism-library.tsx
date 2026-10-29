@@ -69,6 +69,13 @@ const sections = [
 const storyUrl = (id: string) => `#football/${id}`;
 type Story = (typeof archiveWriting)[number];
 const leadStory = archiveWriting.find((a) => a.id === 'hydration')!;
+const frontStories = ['leeds-newcastle', 'football-evolution'].map(
+  (id) => archiveWriting.find((a) => a.id === id)!,
+);
+const offFront = (section: string) =>
+  archiveWriting.filter(
+    (a) => editorial[a.id].section === section && !frontStories.includes(a),
+  );
 
 function StoryCard({ story, lead = false }: { story: Story; lead?: boolean }) {
   const detail = editorial[story.id];
@@ -230,26 +237,35 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
           <div className="news-front">
             <StoryCard story={leadStory} lead />
             <div className="news-side-stories">
-              {archiveWriting
-                .filter((a) => editorial[a.id].section === 'Analysis')
-                .map((a) => (
-                  <StoryCard key={a.id} story={a} />
-                ))}
+              {frontStories.map((a) => (
+                <StoryCard key={a.id} story={a} />
+              ))}
             </div>
           </div>
-          <section className="news-more" aria-label="Match reports">
+          <section className="news-more" aria-label="Analysis">
             <div className="news-section-heading">
-              <h2>After the whistle</h2>
-              <span>Match reports</span>
+              <h2>The long view</h2>
+              <span>Analysis</span>
             </div>
             <div className="news-two">
-              {archiveWriting
-                .filter((a) => editorial[a.id].section === 'Match reports')
-                .map((a) => (
-                  <StoryCard key={a.id} story={a} />
-                ))}
+              {offFront('Analysis').map((a) => (
+                <StoryCard key={a.id} story={a} />
+              ))}
             </div>
           </section>
+          {offFront('Match reports').length > 0 && (
+            <section className="news-more" aria-label="Match reports">
+              <div className="news-section-heading">
+                <h2>After the whistle</h2>
+                <span>Match reports</span>
+              </div>
+              <div className="news-two">
+                {offFront('Match reports').map((a) => (
+                  <StoryCard key={a.id} story={a} />
+                ))}
+              </div>
+            </section>
+          )}
           <section className="news-more" aria-label="Match previews">
             <div className="news-section-heading">
               <h2>Before the whistle</h2>
