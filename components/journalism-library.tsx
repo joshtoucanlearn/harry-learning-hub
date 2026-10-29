@@ -2,10 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { BrandIdentity } from './brand-mark';
 import { archiveWriting } from '@/data/learning-history';
-const hydrationArt = new URL(
-  '../assets/hydration-editorial.jpg',
-  import.meta.url,
-).href;
+import { newsArt } from '@/data/news-art';
 
 const editorial: Record<
   string,
@@ -13,13 +10,13 @@ const editorial: Record<
 > = {
   'leeds-newcastle': {
     section: 'Match reports',
-    deck: 'Three first-half goals and an Okafor volley: Leeds take the points at Elland Road.',
+    deck: 'Monday 14th of September · Leeds 4 – 1 Newcastle',
     format: 'Match report',
   },
   hydration: {
     section: 'Opinion',
     deck: 'What happens to the tension when the game stops? Harry makes the case against mid-half hydration breaks.',
-    format: 'Opinion excerpt',
+    format: 'Opinion',
   },
   'leeds-analysis': {
     section: 'Analysis',
@@ -39,7 +36,7 @@ const editorial: Record<
   'football-evolution': {
     section: 'Analysis',
     deck: 'A look back at Leeds, Chelsea and the 1970 FA Cup final sparks a question about the modern game.',
-    format: 'Analysis excerpt',
+    format: 'Analysis',
   },
   'arsenal-tone': {
     section: 'Opinion',
@@ -56,6 +53,11 @@ const editorial: Record<
     deck: 'Misinformation, discrimination and easier access to team news: the two sides of football online.',
     format: 'Debate plan',
   },
+  'england-world-cup': {
+    section: 'Match previews',
+    deck: 'Attacking options and dangerous set pieces: the case for England’s chances.',
+    format: 'Original prediction',
+  },
 };
 const sections = [
   'All stories',
@@ -70,19 +72,19 @@ const leadStory = archiveWriting.find((a) => a.id === 'hydration')!;
 
 function StoryCard({ story, lead = false }: { story: Story; lead?: boolean }) {
   const detail = editorial[story.id];
+  const art = newsArt[story.id];
   return (
     <article className={`news-story ${lead ? 'news-lead' : ''}`}>
       <a className="news-story-link" href={storyUrl(story.id)}>
-        {lead && (
-          <img
-            className="news-cover"
-            src={hydrationArt}
-            alt="Editorial illustration of water bottles beside a floodlit football pitch"
-            width={1536}
-            height={1024}
-            fetchPriority="high"
-          />
-        )}
+        <img
+          className="news-cover"
+          src={art.src}
+          alt={art.alt}
+          width={art.width}
+          height={art.height}
+          loading={lead ? undefined : 'lazy'}
+          fetchPriority={lead ? 'high' : undefined}
+        />
         <div className="news-story-copy">
           <span className="news-kicker">{detail.format}</span>
           <h2>{story.title}</h2>
@@ -124,6 +126,7 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
 
   if (item) {
     const detail = editorial[item.id];
+    const art = newsArt[item.id];
     const related = archiveWriting.filter((a) => a.id !== item.id).slice(0, 3);
     return (
       <div className="football-press">
@@ -142,19 +145,15 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
               <span>{item.date}</span>
             </div>
           </header>
-          {item.id === 'hydration' && (
-            <figure className="news-figure">
-              <img
-                src={hydrationArt}
-                alt="Water bottles on the touchline of a floodlit football ground"
-                width={1536}
-                height={1024}
-              />
-              <figcaption>
-                Hydration breaks and the rhythm of a match.
-              </figcaption>
-            </figure>
-          )}
+          <figure className="news-figure">
+            <img
+              src={art.src}
+              alt={art.readerAlt || art.alt}
+              width={art.width}
+              height={art.height}
+            />
+            <figcaption>{art.caption}</figcaption>
+          </figure>
           <div className="news-reading-copy">
             {item.excerpt.split('\n\n').map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
@@ -164,6 +163,15 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
             <h2>About this piece</h2>
             <p>{item.note}</p>
             <span>Source: {item.source}</span>
+            {item.id === 'football-evolution' && (
+              <a
+                href="https://www.youtube.com/watch?v=vzifxh-2QRU&t=44s"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch the clip Harry analysed (0:44) ↗
+              </a>
+            )}
             {detail.section === 'Match previews' && (
               <a href="#record">See the recorded match results →</a>
             )}
@@ -198,7 +206,7 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
         </div>
         <div className="news-edition">
           <strong>Harry’s press box</strong>
-          <span>From the archive · May–September 2026</span>
+          <span>From the archive · May–October 2026</span>
         </div>
       </header>
       <div

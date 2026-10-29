@@ -40,7 +40,7 @@ export const historicalCalls: HistoricalCall[] = [
     author: 'Harry',
     call: '3–1 England',
     excerpt:
-      '3-1 due to norways dreadful defence in tight situations. Specifically harry kane is going to run through the defence cross one over to jude bellingham and he will score an easy tap in even harry maguire would score.',
+      'No pen england is going to score first\n\nHarry kane, jude bellingham, anthony gordon, haaland odegaard\n\n3-1 due to norways dreadful defence in tight situations. Specifically harry kane is going to run through the defence cross one over to jude bellingham and he will score an easy tap in even harry maguire would score.',
     source: 'English sessions 10 & 11 · 7 & 14 July',
     context:
       'The prediction did not specify whether extra time counted. The comparison shows both the 90-minute score and the final outcome.',
@@ -79,7 +79,7 @@ export const historicalCalls: HistoricalCall[] = [
     author: 'Harry',
     call: 'France to win',
     excerpt:
-      'France will score first, and Mbappe will be the one to score it. Spain will get a lucky goal to make it 1-1, then last minute, Ousmane Dembele is going to score and get France over the line and it’s gonna be a very calm and less dirty game.',
+      'France will score first, and Mbappe will be the one to score it. Spain will get a lucky goal to make it 1-1, then last minute, Ousmane Dembele is going to score and get France over the line and it’s gonna be a very calm and less dirty game.\n\nMbappe because he has the attacking capability, Yamal because he has a wonder kid style of play which opens up the game, Dembele because of his assisting capabilities.\n\nI think it’s going to be a pretty even game, with both sides having strong defences, it will be a chill but technical game.',
     source: 'English session 11 · Harry’s response',
     context:
       'Harry’s narrative implies France winning 2–1. That score is inferred from the sequence in his writing, rather than a separate numeric entry.',
@@ -127,7 +127,7 @@ export const historicalCalls: HistoricalCall[] = [
     author: 'Josh',
     call: '1–1, then penalties',
     excerpt:
-      'I think this will be a non-feisty game due to the higher technical abilities of each team. I think France will have more cards due to establishing more physical intensity, and Spain more possession.',
+      'I think this will be a non-feisty game due to the higher technical abilities of each team. I think France will have more cards due to establishing more physical intensity, and Spain more possession.\n\nMbappe obviously for his goal and attacking prowess, Rabiot because of his Pogba-like play, Yamal, Merino(?) because I’m an Arsenal fan and MM9 is real\n\n1-1 to pens, I think both teams will play non-risky due to Spain’s playstyle',
     source: 'English session 11 · explicitly labelled “josh”',
     context:
       'Josh’s own model, kept beside Harry’s call. “Non-feisty” is subjective, so it is not treated as a scored event.',
@@ -170,7 +170,8 @@ export const historicalCalls: HistoricalCall[] = [
     date: '14 July 2026',
     author: 'Harry',
     call: '3–1 England',
-    excerpt: '3-1 england in normal time',
+    excerpt:
+      'England will not score first. Messi will be the one to score it, FIFA will play a big part of trying to let Argentina “win”. Then Jude Bellingham will score a diving header and put it past Martinez to make it 1-1, then Jude Bellingham is gonna score again and make it 2-1. One of Argentina’s defenders will snap Eze and then we will be given a penalty in which sir Harry Kane will score bottom left.\n\n3-1 england in normal time',
     source: 'English session 11',
     context:
       'The longer prediction describes Messi scoring first, two Bellingham goals and a Kane penalty. Those calls are checked below.',
@@ -212,7 +213,8 @@ export const historicalCalls: HistoricalCall[] = [
     date: '12 May 2026',
     author: 'Harry',
     call: '13th',
-    excerpt: 'I think that Leeds United will finish 13th next season',
+    excerpt:
+      'I think that Leeds United will finish 13th next season, I think this because over the summer transfer window Leeds will get a 65 million pound for staying up in the Premier League. This means that we will sign some really good players and become a proper premier league side. For example Leeds struggle mostly defending on the left. I think that we should sign some left backs, this will help Leeds to not concede as many goals in the premier league which will result in having a better goal difference, which I think will make the difference next season. Realistically someone from a relegation scrap side like wolves, this will help because we will have a left back with premier league quality .',
     source: 'Harry session 3 · revisited in session 6',
     context:
       'The draft says “next season” without a year. Its May 2026 date could mean 2026/27. The completed 2025/26 season is shown for reference, without silently changing the prediction’s target.',
@@ -239,7 +241,7 @@ export const historicalCalls: HistoricalCall[] = [
     author: 'Harry',
     call: '20% estimate',
     excerpt:
-      'In my opinion I think that England have a good chance of winning the World Cup.',
+      'In my opinion I think that England have a good chance of winning the World Cup. I think this because we have a really good attacking team for example we have Harry Kane, Madueke, Declan Rice and Jude Bellingham. I believe that Declan Rice will play a huge part this world cup due to his really good set piece play, which England have relied on heavily for goals in this tournament. The set pieces are especially dangerous with Harry Kane, due to his fantastic goal scoring ability and ariel prowess.',
     source: 'English session 9 · World Cup Maths, 2 July',
     context:
       'Harry’s argument focused on the attack and set pieces. The 20% figure was his starting estimate in maths; it was not a categorical promise of an England win.',
@@ -287,7 +289,7 @@ export const archiveWriting: ArchiveWriting[] = [
     source: 'English sessions 9–11',
     excerpt:
       'These hydration breaks need to stop. It ruins the flow of the games and disrupts the tempo. It also gives teams that are struggling in the game an advantage to reset.\n\nThe tempo of games is crucial in how they are played and the outcome. Football operates with two halves of the game played, and introducing mandatory breaks in the middle of these halves, it ruins the excitement for proper football fans across the world. With the breaks, all the tension that was building up is released anticlimactically for fans.',
-    note: 'Selected passages from the classroom opinion draft, with original wording. Harry supplied the core argument; Josh supported its more formal expression. Factual claims in the full draft were not verified.',
+    note: 'The full learner piece, with original wording. Harry supplied the core argument; Josh supported its more formal expression.',
     challenge:
       'Keep the strong view. Add a sourced example of a break changing a game, then answer the player-welfare argument fairly.',
     brief: 'The big debate',
@@ -314,7 +316,7 @@ export const archiveWriting: ArchiveWriting[] = [
     credit: 'Harry · lesson writing',
     source: 'English sessions 10 & 11',
     excerpt: historicalCalls[0].excerpt,
-    note: 'Original wording. The Record now pairs this call with the verified match result: England won 2–1 after extra time, following a 1–1 draw at 90 minutes.',
+    note: 'Harry’s complete pre-match response from session 10: event call, key players and score scenario. Original wording is preserved.',
     challenge:
       'Use the sourced result in The Record to write the follow-up. Distinguish normal time from extra time and explain which part of the call worked.',
     brief: 'The final-whistle report',
@@ -327,7 +329,7 @@ export const archiveWriting: ArchiveWriting[] = [
     credit: 'Harry · lesson writing',
     source: 'English session 11',
     excerpt: historicalCalls[1].excerpt,
-    note: 'Original classroom prediction, rather than a report of events that happened.',
+    note: 'Harry’s complete response from session 11, separately credited from Josh’s model. Original classroom prediction, with original wording.',
     challenge:
       'Separate the result prediction from the evidence. Replace “lucky” with a precise description of how Spain might create a chance.',
     brief: 'The match preview',
@@ -340,8 +342,8 @@ export const archiveWriting: ArchiveWriting[] = [
     credit: 'Harry · lesson writing',
     source: 'Harry session 3',
     excerpt:
-      'One way football has evolved over the years, is that it is less dirty and its an equal game. For example, in the 1970’s FA Cup Final highlights, a Chelsea player at the 0:44 mark was shown doing a highfoot on one of the Leeds players in the back of the head.',
-    note: 'Excerpt from a response to a video clip. The historical interpretation in the draft remains a claim to examine.',
+      'One way football has evolved over the years, is that it is less dirty and its an equal game. For example, in the 1970’s FA Cup Final highlights, a Chelsea player at the 0:44 mark was shown doing a highfoot on one of the Leeds players in the back of the head. In the modern game this is almost a guaranteed red card. However, in the 1970s, fouls like that were seen as fair and normal which demonstrates one way in which football has significantly evolved over the years.',
+    note: 'The full paragraph from a response to a video clip, in original wording. The historical interpretation remains a claim to examine.',
     challenge:
       'Can one clip support a claim about a whole era? Compare another example and distinguish the rule from how it was enforced.',
     brief: 'The analysis column',
@@ -390,15 +392,28 @@ export const archiveWriting: ArchiveWriting[] = [
     brief: 'The big debate',
   },
   {
-    id: 'leeds-newcastle',
-    title: 'Leeds 4–1 Newcastle: match report',
-    category: 'Match report',
-    date: 'September 2026',
+    id: 'england-world-cup',
+    title: 'England’s World Cup chances',
+    category: 'Preview',
+    date: '30 June 2026',
     credit: 'Harry · lesson writing',
-    source: 'Harry Essay · Aaron’s session',
+    source: 'English session 9',
+    excerpt: historicalCalls[5].excerpt,
+    note: 'Harry’s full World Cup prediction paragraph from session 9, in original wording. The later 20% maths estimate is recorded separately in The Record.',
+    challenge:
+      'Separate attacking quality from tournament probability. Check the set-piece claims and explain what would change the forecast.',
+    brief: 'The match preview',
+  },
+  {
+    id: 'leeds-newcastle',
+    title: 'The Battering of the Geordies',
+    category: 'Match report',
+    date: 'October 2026',
+    credit: 'Harry · lesson writing',
+    source: 'English session, October 2026',
     excerpt:
-      "On Monday 14th of September, Leeds United faced off mid table team Newcastle at Elland Road. After a Leeds United defeat against Chelsea in The Carabao Cup round 3, people were doubting Leeds and saying that they aren't good enough for The Premier League.\n\nAs kick off struck at 8pm, The Mighty Whites had a tremendous amount of possession in the first 25 minutes. Then at 33 minute mark, AO Tanaka struck the ball from outside the box and it deflected and went in the bottom right corner to make it 1-0 to The Mighty Whites. Elland Road erupted. Not only did Leeds score, but they also scored another 2 afterwards in the same half. The morale of the team sky rocketed and the first half came to a close with the score line 3-0. They were confident, ready and eager to get into the second half.\n\nAs the 2nd half kicked off, it was 50/50 for about 10 minutes. Newcastle wanted a goal to give their fans a bit of hope that they can come-back and get a draw. As the minutes relentlessly ticked towards the 55th minute, Noah Okafor scored a volley from outside the box to make it 4-0 at Elland Road. This destroyed Newcastle's ambition and any hope of winning the game. Then without warning, a Newcastle player scored a tap in due to lackluster defending at the back which lead to 4-1 at Elland Road. Despite their goal, it was too late. The game was over and The Mighty Whites took the 3 points off Newcastle at Elland Road.\n\nOverall, it was a one-sided game mostly due to the fact that Leeds scored 3 in the first 45 minutes. It's a good win to finish off for 3 weeks because of the international break and it also puts The Mighty Whites in 5th place, but it's a bad way for Newcastle to end it. They got no points from this match and will have 3 weeks to sort it out or else they will be in relegation threat.",
-    note: 'Harry’s full four-paragraph report, compiled in Aaron’s September session. Original wording, spelling and punctuation are preserved. Match details are classroom writing, not independently verified results.',
+      "Leeds United faced off mid table team Newcastle at Elland Road. After a Leeds United defeat against Chelsea in third round of the Carabao Cup, people were doubting Leeds and saying that they aren't good enough for The Premier League.\n\nAs kick off struck at 8pm, The Mighty Whites had a tremendous amount of possession in the first 25 minutes. Then at the 33 minute mark, Ao Tanaka struck the ball from outside the box and it deflected off an unlucky Lewis Miley and went in the bottom right corner to make it 1-0 to The Mighty Whites. Elland Road erupted. Not only did Leeds score, but they also scored another 2 afterwards in the same half. The morale of the team sky rocketed and the first half came to a close with the score line 3-0.\n\nAs the 2nd half kicked off, it was 50/50 for about 10 minutes. Newcastle wanted a goal to give their fans a bit of hope that they can come-back and get a draw. As the minutes relentlessly ticked towards the 55th minute, Noah Okafor scored a volley from outside the box to make it 4-0 at Elland Road. This destroyed Newcastle’s ambition and any hope of winning the game. Then without warning, a Newcastle player scored a tap in due to lackluster defending at the back which lead to 4-1 at Elland Road. Despite their goal, it was too late. The game was over and The Mighty Whites took the 3 points off Newcastle at Elland Road.\n\nOverall, it was a one-sided game mostly due to the fact that Leeds scored 3 in the first 45 minutes. It was an emphatic win to finish off for 3 weeks because of the international break and it also puts The Mighty Whites in 5th place, but it’s a bad way for Newcastle to end it. They got no points from this match and will have 3 weeks to sort it out or else they will be in relegation trouble.",
+    note: "Harry's final version, revised with Josh after the first draft in Aaron's session",
     challenge:
       'Keep the match narrative. Check the scorers, timings and table position against a match source, then support the final judgement with evidence.',
     brief: 'The final-whistle report',

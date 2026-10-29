@@ -192,7 +192,11 @@ function HistoricalCard({
       </div>
       <details className="original-call">
         <summary>Read the original prediction</summary>
-        <blockquote>{call.excerpt}</blockquote>
+        <blockquote>
+          {call.excerpt.split('\n\n').map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </blockquote>
       </details>
       {call.events.length > 0 && (
         <div>

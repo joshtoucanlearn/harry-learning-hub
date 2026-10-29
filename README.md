@@ -4,7 +4,7 @@ Harry’s football and learning workspace:
 
 - **Review:** Maths recall cards, questions, worked feedback, retries and saved progress.
 - **Matchday:** score/event predictions, reasoning, actual-result comparison and statistics.
-- **Football Journalism:** a newspaper-style football page with its original illustrated Hydration lead, nine recovered pieces, topic filters and individual article links. Leeds–Newcastle is in Match reports.
+- **Football Journalism:** a newspaper-style football page with its original illustrated Hydration lead, ten full pieces and plans, topic filters and individual article links. The October final version of The Battering of the Geordies is in Match reports.
 - **The Record:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
 
 Home is a simple welcome with the combined crest and wordmark. The Menu opens each activity. Teacher provides lesson prompts, notes, printable records and JSON backups.
@@ -24,7 +24,7 @@ Open http://localhost:3000/ and keep the terminal open. Stop with Ctrl+C.
 
 There are 12 maths topics and 36 questions: percentages/discounts, reverse percentages, fractions, units, decimal order, arithmetic, speed/time, probability, averages, sequences, expressions/multiples and Pythagoras. The English review activities were removed at the user’s request. Existing backup records remain compatible; retired question progress is ignored in displayed totals. Recall questions and explanations are newly authored from documented topics, rather than represented as Harry’s past answers. The reverse-percentage TV example is **£120 ÷ 0.75 = £160**, and the eleven-player rating set has median **7**, not 7.5.
 
-`data/learning-history.ts` contains original classroom writing, excerpts and plans, each labelled by format. The Leeds prediction paragraph, social-media plan and conclusion, Arsenal paragraph, hooliganism response and four-paragraph Leeds–Newcastle report preserve the supplied text verbatim. Jointly developed work retains its shared credit. Other pieces retain the available source text and their existing provenance notes. Source titles, lesson dates, attribution and tutoring support accompany them. Full documents, tutor reports, private identifiers and source links stay in a separate local research collection, outside this repository. An inaccessible early shared deck remains a documented gap.
+`data/learning-history.ts` contains full classroom pieces and plans, with original wording, spelling, punctuation and honest credits. The 29 October source audit checked the named Drive documents and decks. Norway and France include every learner answer section, the World Cup prediction includes the full paragraph, and the October final match report supersedes Aaron's September draft. The original Hydration text stays exactly as the owner approved it, excluding tutor-only wording. Joint work retains its shared credit; Josh's separate prediction stays credited to Josh. `tests/fixtures/writing-audit.json` pins the audited text and paragraph counts against future truncation. Private source documents, report details and source links remain outside this repository.
 
 Edit **`data/review-topics.ts`** and **`data/recovered-topics.ts`** to add or amend content. Each topic has a subject, title, source lesson label, summary, recall cards and questions. Each question has stable `id`, `prompt`, `choices`, zero-based `answer` index and `explanation`. If a question’s meaning changes, give it a new ID so older progress is not misrepresented. Keep source labels general and do not add private Drive links or learner details.
 
@@ -36,7 +36,7 @@ Review saves each question’s attempt count and most recent correctness. “Cor
 2. Lock the prediction. Its score, events and reasoning stay unchanged.
 3. After the match, open it from Your predictions, enter the actual result and mark each event Yes, No, Not checked or Void. Exclude extra time and shoot-outs.
 4. Compare and reflect. Exact score earns 3 points; otherwise correct win/draw/loss earns 1; otherwise 0. Each checked event earns 1 if correct. Pending/void events are excluded from the denominator. Pending events make totals provisional.
-5. Stats separates exact scores, outcomes and events. Football Journalism is a reading section: original excerpts, shared work and plans are labelled accurately. Article submission and revision forms were removed at the user’s request. Previously saved articles remain readable in Teacher and continue to round-trip in backups.
+5. Stats separates exact scores, outcomes and events. Football Journalism is a reading section: full pieces, shared work and plans are labelled accurately. Article submission and revision forms were removed at the user’s request. Previously saved articles remain readable in Teacher and continue to round-trip in backups.
 
 Historical calls preserve their original classroom wording and now carry independently checked match dates, final scores, regulation/extra-time distinctions, event verdicts and external result citations. They do not receive invented lock times or confidence levels. England–Norway ended 1–1 at 90 minutes and 2–1 to England after extra time; Spain beat France 2–0; Argentina beat England 2–1. Leeds’ completed 2025/26 position is shown with the original target-season ambiguity. Archive result evidence and reflections persist locally and export in backups, but do not affect Matchday statistics. Josh’s Spain–France model remains credited to Josh.
 
@@ -93,9 +93,9 @@ Additional motion/fallback verification: `node tests/galaxy-browser.mjs`.
 
 ## Football pages and reading contrast
 
-Football Journalism uses hash links such as `#football/leeds-newcastle` so individual stories support browser back/forward, reloads and direct links on GitHub Pages. The front page offers Opinion, Analysis, Match reports and Match previews. New headlines/decks are editorial labels around preserved source text; provenance notes distinguish complete pieces, excerpts, predictions, shared paragraphs and plans. No article-entry UI remains. To add a piece, update `data/learning-history.ts` and the editorial metadata in `components/journalism-library.tsx`.
+Football Journalism uses hash links such as `#football/leeds-newcastle` so individual stories support browser back/forward, reloads and direct links on GitHub Pages. The front page offers Opinion, Analysis, Match reports and Match previews. Headlines and decks are editorial labels around preserved source text; The Battering of the Geordies keeps its supplied final title and date line. Provenance notes distinguish full pieces, predictions, shared paragraphs and plans. No article-entry UI remains. To add a piece, update `data/learning-history.ts`, `data/news-art.ts`, the editorial metadata in `components/journalism-library.tsx` and the audited text fixture.
 
-The original prominent galaxy remains visible across all pages, without an enclosing main panel. Individual reading cards protect contrast, with warm off-white text and amber actions. The hydration article illustration's source is recorded in `assets/NEWS-ART-SOURCE.md`.
+The original prominent galaxy remains visible across all pages, without an enclosing main panel. Individual reading cards protect contrast, with warm off-white text and amber actions. Every archive story has an original editorial illustration on its card and article page; prompts and provenance are recorded in `assets/NEWS-ART-SOURCE.md`. Hydration keeps its original artwork and lead position. The evolution article links to the analysed 1970 clip at 0:44 in a separate tab; no YouTube content is embedded or loaded by the newspaper.
 
 ### Toucan newspaper build and checks
 

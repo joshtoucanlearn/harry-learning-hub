@@ -1,0 +1,87 @@
+{
+  "auditDate": "2026-10-29",
+  "archive": {
+    "hydration": {
+      "sha256": "662634bbf6d93069fbe3875c02b771e9d648408afd84061db1b4e7b978cd971c",
+      "paragraphs": 2,
+      "credit": "Harry · developed with Josh"
+    },
+    "leeds-analysis": {
+      "sha256": "051ab13ad0f944be03ae044537c40db1b865fc770c3564546fe4a2c4ae2cbff1",
+      "paragraphs": 1,
+      "credit": "Harry · lesson writing"
+    },
+    "norway-preview": {
+      "sha256": "1cae7bf9bd20a53b4d3c3e70d59c4d0bc846f3601e033297da3a3b09cb651585",
+      "paragraphs": 3,
+      "credit": "Harry · lesson writing"
+    },
+    "france-preview": {
+      "sha256": "f1c1399ed548e412dae8314fdb9dc5301c1c45669e122bee89fceae2e47d5036",
+      "paragraphs": 3,
+      "credit": "Harry · lesson writing"
+    },
+    "football-evolution": {
+      "sha256": "41dd75d7e653ead6ca0c12cb132ef26bb306b41462dfc49a18071892906269e4",
+      "paragraphs": 1,
+      "credit": "Harry · lesson writing"
+    },
+    "arsenal-tone": {
+      "sha256": "dffc1147758522b7c24bbe85a34ddc098240ffa85258cd568473041929a93332",
+      "paragraphs": 1,
+      "credit": "Harry & Josh · shared paragraph"
+    },
+    "football-hooliganism": {
+      "sha256": "cc1411b415a65defacabce6a5373680e3cffdfdb325914b70aa6af67c0334dcb",
+      "paragraphs": 2,
+      "credit": "Harry · developed with Josh"
+    },
+    "social-media": {
+      "sha256": "7e58c4108fa08e37cc5eb907e26fb3938c7bf21a49f5f8d1e59fcc097c305632",
+      "paragraphs": 6,
+      "credit": "Harry · own plan and conclusion"
+    },
+    "england-world-cup": {
+      "sha256": "3c6db83d165a60ecb24af5427a01d5bb5b765d9b38c56c5370923f73a8ca02ed",
+      "paragraphs": 1,
+      "credit": "Harry · lesson writing"
+    },
+    "leeds-newcastle": {
+      "sha256": "0987fdcfe7d38b6cff63245ae1fdc447965f365a72ec55ffd1fd5dc899ca5b7e",
+      "paragraphs": 4,
+      "credit": "Harry · lesson writing"
+    }
+  },
+  "history": {
+    "england-norway": {
+      "sha256": "1cae7bf9bd20a53b4d3c3e70d59c4d0bc846f3601e033297da3a3b09cb651585",
+      "paragraphs": 3,
+      "credit": "Harry"
+    },
+    "spain-france-harry": {
+      "sha256": "f1c1399ed548e412dae8314fdb9dc5301c1c45669e122bee89fceae2e47d5036",
+      "paragraphs": 3,
+      "credit": "Harry"
+    },
+    "spain-france-josh": {
+      "sha256": "d2c268eea1226d40748089ba7efa150ef1b67c3b4edc8673fa13e2dc5f8be201",
+      "paragraphs": 3,
+      "credit": "Josh"
+    },
+    "england-argentina": {
+      "sha256": "95813cbd5d4e061caaee71be5cfdb64c6fd5278f06e526a618a0b06b58330356",
+      "paragraphs": 2,
+      "credit": "Harry"
+    },
+    "leeds-finish": {
+      "sha256": "051ab13ad0f944be03ae044537c40db1b865fc770c3564546fe4a2c4ae2cbff1",
+      "paragraphs": 1,
+      "credit": "Harry"
+    },
+    "england-world-cup": {
+      "sha256": "3c6db83d165a60ecb24af5427a01d5bb5b765d9b38c56c5370923f73a8ca02ed",
+      "paragraphs": 1,
+      "credit": "Harry"
+    }
+  }
+}

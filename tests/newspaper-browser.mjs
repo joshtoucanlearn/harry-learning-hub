@@ -14,12 +14,16 @@ const ast = ts.createSourceFile('learning-history.ts', source, ts.ScriptTarget.L
 const declarations = ast.statements.flatMap(statement => ts.isVariableStatement(statement) ? [...statement.declarationList.declarations] : []);
 const articles = declarations.find(item => item.name.getText(ast) === 'archiveWriting').initializer;
 assert(ts.isArrayLiteralExpression(articles));
+const calls = declarations.find(item => item.name.getText(ast) === 'historicalCalls').initializer;
 const expected = new Map(articles.elements.map(item => {
   const property = name => item.properties.find(value => ts.isPropertyAssignment(value) && value.name.getText(ast) === name).initializer;
   const excerpt = property('excerpt');
-  return [property('id').text, ts.isStringLiteralLike(excerpt) ? excerpt.text.split('\n\n') : null];
+  const callIndex = excerpt.getText(ast).match(/^historicalCalls\[(\d+)\]\.excerpt$/)?.[1];
+  const text = ts.isStringLiteralLike(excerpt) ? excerpt.text : calls.elements[Number(callIndex)].properties.find(value => value.name.getText(ast) === 'excerpt').initializer.text;
+  return [property('id').text, text.replace(/\bharry (?=kane|maguire)/gi, '').split('\n\n')];
 }));
 const restored = ['leeds-newcastle', 'leeds-analysis', 'social-media', 'arsenal-tone', 'football-hooliganism'];
+const clipUrl = 'https://www.youtube.com/watch?v=vzifxh-2QRU&t=44s';
 const errors = [];
 const results = [];
 await mkdir(output, { recursive: true });
@@ -47,8 +51,13 @@ try {
       assert.deepEqual([...links].sort(compare), [...expected.keys()].map(id => `#football/${id}`).sort(compare), 'Every story appears exactly once');
       assert.equal(await page.locator('.news-lead img').count(), 1, 'Original lead illustration is preserved');
       assert.equal(await page.locator('.news-lead h2').innerText(), 'Hydration disaster');
+      assert.equal(await page.locator('.news-story .news-cover').count(), expected.size);
+      await page.locator('.news-cover').evaluateAll(async images => {
+        for (const image of images) image.loading = 'eager';
+        await Promise.all(images.map(image => image.decode()));
+      });
       await page.screenshot({ path: path.join(output, `${label}-front.png`), fullPage: true });
-      for (const [section, count] of [['Opinion', 4], ['Analysis', 2], ['Match reports', 1], ['Match previews', 2], ['All stories', 9]]) {
+      for (const [section, count] of [['Opinion', 4], ['Analysis', 2], ['Match reports', 1], ['Match previews', 3], ['All stories', 10]]) {
         await page.getByRole('button', { name: section, exact: true }).click();
         assert.equal(await page.locator('.news-story').count(), count, section);
       }
@@ -56,11 +65,21 @@ try {
         await page.locator(`.news-story-link[href="#football/${id}"]`).click();
         await page.locator('.news-reader .news-reading-copy').waitFor();
         if (paragraphs) assert.deepEqual(await page.locator('.news-reading-copy p').allTextContents(), paragraphs, `Verbatim source: ${id}`);
-        assert(!names.test(await page.locator('body').innerText()), `Private name in ${id}`);
-        assert.equal(await page.locator('form, input, textarea, audio, video, .brand-crest').count(), 0);
+        const art = page.locator('.news-reader .news-figure img');
+        assert.equal(await art.count(), 1, `Article illustration: ${id}`);
+        await art.evaluate(image => image.decode());
+        assert.deepEqual(await art.evaluate(image => [image.naturalWidth, image.naturalHeight]), id === 'hydration' ? [1536, 1024] : [1600, 900]);
+        assert(!names.test((await page.locator('body').innerText()).replace(/\banthony gordon\b/gi, 'Footballer')), `Private name in ${id}`);
+        assert.equal(await page.locator('form, input, textarea, audio, video, iframe, .brand-crest').count(), 0);
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${label}/${id}: horizontal overflow`);
         const routes = await page.locator('a').evaluateAll(items => items.map(item => item.getAttribute('href')));
-        assert(routes.every(route => /^#football(?:\/[^/]+)?$/.test(route)), `Link leaves the newspaper: ${id}`);
+        const external = routes.filter(route => !/^#football(?:\/[^/]+)?$/.test(route));
+        assert.deepEqual(external, id === 'football-evolution' ? [clipUrl] : [], `Unexpected external link: ${id}`);
+        if (id === 'football-evolution') {
+          const clip = page.locator(`a[href="${clipUrl}"]`);
+          assert.equal(await clip.getAttribute('target'), '_blank');
+          assert.equal(await clip.getAttribute('rel'), 'noopener noreferrer');
+        }
         if (restored.includes(id)) await page.screenshot({ path: path.join(output, `${label}-${id}.png`), fullPage: true });
         await page.getByRole('link', { name: '← Back to Football', exact: true }).click();
         await page.locator('.news-masthead').waitFor();
@@ -78,7 +97,7 @@ try {
   }
   assert.deepEqual(errors, []);
   await writeFile(path.join(output, 'checks.json'), JSON.stringify({ passed: true, results, errors }, null, 2));
-  console.log('PASS: nine stories, original Hydration lead and illustration, exact source paragraphs, filters, direct links, privacy, CSP and no overflow at 1440×750 and 390×844 in light/dark.');
+  console.log('PASS: ten complete stories, original Hydration lead and illustration, exact source paragraphs, filters, direct links, privacy, CSP and no overflow at 1440×750 and 390×844 in light/dark.');
 } catch (error) {
   await writeFile(path.join(output, 'checks.json'), JSON.stringify({ passed: false, results, errors, failure: error.stack }, null, 2));
   throw error;

@@ -8,6 +8,7 @@ const hub = fileURLToPath(new URL('.', import.meta.url));
 const anonymise = (source: string) => source
   .replace(/\bharry (?=kane|maguire)/gi, '')
   .replace(/Harry Baker MEDIA/g, 'Football')
+  .replace(/Watch the clip Harry analysed/g, 'Watch the clip analysed')
   .replace(/\bHarry(?: Baker)?\b/gi, 'Learner')
   .replace(/\bJoe\b/gi, 'Learner')
   .replace(/\bBaker\b/gi, '')
@@ -36,7 +37,7 @@ export default defineConfig({
       },
       transform(source, id) {
         if (id === `${hub}data/learning-history.ts`) {
-          // Export only the real article array. Resolve its two borrowed excerpts at
+          // Export only the real article array. Resolve borrowed full responses at
           // build time so prediction records, photos and lesson history never ship.
           const ast = ts.createSourceFile(id, source, ts.ScriptTarget.Latest, true);
           const declarations = ast.statements.flatMap(statement => ts.isVariableStatement(statement) ? [...statement.declarationList.declarations] : []);
@@ -50,7 +51,9 @@ export default defineConfig({
             const call = calls.elements[Number(index)];
             const excerpt = ts.isObjectLiteralExpression(call) && call.properties.find(property => ts.isPropertyAssignment(property) && property.name.getText(ast) === 'excerpt');
             if (!excerpt || !ts.isPropertyAssignment(excerpt) || !ts.isStringLiteralLike(excerpt.initializer)) throw new Error('Review borrowed article excerpt.');
-            return JSON.stringify(excerpt.initializer.text);
+            // Process real paragraph boundaries before JSON turns them into
+            // escaped newlines, so a name at a paragraph start is caught too.
+            return JSON.stringify(anonymise(excerpt.initializer.text));
           });
           return anonymise(`export const archiveWriting = ${articles};`);
         }

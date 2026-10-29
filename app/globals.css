@@ -1295,6 +1295,14 @@ details p {
   border-left: 2px solid #4f6d82;
   color: #b4c4cf;
 }
+.history-card blockquote p {
+  color: inherit;
+  line-height: inherit;
+  margin: 0 0 1em;
+}
+.history-card blockquote p:last-child {
+  margin-bottom: 0;
+}
 .event-total {
   font-size: 0.8rem;
   margin-bottom: 5px;
@@ -2417,6 +2425,9 @@ textarea::placeholder {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   margin: 0;
+}
+.news-story:not(.news-lead) .news-cover {
+  aspect-ratio: 16 / 9;
 }
 .news-side-stories {
   display: grid;
