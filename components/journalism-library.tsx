@@ -93,11 +93,11 @@ function StoryCard({ story, lead = false }: { story: Story; lead?: boolean }) {
           fetchPriority={lead ? 'high' : undefined}
         />
         <div className="news-story-copy">
-          <span className="news-kicker">{detail.format}</span>
+          <span className="news-kicker">
+            {detail.format} · {story.date}
+          </span>
           <h2>{story.title}</h2>
           <p>{detail.deck}</p>
-          <span className="news-byline">{story.credit}</span>
-          <span className="news-date">{story.date}</span>
         </div>
       </a>
     </article>
