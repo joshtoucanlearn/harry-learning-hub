@@ -1,0 +1,42 @@
+:root {
+  --ink: #f3f0e9;
+  --paper: #0b1119;
+  --muted: #bdc6cf;
+  --line: #3c4b59;
+  --accent: #e4be78;
+  color-scheme: dark;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { padding: 18px; }
+button { font: inherit; cursor: pointer; color: inherit; }
+a { color: var(--accent); text-underline-offset: 4px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.news-masthead { align-items: center; padding-bottom: 14px; gap: 12px; }
+.news-masthead h1 { font-family: Georgia, serif; font-size: clamp(2.2rem, 8vw, 3.5rem); }
+.news-edition { gap: 3px; }
+.news-edition strong { font-size: 1rem; }
+.news-edition span { font-size: .7rem; }
+.news-sections { gap: 0 16px; margin-bottom: 18px; }
+.news-sections button { font-size: .8rem; padding-block: 12px 9px; }
+.news-story { background: #101821; padding-inline: 14px; }
+.news-lead { padding: 0; }
+.news-story h2 { font-size: 1.25rem; }
+.news-lead h2 { font-size: 1.65rem; }
+.news-story p { font-size: .9rem; }
+.news-lead .news-story-copy { padding: 16px; }
+.news-byline, .news-date { font-size: .75rem; }
+.news-reader { padding: 0; }
+.news-back { margin-bottom: 20px; }
+.news-article-heading h1 { font-size: 2rem; }
+.news-standfirst { font-size: 1rem; }
+.news-reading-copy p { font-size: 1.05rem; line-height: 1.75; }
+@media (max-width: 460px) {
+  main { padding: 14px; }
+  .news-masthead { gap: 10px; }
+  .news-edition strong { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

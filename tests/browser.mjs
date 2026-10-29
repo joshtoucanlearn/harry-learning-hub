@@ -6,6 +6,7 @@ const browser=await chromium.launch({channel:'chrome',headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:1000}});
 const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto(process.env.HUB_URL || 'http://127.0.0.1:4173/harry-learning-hub/');await navigate(page,'Matchday');await page.getByRole('heading',{name:'Next on your radar'}).waitFor();
+assert.equal(await page.locator('audio, .cosmic-radio, .radio-pet').count(),0,'Music player removed');
 await page.screenshot({path:'qa/desktop-matchday.png',fullPage:true});
 await page.getByLabel('Home team',{exact:true}).fill('Test Home');await page.getByLabel('Away team',{exact:true}).fill('Test Away');
 await page.getByLabel('Event 1',{exact:true}).fill('Home score first');await page.getByRole('button',{name:'Add an event'}).click();await page.getByLabel('Event 2',{exact:true}).fill('There is a penalty');

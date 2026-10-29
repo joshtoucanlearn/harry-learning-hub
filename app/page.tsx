@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { BrandIdentity } from '@/components/brand-mark';
-import { CosmicRadio } from '@/components/cosmic-radio';
 import { InteractiveSky } from '@/components/interactive-sky';
 import { JournalismLibrary } from '@/components/journalism-library';
 import { LearningArchive } from '@/components/learning-archive';
@@ -207,7 +206,6 @@ export default function Home() {
         }
         defaultPreset="pixel"
       />
-      <CosmicRadio />
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger className="menu-toggle">
           <Menu size={18} /> Menu

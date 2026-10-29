@@ -4,7 +4,7 @@ Harry’s football and learning workspace:
 
 - **Review:** Maths recall cards, questions, worked feedback, retries and saved progress.
 - **Matchday:** score/event predictions, reasoning, actual-result comparison and statistics.
-- **Football Journalism:** a newspaper-style football page with an illustrated lead story, seven recovered pieces, topic filters and individual article links.
+- **Football Journalism:** a newspaper-style football page with its original illustrated Hydration lead, nine recovered pieces, topic filters and individual article links. Leeds–Newcastle is in Match reports.
 - **The Record:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
 
 Home is a simple welcome with the combined crest and wordmark. The Menu opens each activity. Teacher provides lesson prompts, notes, printable records and JSON backups.
@@ -24,7 +24,7 @@ Open http://localhost:3000/ and keep the terminal open. Stop with Ctrl+C.
 
 There are 12 maths topics and 36 questions: percentages/discounts, reverse percentages, fractions, units, decimal order, arithmetic, speed/time, probability, averages, sequences, expressions/multiples and Pythagoras. The English review activities were removed at the user’s request. Existing backup records remain compatible; retired question progress is ignored in displayed totals. Recall questions and explanations are newly authored from documented topics, rather than represented as Harry’s past answers. The reverse-percentage TV example is **£120 ÷ 0.75 = £160**, and the eleven-player rating set has median **7**, not 7.5.
 
-`data/learning-history.ts` contains selected original classroom excerpts and explicitly labelled summaries. Source titles, lesson dates, attribution and tutoring support accompany them. Full documents, tutor reports, private identifiers and source links stay in a separate local research collection, outside this repository. An inaccessible early shared deck remains a documented gap.
+`data/learning-history.ts` contains original classroom writing, excerpts and plans, each labelled by format. The Leeds prediction paragraph, social-media plan and conclusion, Arsenal paragraph, hooliganism response and four-paragraph Leeds–Newcastle report preserve the supplied text verbatim. Jointly developed work retains its shared credit. Other pieces retain the available source text and their existing provenance notes. Source titles, lesson dates, attribution and tutoring support accompany them. Full documents, tutor reports, private identifiers and source links stay in a separate local research collection, outside this repository. An inaccessible early shared deck remains a documented gap.
 
 Edit **`data/review-topics.ts`** and **`data/recovered-topics.ts`** to add or amend content. Each topic has a subject, title, source lesson label, summary, recall cards and questions. Each question has stable `id`, `prompt`, `choices`, zero-based `answer` index and `explanation`. If a question’s meaning changes, give it a new ID so older progress is not misrepresented. Keep source labels general and do not add private Drive links or learner details.
 
@@ -93,19 +93,43 @@ Additional motion/fallback verification: `node tests/galaxy-browser.mjs`.
 
 ## Football pages and reading contrast
 
-Football Journalism uses hash links such as `#football/hydration` so individual stories support browser back/forward, reloads and direct links on GitHub Pages. The front page offers Opinion, Analysis and Match previews. New headlines/decks are editorial labels around preserved source text; provenance notes distinguish excerpts, predictions, shared paragraphs and summaries. No article-entry UI remains. To add a piece, update `data/learning-history.ts` and the editorial metadata in `components/journalism-library.tsx`.
+Football Journalism uses hash links such as `#football/leeds-newcastle` so individual stories support browser back/forward, reloads and direct links on GitHub Pages. The front page offers Opinion, Analysis, Match reports and Match previews. New headlines/decks are editorial labels around preserved source text; provenance notes distinguish complete pieces, excerpts, predictions, shared paragraphs and plans. No article-entry UI remains. To add a piece, update `data/learning-history.ts` and the editorial metadata in `components/journalism-library.tsx`.
 
-The original prominent galaxy remains visible across all pages, without an enclosing main panel. Individual reading cards protect contrast, with warm off-white text and amber actions. The lead illustration's source is recorded in `assets/NEWS-ART-SOURCE.md`.
+The original prominent galaxy remains visible across all pages, without an enclosing main panel. Individual reading cards protect contrast, with warm off-white text and amber actions. The hydration article illustration's source is recorded in `assets/NEWS-ART-SOURCE.md`.
+
+### Toucan newspaper build and checks
+
+From this repository, reuse the showcase wrapper, copy its compiled entry and assets, and reapply the website's embedded-focus guard. Keep the destination README and older generated assets:
+
+```sh
+bash ../website-codex-showcase/scripts/build-football-showcase.sh
+cp ../website-codex-showcase/projects/football-journalism/index.html ../website-final-pass/projects/football-journalism/index.html
+cp -R ../website-codex-showcase/projects/football-journalism/assets/. ../website-final-pass/projects/football-journalism/assets/
+node ../website-final-pass/scripts/patch-newspaper-focus.mjs
+SHOWCASE_SITE=../website-final-pass SHOWCASE_NEWSPAPER_ONLY=1 node ../website-codex-showcase/scripts/check-showcase-static.mjs
+node ../website-final-pass/scripts/check-project-cells-static.mjs
+SHOWCASE_BASE=HEAD node ../website-final-pass/tests/project-showcase-source.mjs
+```
+
+The newspaper-only option uses the shared name, CSP, relative-asset and reader checks. The final-pass checks cover that checkout's on-demand project frames and focus guard. `SHOWCASE_BASE=HEAD` compares unchanged website sections with the destination branch's existing version.
+
+For browser QA, serve the destination in one terminal:
+
+```sh
+python3 -m http.server 4206 --bind 127.0.0.1 --directory ../website-final-pass
+```
+
+In another terminal, from this repository:
+
+```sh
+PLAYWRIGHT_MODULE=/Users/joshuagordonjones/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs node tests/newspaper-browser.mjs
+```
+
+This checks every article, compares complete paragraphs with the source, and captures 1440×750 and 390×844 in light and dark at device scale 1. Screenshots and results go to `qa/newspaper/`. The existing hub browser commands above also cover the preserved Hydration lead and report filter. Local server startup and Chrome launch were blocked by the sandbox during the October 2026 update, so browser screenshots still need Claude's review. Repo-wide lint reports 54 existing errors; the changed data and new newspaper QA have no lint diagnostics.
 
 Branding uses the Leeds-inspired pixel crest across the home page, football masthead, Menu drawer and favicon. Navigation is tucked into an accessible modal drawer. Final order: Home, The Record, Football Journalism, Review, Stats lab, Teacher, Matchday. The former full-width header is removed.
 
 Home adds one short pixel shooting star every 14 seconds and very faint blue/teal hues in the darker sky. These effects are confined to Home, use the same capped shader clock and obey Pause sky, page visibility and reduced-motion preferences.
-
-## Radio pet
-
-The corner radio plays the supplied 8-bit Paul Allen mix in its original 16-track order. Click the pet to start, then click it again to skip. The pet stands alone: hover or focus it to reveal play/pause and a volume slider above it; touchscreens have a small volume button. No song panel is displayed. The next track starts automatically and the playlist loops; navigating the site keeps the same player running. Nothing autoplays or downloads audio before a listener starts it. Only the volume preference is remembered, separately from learning data.
-
-The web copies are 128 kbps stereo MP3s derived from the existing FLAME cuts, with no normalization or changes to their order. Original audio files remain untouched. Track titles, durations and web-file hashes are in `data/radio-provenance.json`; update `data/radio-tracks.ts` to change the playlist. The original pixel radio illustration was created for this site. Its movement respects reduced-motion preferences. `node tests/radio-browser.mjs` checks real audio playback, volume/mute, skipping, automatic advance, navigation continuity and mobile layout.
 
 The Record places a verified match photograph at the top right of each historical prediction, with source credit and descriptive alternative text. The two Spain–France calls share one match image; the broader Leeds and England forecasts use the season finale and World Cup semifinal respectively. Photo provenance is recorded in `assets/matches/SOURCES.md`.
 

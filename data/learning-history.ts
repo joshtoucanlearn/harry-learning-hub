@@ -300,8 +300,8 @@ export const archiveWriting: ArchiveWriting[] = [
     credit: 'Harry · lesson writing',
     source: 'Harry session 3',
     excerpt:
-      'For example Leeds struggle mostly defending on the left. I think that we should sign some left backs, this will help Leeds to not concede as many goals in the premier league which will result in having a better goal difference, which I think will make the difference next season.',
-    note: 'An excerpt from the original Leeds prediction. The heading here is an archive label. The full piece was revisited in June.',
+      'I think that Leeds United will finish 13th next season, I think this because over the summer transfer window Leeds will get a 65 million pound for staying up in the Premier League. This means that we will sign some really good players and become a proper premier league side. For example Leeds struggle mostly defending on the left. I think that we should sign some left backs, this will help Leeds to not concede as many goals in the premier league which will result in having a better goal difference, which I think will make the difference next season. Realistically someone from a relegation scrap side like wolves, this will help because we will have a left back with premier league quality .',
+    note: 'The full paragraph from the original Leeds prediction, with original wording, spelling and punctuation. The heading here is an archive label. The piece was revisited in June.',
     challenge:
       'Find evidence for the left-side weakness. Explain why that evidence supports 13th place specifically.',
     brief: 'The match preview',
@@ -354,10 +354,25 @@ export const archiveWriting: ArchiveWriting[] = [
     credit: 'Harry & Josh · shared paragraph',
     source: 'Harry 5 · English session 6',
     excerpt:
-      'The hate towards Arsenal in the UK is deserved because of the disgraceful opinions of their fans.',
-    note: 'The opening sentence of a jointly developed debate paragraph. The June follow-up records Harry noticing how changing “disgraceful” to “controversial” changes the tone.',
+      'The hate towards Arsenal in the UK is deserved because of the disgraceful opinions of their fans. For example, on a social media post on TikTok, an Arsenal fan stated that "Bukayo Saka is better than David Beckham", which blew up and attracted a lot of negative feedback and discourse from online football fans. This statement is a subjective opinion, but objectively wrong in many ways. Measuring their two careers highlights the ignorance of the claim; David Beckham has won many trophies in his career. For example he has won 6 Premier Leagues with Manchester United whilst Saka has only won 1 Premier League with Arsenal. It is easy to make this type of comparison across all domains of their careers.',
+    note: 'The full jointly developed debate paragraph; its first line was a joint model point. The June follow-up records Harry noticing how changing “disgraceful” to “controversial” changes the tone.',
     challenge:
-      'Write two openings: one opinion column and one neutral report. Avoid treating an entire fan base as if everyone shares one view.',
+      'Check the quotation and trophy claims. Separate opinion from evidence, then write an opinion opening and a neutral report opening.',
+    brief: 'The big debate',
+  },
+  {
+    id: 'football-hooliganism',
+    title:
+      'What is football hooliganism and is it a necessary part of football culture?',
+    category: 'Opinion',
+    date: '9 June 2026',
+    credit: 'Harry · developed with Josh',
+    source: 'Harry session 6',
+    excerpt:
+      'Football hooliganism is when football fans feel a strong hatred toward the opposing team. Attributive behaviours include violence, intoxication and general discounduct.\n\nIt is a necessary part of the culture because it breeds rivalries and creates healthy competition. Teams such Leeds United and Manchester United have such competition and rival spirit. In a way, this brings fans together as they have a shared goal and a shared rival. In another sense, it cultivates a lot of buzz and news around football, hyping up the biggest rival games and whatnot. It is necessary because it creates a lot of tension between teams - which makes football culture not boring (exciting)',
+    note: 'The full two-paragraph classroom debate response, developed with Josh. Original wording and spelling are preserved; its claims are for critical discussion.',
+    challenge:
+      'Distinguish rivalry from violence. Test whether shared identity and excitement require hooliganism, and consider the effect on other fans.',
     brief: 'The big debate',
   },
   {
@@ -365,14 +380,28 @@ export const archiveWriting: ArchiveWriting[] = [
     title: 'Does social media make football better?',
     category: 'Debate plan',
     date: '25 June 2026',
-    credit: 'Harry · plan summarised from the lesson',
+    credit: 'Harry · own plan and conclusion',
     source: 'English session 8',
     excerpt:
-      'Position: mostly agree that social media has worsened football culture.\n\nArguments: misinformation can shape false perceptions and conflict; discrimination can spread.\n\nCounterargument: fans can find team news more easily, and new audiences can get involved.\n\nVerdict: it can be positive, depending on how it is used.',
-    note: 'A faithful summary of Harry’s plan, not a verbatim article. The working title is new.',
+      'Question: "Social media has made football culture worse. Fans are now more interested in arguments, attention and online drama than actually enjoying the sport."\n\nIntro: Yes more agree\n\nArgument 1: Misinformation spreads online which creates false perceptions of what is happening in football, giving football a bad reputation, and creating conflict/tension\n\nArgument 2: The social media culture of football has been seen to promote racism and other discriminatory behaviours\n\nCounterargument: Social media makes team news and general engagement more accessible to fans, which is a general net positive for football fans as they can get info easier, and also introducing new audiences to the sport\n\nConclusion: In my opinion, social media has been a negative to football culture due to the way it is employed by both the fans and sometimes the players / clubs. Overall, social media can be a positive unless used incorrectly and future considerations can be made to resolve this problem.',
+    note: 'Harry’s own plan and conclusion from English session 8, verbatim. The working title is new.',
     challenge:
       'Turn the plan into a column. Use one checked example for each main argument and give the counterargument a full paragraph.',
     brief: 'The big debate',
+  },
+  {
+    id: 'leeds-newcastle',
+    title: 'Leeds 4–1 Newcastle: match report',
+    category: 'Match report',
+    date: 'September 2026',
+    credit: 'Harry · lesson writing',
+    source: 'Harry Essay · Aaron’s session',
+    excerpt:
+      "On Monday 14th of September, Leeds United faced off mid table team Newcastle at Elland Road. After a Leeds United defeat against Chelsea in The Carabao Cup round 3, people were doubting Leeds and saying that they aren't good enough for The Premier League.\n\nAs kick off struck at 8pm, The Mighty Whites had a tremendous amount of possession in the first 25 minutes. Then at 33 minute mark, AO Tanaka struck the ball from outside the box and it deflected and went in the bottom right corner to make it 1-0 to The Mighty Whites. Elland Road erupted. Not only did Leeds score, but they also scored another 2 afterwards in the same half. The morale of the team sky rocketed and the first half came to a close with the score line 3-0. They were confident, ready and eager to get into the second half.\n\nAs the 2nd half kicked off, it was 50/50 for about 10 minutes. Newcastle wanted a goal to give their fans a bit of hope that they can come-back and get a draw. As the minutes relentlessly ticked towards the 55th minute, Noah Okafor scored a volley from outside the box to make it 4-0 at Elland Road. This destroyed Newcastle's ambition and any hope of winning the game. Then without warning, a Newcastle player scored a tap in due to lackluster defending at the back which lead to 4-1 at Elland Road. Despite their goal, it was too late. The game was over and The Mighty Whites took the 3 points off Newcastle at Elland Road.\n\nOverall, it was a one-sided game mostly due to the fact that Leeds scored 3 in the first 45 minutes. It's a good win to finish off for 3 weeks because of the international break and it also puts The Mighty Whites in 5th place, but it's a bad way for Newcastle to end it. They got no points from this match and will have 3 weeks to sort it out or else they will be in relegation threat.",
+    note: 'Harry’s full four-paragraph report, compiled in Aaron’s September session. Original wording, spelling and punctuation are preserved. Match details are classroom writing, not independently verified results.',
+    challenge:
+      'Keep the match narrative. Check the scorers, timings and table position against a match source, then support the final judgement with evidence.',
+    brief: 'The final-whistle report',
   },
 ];
 export type Lesson = {

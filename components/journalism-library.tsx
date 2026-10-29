@@ -11,6 +11,11 @@ const editorial: Record<
   string,
   { section: string; deck: string; format: string }
 > = {
+  'leeds-newcastle': {
+    section: 'Match reports',
+    deck: 'Three first-half goals and an Okafor volley: Leeds take the points at Elland Road.',
+    format: 'Match report',
+  },
   hydration: {
     section: 'Opinion',
     deck: 'What happens to the tension when the game stops? Harry makes the case against mid-half hydration breaks.',
@@ -19,7 +24,7 @@ const editorial: Record<
   'leeds-analysis': {
     section: 'Analysis',
     deck: 'A weakness on the left, a summer signing and the fine margins of a Premier League finish.',
-    format: 'Analysis excerpt',
+    format: 'Analysis',
   },
   'norway-preview': {
     section: 'Match previews',
@@ -41,15 +46,27 @@ const editorial: Record<
     deck: '“Disgraceful” or “controversial”? One word changes the tone of a football argument.',
     format: 'Shared paragraph',
   },
+  'football-hooliganism': {
+    section: 'Opinion',
+    deck: 'A classroom argument about rivalry, shared identity and football culture.',
+    format: 'Shared debate',
+  },
   'social-media': {
     section: 'Opinion',
     deck: 'Misinformation, discrimination and easier access to team news: the two sides of football online.',
     format: 'Debate plan',
   },
 };
-const sections = ['All stories', 'Opinion', 'Analysis', 'Match previews'];
+const sections = [
+  'All stories',
+  'Opinion',
+  'Analysis',
+  'Match reports',
+  'Match previews',
+];
 const storyUrl = (id: string) => `#football/${id}`;
 type Story = (typeof archiveWriting)[number];
+const leadStory = archiveWriting.find((a) => a.id === 'hydration')!;
 
 function StoryCard({ story, lead = false }: { story: Story; lead?: boolean }) {
   const detail = editorial[story.id];
@@ -181,7 +198,7 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
         </div>
         <div className="news-edition">
           <strong>Harry’s press box</strong>
-          <span>From the archive · May–July 2026</span>
+          <span>From the archive · May–September 2026</span>
         </div>
       </header>
       <div
@@ -203,12 +220,28 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
       {section === 'All stories' ? (
         <>
           <div className="news-front">
-            <StoryCard story={archiveWriting[0]} lead />
+            <StoryCard story={leadStory} lead />
             <div className="news-side-stories">
-              <StoryCard story={archiveWriting[1]} />
-              <StoryCard story={archiveWriting[4]} />
+              {archiveWriting
+                .filter((a) => editorial[a.id].section === 'Analysis')
+                .map((a) => (
+                  <StoryCard key={a.id} story={a} />
+                ))}
             </div>
           </div>
+          <section className="news-more" aria-label="Match reports">
+            <div className="news-section-heading">
+              <h2>After the whistle</h2>
+              <span>Match reports</span>
+            </div>
+            <div className="news-two">
+              {archiveWriting
+                .filter((a) => editorial[a.id].section === 'Match reports')
+                .map((a) => (
+                  <StoryCard key={a.id} story={a} />
+                ))}
+            </div>
+          </section>
           <section className="news-more" aria-label="Match previews">
             <div className="news-section-heading">
               <h2>Before the whistle</h2>
@@ -228,9 +261,15 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
               <span>Opinion & debate</span>
             </div>
             <div className="news-two">
-              {archiveWriting.slice(5).map((a) => (
-                <StoryCard key={a.id} story={a} />
-              ))}
+              {archiveWriting
+                .filter(
+                  (a) =>
+                    editorial[a.id].section === 'Opinion' &&
+                    a.id !== leadStory.id,
+                )
+                .map((a) => (
+                  <StoryCard key={a.id} story={a} />
+                ))}
             </div>
           </section>
         </>
