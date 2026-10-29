@@ -134,3 +134,251 @@ The text audit used the named source documents/decks and the owner's verbatim fi
 ## Brand crest
 
 `harry-media-crest.png` is an original pixel-style crest generated on the user's request for Leeds-related artwork, using a blue and yellow shield, white Yorkshire rose and football. Generated once with imagegen, with actual transparent alpha, then resized for use as the Harry Baker MEDIA brand mark and browser icon. It is an original composition, not a copy of the Leeds United badge.
+
+
+## Cartoon cover alternatives — 29 October 2026
+
+Owner-requested alternatives for **The Battering of the Geordies**, generated with built-in imagegen. Both are saved for review only: neither is wired into the newspaper. All existing illustrations, article wording, credits and selected cover remain unchanged.
+
+All ten existing images in `assets/news/` were visually reviewed before choosing new compositions. The original magpie image supplied the story idea, but no image reference was passed to these final generation calls, to avoid inheriting its painterly style or low pitch-level framing. A is a classic newspaper cartoon viewed from high overhead, with the goal at upper left; B is a bolder modern cartoon viewed side-on, dominated by the two sulking magpies on a bench, with the goal at left. Both deliberately depart from the earlier stadium panoramas. Preliminary composition-preserving trials were not selected.
+
+Original fictional characters; no real player likenesses, branding or readable text. Visual review checked the two players, two magpies, single ball, hands-on-knees pose, celebrating arms and goal/net. The birds are comically defeated and uninjured. Final files are 1600×900 JPEGs, encoded at quality 80; source PNGs remain in the imagegen output folder.
+
+### Exact final prompts
+
+**cartoon-a** — `assets/news/leeds-newcastle-cartoon-a.jpg`
+
+```text
+Use case: illustration-story.
+Asset type: an original football newspaper cartoon cover alternative, a single landscape 16:9 image for final export at 1600×900.
+Create a completely fresh 2D CARTOON drawing from scratch. Proper comic characters, bold clean black outlines, broad flat solid colour areas, one simple hard-edged shadow per shape. Highly expressive exaggerated cartoon poses and faces. Playful editorial joke about a defeated team represented by two sulking magpies. Absolutely no photorealism, painterly rendering, paint or paper texture, brushwork, grass-blade detail, photographic lighting, cinematic realism, soft modelling, gradients, grain, 3D rendering or realistic anatomy rendering. Simplify the scene as a professional cartoonist would; it must read instantly at thumbnail size.
+Narrative elements: exactly two fictional adult players: a dejected footballer in a plain black-and-white vertically striped shirt, black shorts and black socks, bent forward with BOTH hands resting on his knees; a striker in a completely plain white kit celebrating with both arms out wide. Exactly two glum comically defeated black-and-white magpies, with long magpie tails, oversized drooping eyelids, downturned beaks, slumped rain-ruffled feathers; bedraggled, unharmed and comically miserable, not injured. Exactly one round football visibly inside one coherent goal net. Rain represented by sparse simple diagonal ink strokes and droplets. Floodlights represented by simple flat graphic shapes.
+Fictional caricatures only: no likenesses of real players or people. Plain generic kits: no crests, badges, sponsors, logos, shirt numbers or readable text. No lettering, captions, speech balloons, scoreboard, watermarks or signatures. Keep both arms and both legs of each player plausible and clearly separated, both defender hands on knees, two legs per bird, and the simple rectangular goal/net physically coherent.
+OPTION A — classic newspaper sports cartoon, with witty economical pen-and-ink shapes and caricatured proportions, limited flat muted green, warm cream, navy and mustard-yellow palette.
+COMPOSITION IS ESSENTIAL: a HIGH BIRD'S-EYE, steep overhead three-quarter view, as though looking DOWN from the stadium roof onto a small area of pitch and touchline. No sky, no eye-level stadium horizon, no low angle. The pitch is a large simple green flat shape with only a few clean white markings. Put the goal in the UPPER LEFT of the frame, its back net and the single scored ball clearly visible from above. The celebrating white striker is in the upper-middle of the pitch, arms spread, a small joyful cartoon profile. The bent-over striped defender is prominent in the LOWER RIGHT foreground, both hands on knees, giant drooping nose and a downcast exhausted expression. The two sulking magpies are large enough to be the joke in the LOWER LEFT beside the touchline, seen from above/three-quarter with gloriously miserable faces. Their poses echo the defender's defeated posture. A cropped floodlight housing at the upper edge and simple cream light-pool wedges suggest a rainy night match. Crowd, if any, is only a thin strip of abstract dots at the very edge, not a detailed stadium panorama. Flat, charming, funny, clearly drawn with ink, not a realistically lit scene. Single wide cartoon composition, no multi-panel grid.
+```
+
+**cartoon-b** — `assets/news/leeds-newcastle-cartoon-b.jpg`
+
+```text
+Use case: illustration-story.
+Asset type: an original football newspaper cartoon cover alternative, a single landscape 16:9 image for final export at 1600×900.
+Create a completely fresh 2D CARTOON drawing from scratch. Proper comic characters, bold clean black outlines, broad flat solid colour areas, one simple hard-edged shadow per shape. Highly expressive exaggerated cartoon poses and faces. Playful editorial joke about a defeated team represented by two sulking magpies. Absolutely no photorealism, painterly rendering, paint or paper texture, brushwork, grass-blade detail, photographic lighting, cinematic realism, soft modelling, gradients, grain, 3D rendering or realistic anatomy rendering. Simplify the scene as a professional cartoonist would; it must read instantly at thumbnail size.
+Narrative elements: exactly two fictional adult players: a dejected footballer in a plain black-and-white vertically striped shirt, black shorts and black socks, bent forward with BOTH hands resting on his knees; a striker in a completely plain white kit celebrating with both arms out wide. Exactly two glum comically defeated black-and-white magpies, with long magpie tails, oversized drooping eyelids, downturned beaks, slumped rain-ruffled feathers; bedraggled, unharmed and comically miserable, not injured. Exactly one round football visibly inside one coherent goal net. Rain represented by sparse simple diagonal ink strokes and droplets. Floodlights represented by simple flat graphic shapes.
+Fictional caricatures only: no likenesses of real players or people. Plain generic kits: no crests, badges, sponsors, logos, shirt numbers or readable text. No lettering, captions, speech balloons, scoreboard, watermarks or signatures. Keep both arms and both legs of each player plausible and clearly separated, both defender hands on knees, two legs per bird, and the simple rectangular goal/net physically coherent.
+OPTION B — bold modern 2D animated-cartoon key art, thick smooth outlines, large rounded and angular geometric shapes, exaggerated squash-and-stretch body language, oversized expressive eyes. Vivid flat turquoise pitch, deep violet/navy shadows, bright white and yellow light accents; clean cel shading with only two tones per shape.
+COMPOSITION IS ESSENTIAL: a CLOSE SIDE-ON comic scene centred on TWO LARGE SULKING MAGPIES perched side by side on a simple unmarked touchline bench. View them straight-on at human chest height, a level flat comic stage, not a low pitch-level view. The bench and their faces fill the central-left foreground; their eyes are hilariously half shut, beaks droop, soaked head feathers flop and long tails hang over the seat. One bird stares in disbelief while the other slumps like an exhausted defeated fan. Keep the birds recognisably black-and-white magpies, unharmed. At the RIGHT foreground beside the bench is the dejected striped player in a deeply bent hands-on-knees pose, with an exaggerated long face in profile. A smaller white-kitted striker BEHIND the bench in the centre background celebrates with arms stretched wide, springy legs and a huge generic cartoon grin. Place the goal at the far LEFT background, not the right: a small simple three-quarter rectangle with exactly one ball inside the net. A narrow strip of stylised crowd shapes and one simple floodlight cluster sit along the top. Rain is a few bold graphic streaks and drops. The large birds and bench, not the stadium, dominate the composition. No panoramic stadium bowl or receding low-angle pitch. Polished exuberant animated cartoon, funny and decisively non-realistic. Single wide composition, no multi-panel grid.
+```
+
+### Delivered alternatives
+
+| File | Selected generated PNG | SHA-256 |
+| --- | --- | --- |
+| `news/leeds-newcastle-cartoon-a.jpg` | `exec-84162530-008c-49a5-8546-1cc176569567.png` | `9923740d8fab2a8ab29829dbb685f74a3664cc6eb705d246a716c4e63f887a02` |
+| `news/leeds-newcastle-cartoon-b.jpg` | `exec-ae874ece-19cd-415f-9b2b-87c7cf38be97.png` | `0a26818ee59f01c8283849382ca0f3f5d0801f9655f2a8b54b69eb840f5154de` |
+
+
+## House-style cover alternatives C and D — 29 October 2026
+
+Generated with built-in imagegen after the owner's feedback on cartoon alternatives A and B. `hydration-editorial.jpg` was inspected and passed as the sole visual style reference to both calls; `news/leeds-analysis.jpg` and `news/arsenal-tone.jpg` were also inspected for consistency. The new options return to the grainy navy/teal/amber/cream screen-print treatment, simplified shapes and object-led storytelling, with tiny distant faceless people. They use new behind-goal and high-away-end compositions rather than the earlier low pitch-level view.
+
+Both alternatives are **unwired review assets**. No existing image, newspaper wording, credit, selected cover or application file was changed. The earlier A/B files are retained. Each final PNG was resized to 1600×900 and encoded as JPEG at quality 80. These are original fictional illustrations, with natural magpie markings and posture, not real identifiable players, a specific stadium or an actual match photograph.
+
+Visual review: C contains exactly four separated footballs inside the goal and two magpies on its crossbar. The rectangular goal frame and connected net were checked for obvious geometric defects. D contains a single hunched magpie, a plain striped scarf over an empty seat and a pitch far below. Bird moods come from rain and posture, without cartoon facial expressions. No readable text or branding was found.
+
+### Exact generation prompts
+
+**house-c** — `assets/news/leeds-newcastle-house-c.jpg`
+
+```text
+Use case: illustration-story.
+Asset: an original football newspaper editorial illustration, landscape 16:9 for final 1600×900 JPEG delivery.
+Input image: the supplied hydration-editorial.jpg is the PRIMARY HOUSE-STYLE REFERENCE ONLY. Match its printmaking language, palette, rough inky texture and degree of simplification very closely, but create the NEW composition described below; do not copy its bottles or low pitch-level framing.
+Style: grainy screen-print / risograph editorial art. Broad simplified flat shapes with rough ink edges, dense tactile dry-ink speckle, scuffed paper grain and restrained overprinted colour layers. Limited palette of inky navy, teal-green, warm amber and cream. Shadows are solid navy shapes; light is cream/amber printed shapes, not photographic rendering. Objects are the heroes. Any humans must be tiny distant faceless marks, no detailed anatomy or close-up people. Sophisticated restrained editorial storytelling, quietly witty and atmospheric.
+Magpies have natural realistic MAGPIE proportions and markings, long tails, small natural dark eyes and pointed beaks, expressed through simplified print shapes. Their glum mood comes ONLY from hunched posture, lowered heads and wet feathers. Birds are rain-soaked, uninjured. NO anthropomorphic faces, expressive eyebrows, human eyes or cartoon expressions.
+No photorealism, detailed realistic close-up players, smooth 3D modelling, cinematic photo effects, glossy surfaces or painted skin. No comic-strip style, black cartoon outlines, caricatures, cel-shaded animation or speech balloons. No real likenesses, club crests, badges, sponsors, readable text, lettering, shirt or seat numbers, watermarks or logos. Do not reproduce an actual identifiable stadium.
+OPTION C — BEHIND THE GOAL, looking outward through its net up the pitch.
+A centred, near-symmetrical graphic composition viewed at standing spectator height from just BEHIND the back of the goal, not lying on the grass or looking from a corner. The near back net grid crosses the foreground as a clean open square mesh, attached consistently to the goal structure. The single goal mouth is a coherent rectangular frame a little beyond it, both upright posts and the horizontal crossbar clearly readable. The whole frame and the birds must fit inside the image, with breathing room above. Use simple correct perspective and a single logically connected net; no tangled ropes, impossible mesh, duplicate crossbars, extra posts or second goal in the foreground.
+EXACTLY FOUR ordinary unbranded black-and-white footballs rest on the ground INSIDE the back of this net, distributed across the lower central part of the image with clear spaces between all four. Show four distinct complete round balls, a quiet visual metaphor for four goals; no fifth ball anywhere, no ball outside the goal, no ball hidden by another. The balls and net are the main objects.
+EXACTLY TWO rain-soaked magpies perch glumly on the horizontal CROSSBAR above, one a little left of centre and the other right of centre; small naturally shaped birds with shoulders hunched, lowered heads, long bedraggled tails and wet black-and-white feathers. Restrained visual joke, no funny faces.
+Through the mesh, a teal-green pitch extends to the far end of the stadium where a few VERY TINY faceless white-shirted figures celebrate with arms out. They are only a few small cream/white ink marks, far smaller than the birds and balls. Navy stands dissolve into rough amber and cream stippling. Rain is printed diagonal cream streaks; floodlights at the outer upper edges cast simple textured cream shafts. No giant object at the front-left, no diagonal white sideline receding to a right-hand goal. Grainy flat print illustration exactly in the hydration reference's house style.
+```
+
+**house-d** — `assets/news/leeds-newcastle-house-d.jpg`
+
+```text
+Use case: illustration-story.
+Asset: an original football newspaper editorial illustration, landscape 16:9 for final 1600×900 JPEG delivery.
+Input image: the supplied hydration-editorial.jpg is the PRIMARY HOUSE-STYLE REFERENCE ONLY. Match its printmaking language, palette, rough inky texture and degree of simplification very closely, but create the NEW composition described below; do not copy its bottles or low pitch-level framing.
+Style: grainy screen-print / risograph editorial art. Broad simplified flat shapes with rough ink edges, dense tactile dry-ink speckle, scuffed paper grain and restrained overprinted colour layers. Limited palette of inky navy, teal-green, warm amber and cream. Shadows are solid navy shapes; light is cream/amber printed shapes, not photographic rendering. Objects are the heroes. Any humans must be tiny distant faceless marks, no detailed anatomy or close-up people. Sophisticated restrained editorial storytelling, quietly witty and atmospheric.
+Magpies have natural realistic MAGPIE proportions and markings, long tails, small natural dark eyes and pointed beaks, expressed through simplified print shapes. Their glum mood comes ONLY from hunched posture, lowered heads and wet feathers. Birds are rain-soaked, uninjured. NO anthropomorphic faces, expressive eyebrows, human eyes or cartoon expressions.
+No photorealism, detailed realistic close-up players, smooth 3D modelling, cinematic photo effects, glossy surfaces or painted skin. No comic-strip style, black cartoon outlines, caricatures, cel-shaded animation or speech balloons. No real likenesses, club crests, badges, sponsors, readable text, lettering, shirt or seat numbers, watermarks or logos. Do not reproduce an actual identifiable stadium.
+OPTION D — HIGH IN AN EMPTIED AWAY END, looking DOWN over wet empty seats to the distant pitch.
+A high, steep downward view from the upper rows of an empty stadium away section. Rows of simple moulded navy/teal seats cascade down the frame as strong overlapping geometric bands; the near seats occupy roughly the lower two-thirds, not a low pitch-level panorama. Arrange the seats and aisle as broad graphic rhythms so the eye travels diagonally down to a small floodlit pitch FAR BELOW in the upper-left/middle distance. A few celebrating white-shirted figures on that pitch are TINY faceless cream marks, almost lost in the distance.
+The object hero is ONE plain BLACK-AND-WHITE STRIPED SCARF, wet and abandoned, draped loosely over one empty seat in the near CENTRE of the composition. Simple broad alternating stripes, short natural fringe, no words, numbers, crest or logos. Its folds are a few simplified navy/cream planes, not detailed fabric photography.
+EXACTLY ONE bedraggled natural magpie perches on that seat's BACK beside the scarf, near the centre-right. It hunches with its small head lowered, soaked shoulders and long tail hanging, sulking through posture alone. Natural small dark eye and pointed beak, normal magpie anatomy, no exaggerated expression or cartoon face. No other birds.
+Wet seats catch a few broken amber/cream ink highlights. Rain cuts across the empty terraces in sparse cream streaks. High distant floodlights illuminate the far pitch through grainy rain. There are NO spectators or close-up people among the seats. Do not put a large goal on the right or a large foreground ball; the seat, striped scarf and single bird tell the story. Restrained grainy screen-print/risograph finish, flat cut-paper-like colour shapes, inky navy/teal/amber/cream, closely matching the supplied hydration illustration.
+```
+
+### Delivered alternatives
+
+| File | Selected generated PNG | SHA-256 |
+| --- | --- | --- |
+| `news/leeds-newcastle-house-c.jpg` | `exec-48d0183c-d1ee-4f8d-a71f-0f219167f263.png` | `ff8c6b22c8360f96f872f8c6014a8bf8133a9a518bdc387af682103f4f93b959` |
+| `news/leeds-newcastle-house-d.jpg` | `exec-d9295c8a-c50f-43d6-af38-4302ea51e3a0.png` | `3d566cbdfc56e2712efb7da5910dc7646f9c5bccd073fe4267c6ca86eda9d56e` |
+
+
+## House-style audit and four framing options C–F — 29 October 2026
+
+The owner clarified that the hydration illustration's **style**, rather than its low pitch-level framing, should carry across to new concepts. The following six rules govern this set:
+
+1. **Strict four-ink palette:** inky navy/slate, teal-green, amber/ochre, cream. Amber is the only warm colour, reserved for the focal point, with tiny echoes elsewhere to tie the picture together.
+2. **Screen-print / risograph surface:** flat colour shapes, heavy grain speckle and dry-brush scuffing on every surface. Texture replaces detail. No smooth gradients, no outlines.
+3. **Stepped shading:** 2–3 flat tones per form plus a hard cast shadow. Never modelled or photographic.
+4. **Low-key picture:** mostly dark, with light concentrated where the eye should go.
+5. **Detail hierarchy:** one bold, simple hero; everything else collapses into pattern (a crowd is speckle, players are tiny featureless marks).
+6. **The idea carries it:** an everyday object or animal stands in for the argument (bottles = breaks killing the game). Humans tiny or absent.
+
+### Audit and revisions
+
+The previous C and D retained the intended viewpoints and print grain, but their rounded ball shading, individually described feathers and distributed highlights weakened the flat-form and focal hierarchy rules. Both were regenerated through built-in imagegen, with the hydration image as the first and primary style reference and their previous versions as layout/content guides only. C concentrates amber on its four-ball group; D darkens the repeated rows of seats and concentrates warmth on the scarf/bird group. Their behind-goal and high-away-end framings remain intact. The earlier C/D generation records above are historical and are superseded by this section's delivered-file table; their source PNGs remain in the imagegen output folder.
+
+E and F were generated with the hydration image as their sole visual reference. E is a straight top-down scarf/puddle/feather composition with no stadium or people; F is a flat side-on dugout frieze. The reflection in E is a single amber/cream disc, not a visible floodlight fixture. F has two hunched magpies, tiny distant celebrants and no corner floodlights.
+
+All four options remain **unwired**. All other newspaper images, wording, credits and application files were preserved. The four deliverables are 1600×900 JPEGs encoded at quality 80. Visual review checked four separated balls and two crossbar magpies in C, the connected rectangular goal/net, one bird in D, one feather and no people in E, two birds in F, and absence of text, branding or detailed faces. Grain, flat colour planes and dark surroundings carry the images; the naturally shaped birds convey mood through posture rather than cartoon faces.
+
+### Exact imagegen prompts and input roles
+
+**house-c** — `assets/news/leeds-newcastle-house-c.jpg`
+
+Inputs in order: `assets/hydration-editorial.jpg` (style reference); `assets/news/leeds-newcastle-house-c.jpg` (previous version; composition/content only).
+
+```text
+Use case: illustration-story.
+Asset: original football newspaper illustration, landscape 16:9, final export 1600×900.
+STYLE REFERENCE: Image 1 is assets/hydration-editorial.jpg. Match its visual language closely; do NOT copy its composition or objects.
+HOUSE STYLE — all six rules are essential:
+1. Strict FOUR-INK palette: inky navy/slate, teal-green, amber/ochre and cream. Amber is the ONLY warm colour. Concentrate amber at the focal point, with only a few tiny echoes elsewhere.
+2. Flat colour shapes covered in heavy screen-print / risograph grain speckle and dry-brush scuffing on EVERY surface. Texture replaces detail. No smooth gradients or contour outlines.
+3. Stepped shading: only TWO OR THREE clearly separated flat ink tones per form, plus a HARD cast-shadow shape. No smoothly modelled volume or photographic rendering.
+4. A LOW-KEY image, mostly dark navy and muted teal. Concentrate light at the focal point; keep surrounding forms dark.
+5. Detail hierarchy: ONE bold, simple object/animal group carries the picture. Everything else collapses into a repeated dark pattern or grain. Humans, if present, are tiny featureless marks.
+6. An everyday object or animal stands for the football story; the idea carries it. Humans tiny or absent.
+Use rough solid print silhouettes and hard-edged colour planes, not detailed feathers, fabric weave or glossy rounded volumes. Any magpie has a natural species-correct silhouette, long tail, pointed beak and plain small dark eye; its mood comes from hunched wet posture, not human facial expressions. No cartoon faces, comic outlines or caricatures.
+No faces, identifiable people, crests, badges, sponsors, readable text, numbers, lettering, watermarks or logos. No unrequested labels in the artwork.
+C — STYLE CORRECTION WHILE PRESERVING THE BEHIND-GOAL CONCEPT AND FRAMING.
+Image 2 is the previous C version: use it ONLY as a layout/content guide. Keep its centred view from behind the goal looking through the near net up the pitch, four separated balls along the lower central area, and two hunched magpies on the crossbar. Replace its detailed surface rendering with Image 1's simplified stepped ink shapes.
+The hero is the group of EXACTLY FOUR ordinary unbranded navy-and-cream footballs resting INSIDE the back of the net, all four complete, distinct and separated. Give each ball only two or three hard-edged flat ink patches and a hard navy ground shadow; no gradual spherical lighting. Localised amber/cream reflected light on this four-ball group is the only substantial warm area. No fifth ball anywhere.
+A single coherent rectangular goal frame, correctly connected side/back net with simple regular mesh and consistent perspective. Keep the grid dark and subordinate except where it catches a few cream flecks; no tangled ropes, duplicate frames or impossible geometry. EXACTLY TWO small rain-soaked magpies sit on the crossbar, shoulders hunched, heads lowered, long bedraggled tails. Draw their wing markings as a few solid scuffed ink shapes, not individual feathers. They are unharmed, no cartoon expressions.
+The pitch, roof and stands behind become simple dark teal/navy bands and grain. Far up the pitch, celebrating white-shirted players are TINY featureless cream marks, no bodies in detail. Rain streaks and modest printed floodlight shafts, all subordinate to the four balls. Keep this behind-goal framing; do not substitute the hydration image's front-left object and diagonal sideline layout.
+```
+
+**house-d** — `assets/news/leeds-newcastle-house-d.jpg`
+
+Inputs in order: `assets/hydration-editorial.jpg` (style reference); `assets/news/leeds-newcastle-house-d.jpg` (previous version; composition/content only).
+
+```text
+Use case: illustration-story.
+Asset: original football newspaper illustration, landscape 16:9, final export 1600×900.
+STYLE REFERENCE: Image 1 is assets/hydration-editorial.jpg. Match its visual language closely; do NOT copy its composition or objects.
+HOUSE STYLE — all six rules are essential:
+1. Strict FOUR-INK palette: inky navy/slate, teal-green, amber/ochre and cream. Amber is the ONLY warm colour. Concentrate amber at the focal point, with only a few tiny echoes elsewhere.
+2. Flat colour shapes covered in heavy screen-print / risograph grain speckle and dry-brush scuffing on EVERY surface. Texture replaces detail. No smooth gradients or contour outlines.
+3. Stepped shading: only TWO OR THREE clearly separated flat ink tones per form, plus a HARD cast-shadow shape. No smoothly modelled volume or photographic rendering.
+4. A LOW-KEY image, mostly dark navy and muted teal. Concentrate light at the focal point; keep surrounding forms dark.
+5. Detail hierarchy: ONE bold, simple object/animal group carries the picture. Everything else collapses into a repeated dark pattern or grain. Humans, if present, are tiny featureless marks.
+6. An everyday object or animal stands for the football story; the idea carries it. Humans tiny or absent.
+Use rough solid print silhouettes and hard-edged colour planes, not detailed feathers, fabric weave or glossy rounded volumes. Any magpie has a natural species-correct silhouette, long tail, pointed beak and plain small dark eye; its mood comes from hunched wet posture, not human facial expressions. No cartoon faces, comic outlines or caricatures.
+No faces, identifiable people, crests, badges, sponsors, readable text, numbers, lettering, watermarks or logos. No unrequested labels in the artwork.
+D — STYLE CORRECTION WHILE PRESERVING THE HIGH AWAY-END CONCEPT AND FRAMING.
+Image 2 is the previous D version: use it ONLY as a layout/content guide. Keep the HIGH steep downward view from an emptied away end, with rows of wet empty seats in the foreground, a black-and-white striped scarf over one near seat, ONE glum magpie on that seat back, and the pitch far below to the left. Replace its finely described feather and seat surfaces with Image 1's simplified stepped ink shapes.
+The one bold hero group is the abandoned scarf and its hunched magpie, near centre-right. Scarf: plain navy-and-cream broad STRIPES, natural fold and short fringe, no chequerboard pattern or branding; just two or three scuffed flat planes and a hard navy shadow. A small concentrated amber patch of reflected light warms only this seat/scarf/bird cluster. Bird: EXACTLY ONE natural magpie silhouette with long tail, pointed beak, small dark eye, bowed head and wet slumped shoulders; cream wing patch as ONE simple shape, no individual feather lines or human expression.
+All other seats collapse into repetitive dark navy/slate silhouettes with muted teal grain. Remove the widespread amber rims from the earlier version: no bright warm highlight on every seat or every step, only a few tiny echoes well away from the hero. The distant pitch is a small muted teal band with a few TINY featureless white-shirted marks celebrating. No nearby people. Rain is sparse scuffed cream strokes; floodlight is suggested by pale printed light shapes in the distance. Keep this high view and dark empty rows, not a low pitch-level image.
+```
+
+**house-e** — `assets/news/leeds-newcastle-house-e.jpg`
+
+Inputs in order: `assets/hydration-editorial.jpg` (style reference).
+
+```text
+Use case: illustration-story.
+Asset: original football newspaper illustration, landscape 16:9, final export 1600×900.
+STYLE REFERENCE: Image 1 is assets/hydration-editorial.jpg. Match its visual language closely; do NOT copy its composition or objects.
+HOUSE STYLE — all six rules are essential:
+1. Strict FOUR-INK palette: inky navy/slate, teal-green, amber/ochre and cream. Amber is the ONLY warm colour. Concentrate amber at the focal point, with only a few tiny echoes elsewhere.
+2. Flat colour shapes covered in heavy screen-print / risograph grain speckle and dry-brush scuffing on EVERY surface. Texture replaces detail. No smooth gradients or contour outlines.
+3. Stepped shading: only TWO OR THREE clearly separated flat ink tones per form, plus a HARD cast-shadow shape. No smoothly modelled volume or photographic rendering.
+4. A LOW-KEY image, mostly dark navy and muted teal. Concentrate light at the focal point; keep surrounding forms dark.
+5. Detail hierarchy: ONE bold, simple object/animal group carries the picture. Everything else collapses into a repeated dark pattern or grain. Humans, if present, are tiny featureless marks.
+6. An everyday object or animal stands for the football story; the idea carries it. Humans tiny or absent.
+Use rough solid print silhouettes and hard-edged colour planes, not detailed feathers, fabric weave or glossy rounded volumes. Any magpie has a natural species-correct silhouette, long tail, pointed beak and plain small dark eye; its mood comes from hunched wet posture, not human facial expressions. No cartoon faces, comic outlines or caricatures.
+No faces, identifiable people, crests, badges, sponsors, readable text, numbers, lettering, watermarks or logos. No unrequested labels in the artwork.
+E — STRAIGHT TOP-DOWN BIRD'S-EYE PRINT, NO HORIZON.
+Look vertically DOWN at wet touchline grass at night, as a flat overhead graphic composition. One sodden plain black-and-white STRIPED scarf is crumpled in a dark puddle, a simple central hero shape. Use navy and cream broad bands, no chequerboard, crest or lettering, a few blunt folds with two or three flat tones and a hard navy shadow. Beside the scarf lies EXACTLY ONE recognisable magpie feather, a single small navy-and-cream feather silhouette, not a whole bird.
+The puddle holds the reflection of ONE floodlight as a BRIGHT AMBER-CREAM DISC, a flat scuffed circular ink shape broken slightly by rain rings. This reflection beside the scarf is the concentrated warm focal point; only two or three tiny amber flecks elsewhere. No rendered reflections of seats or a stadium. The puddle edge, wet grass and scarf have heavy speckled grain and dry-ink scuffing instead of fine detail. No individual grass blades in detail, no flowing fabric modelling or shiny water.
+A chalk touchline crosses the frame as a broad flat near-horizontal CREAM GRAPHIC BAND in the upper third, its worn edge heavily scuffed. It has constant width, no perspective recession, no vanishing point. Mostly dark navy/teal negative space around the scarf and light disc; the forms remain flat and simple. NO stadium, stands, goal, horizon, sky, actual floodlight fixture, humans or other animals. A restrained object-led metaphor of defeat in the rain.
+```
+
+**house-f** — `assets/news/leeds-newcastle-house-f.jpg`
+
+Inputs in order: `assets/hydration-editorial.jpg` (style reference).
+
+```text
+Use case: illustration-story.
+Asset: original football newspaper illustration, landscape 16:9, final export 1600×900.
+STYLE REFERENCE: Image 1 is assets/hydration-editorial.jpg. Match its visual language closely; do NOT copy its composition or objects.
+HOUSE STYLE — all six rules are essential:
+1. Strict FOUR-INK palette: inky navy/slate, teal-green, amber/ochre and cream. Amber is the ONLY warm colour. Concentrate amber at the focal point, with only a few tiny echoes elsewhere.
+2. Flat colour shapes covered in heavy screen-print / risograph grain speckle and dry-brush scuffing on EVERY surface. Texture replaces detail. No smooth gradients or contour outlines.
+3. Stepped shading: only TWO OR THREE clearly separated flat ink tones per form, plus a HARD cast-shadow shape. No smoothly modelled volume or photographic rendering.
+4. A LOW-KEY image, mostly dark navy and muted teal. Concentrate light at the focal point; keep surrounding forms dark.
+5. Detail hierarchy: ONE bold, simple object/animal group carries the picture. Everything else collapses into a repeated dark pattern or grain. Humans, if present, are tiny featureless marks.
+6. An everyday object or animal stands for the football story; the idea carries it. Humans tiny or absent.
+Use rough solid print silhouettes and hard-edged colour planes, not detailed feathers, fabric weave or glossy rounded volumes. Any magpie has a natural species-correct silhouette, long tail, pointed beak and plain small dark eye; its mood comes from hunched wet posture, not human facial expressions. No cartoon faces, comic outlines or caricatures.
+No faces, identifiable people, crests, badges, sponsors, readable text, numbers, lettering, watermarks or logos. No unrequested labels in the artwork.
+F — EXACTLY FLAT SIDE-ON ELEVATION, LIKE A STAGE SET OR FRIEZE.
+A perspex-roofed dugout bench seen straight SIDE-ON in orthographic elevation, with a long horizontal seat, simple uprights and a shallow clear roof rendered as a few flat slate/cream scuffed planes. No three-quarter perspective, no converging bench edges, no low-angle lens effect. The shelter is a single broad bold silhouette across the middle/lower frame.
+EXACTLY TWO drenched natural magpies huddle close TOGETHER on the seat of the bench near centre, beneath the roof near its open front where windblown rain reaches them. Their lowered heads and hunched wet shoulders suggest glum defeat, with long tails resting down behind the bench; no human faces or exaggerated eyes. Each bird is a few flat navy/cream/teal ink shapes with one simple wing patch, no fine feather illustration. A small concentrated AMBER-CREAM pool of reflected light on the seat under this pair makes them the focal point; the rest of the dugout stays dark, with just a few tiny amber speckles elsewhere.
+Sparse slanted rain streaks cross the scene. Behind the shelter, a THIN horizontal band of floodlit teal pitch sits just under a HIGH HORIZON near the upper quarter; a few celebrating white-shirted figures are TINY faceless cream marks in that band. The rest of the upper background is dark grainy navy. The pitch is pattern, not a stadium panorama. No stadium bowl, no floodlight fixtures in either corner, no receding diagonal chalk line, no large goal or football. Light may enter as a restrained off-frame wash made of flat scuffed cream ink, never a gradient. One quiet object-and-animal frieze, strongly different from the hydration layout while keeping its ink surface and stepped shapes.
+```
+
+### Current delivered files
+
+| File | Selected generated PNG | JPEG bytes | SHA-256 |
+| --- | --- | ---: | --- |
+| `news/leeds-newcastle-house-c.jpg` | `exec-b93d55a3-2cad-47c9-b0d4-1e5ff3b983d8.png` | 689327 | `6fb400ef90fe8f8e8390d130d02bfe7f5e1de110b434adb6377cc007c3e02242` |
+| `news/leeds-newcastle-house-d.jpg` | `exec-f9f2e9ab-8bd8-432d-bba8-6c13faa2b969.png` | 623806 | `4dfe90b136abdb61abe07b2262b6929f9d49f14d13acb8599925c6ba730e1cb9` |
+| `news/leeds-newcastle-house-e.jpg` | `exec-c8b3f3a2-0b4c-4f83-82de-17f973985da6.png` | 742514 | `54509a5dca8ee4001abfe9498569e0b51c572457be919081bb8c7f1cad2bd691` |
+| `news/leeds-newcastle-house-f.jpg` | `exec-07c3784b-108b-4f35-b638-955995ae3064.png` | 676944 | `60ead5c267fea2a892a57138a4c270049a7e2856e82c759acc43a433e41c5826` |
+
+### Review contact sheet
+
+`/Users/joshuagordonjones/Documents/ChatGPT/Toucan Learn/outputs/final-pass-20261028/harry-news/geordies-house-options.jpg` is a deterministic 2×2 contact sheet, ordered C/D across the top and E/F across the bottom. It preserves each 1600×900 image without cropping and places the C, D, E, F labels in separate strips outside the artwork. Assembled locally with AppKit, 3272×2000, JPEG quality 80; the labels are review furniture and are not present in the four source images.
+
+
+## Owner's selected original D and daytime edit — 29 October 2026
+
+The owner selected the **first D**, generated as `exec-d9295c8a-c50f-43d6-af38-4302ea51e3a0.png`, rather than the later `exec-f9f2e9ab-8bd8-432d-bba8-6c13faa2b969.png` regeneration. `news/leeds-newcastle-house-d.jpg` has been restored from that exact first PNG at 1600×900, JPEG quality 80; its SHA-256 again matches the initial D record: `3d566cbdfc56e2712efb7da5910dc7646f9c5bccd073fe4267c6ca86eda9d56e`.
+
+Built-in imagegen then **edited that exact original PNG**, supplied as its sole input/edit target, to make an overcast rainy-afternoon variant. The selected daytime file is `news/leeds-newcastle-house-d-day.jpg`, 1600×900, JPEG quality 80. The original viewpoint, scarf, magpie, seats, stairs, rail, pitch and tiny figures remain in place; the changed sky, unlit floodlights without beams, lighter slate-blue stands and restrained amber accents establish daylight. Drizzle and the grainy four-ink print surface remain. Visual review checked these composition and lighting details, with no text, branding or visible faces found.
+
+The daytime version is now selected in `data/news-art.ts` for `leeds-newcastle`, serving both story card and article header. Alt: “A soaked magpie sulks beside a striped scarf in an empty away end while the home side celebrates below”. Caption: “Original illustration of a magpie in an empty away end.” All article wording, credits and other art selections remain unchanged. The earlier C–F contact sheet remains a record of those review options, rather than the current selected daytime image.
+
+### Exact daytime edit prompt
+
+```text
+Use case: lighting-weather.
+Edit target: the supplied ORIGINAL D PNG, exec-d9295c8a-c50f-43d6-af38-4302ea51e3a0.png. Edit this exact image; do not create a new composition.
+
+Change ONLY the time of day and the lighting to an OVERCAST, RAINY AFTERNOON.
+Where the sky is visible, replace the night sky with pale cream-grey cloud cover. Keep all roof and stadium structures where they are. Switch the existing floodlights OFF: their fixtures remain in exactly the same positions, but the lamps are dull slate-grey, not glowing, with NO light beams or shafts. Use softer, even overcast daylight across the scene. Lighten the distant stands to muted slate-blue made from navy/slate and cream ink. Keep drizzle, wet seats, damp scarf and the magpie's soaked feathers. Reduce amber to only a few restrained warm accents; no golden night-time spotlighting.
+
+LOCK THE COMPOSITION: keep the exact same high viewpoint, crop and 16:9 framing. Preserve the scarf and all its folds/stripes/fringe, the magpie's silhouette/pose/scale, every seat row, the stairs, rail, pitch markings and each tiny celebrating figure in precisely the same positions. Do not move, redraw, add, remove, resize or rearrange any object or figure. The one bird remains bowed and rain-soaked, and the stands remain empty. The pitch and far figures must stay tiny and featureless.
+
+Preserve the existing grainy screen-print / risograph surface, heavy ink speckle and dry-brush scuffing, simplified flat shapes and stepped two-to-three-tone shading. Keep the four-ink palette: inky navy/slate, teal-green, amber/ochre and cream. Pale cream-grey and slate-blue daylight should be made from those inks; no new colour family. Do not replace the print texture with smooth gradients, photographic modelling, fine feather detail, cartoon outlines or human facial expressions.
+No faces, real likenesses, crests, sponsors, logos, readable text, numbers or watermarks. Output one landscape image matching the source framing, for final 1600×900 export.
+```
+
+| Delivered file | Selected generated PNG | SHA-256 |
+| --- | --- | --- |
+| `news/leeds-newcastle-house-d-day.jpg` | `exec-dc6d07df-6ed7-4901-96f8-b666a7dd9065.png` | `432d02cda828e7feaeaa91b92c318199b40080f850a83d12371950ac329c1ae9` |

@@ -31,9 +31,12 @@ export const newsArt: Record<string, NewsArt> = {
     height: 900,
   },
   'leeds-newcastle': {
-    src: new URL('../assets/news/leeds-newcastle.jpg', import.meta.url).href,
-    alt: 'A white-shirted striker celebrates as a striped defender slumps beside a rain-soaked goal',
-    caption: 'Original illustration of a striker celebrating in the rain.',
+    src: new URL(
+      '../assets/news/leeds-newcastle-house-d-day.jpg',
+      import.meta.url,
+    ).href,
+    alt: 'A soaked magpie sulks beside a striped scarf in an empty away end while the home side celebrates below',
+    caption: 'Original illustration of a magpie in an empty away end.',
     width: 1600,
     height: 900,
   },
