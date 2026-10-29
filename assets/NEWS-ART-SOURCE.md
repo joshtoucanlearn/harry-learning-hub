@@ -382,3 +382,117 @@ No faces, real likenesses, crests, sponsors, logos, readable text, numbers or wa
 | Delivered file | Selected generated PNG | SHA-256 |
 | --- | --- | --- |
 | `news/leeds-newcastle-house-d-day.jpg` | `exec-dc6d07df-6ed7-4901-96f8-b666a7dd9065.png` | `432d02cda828e7feaeaa91b92c318199b40080f850a83d12371950ac329c1ae9` |
+
+
+## Seven article redraws: distinct framings — 29 October 2026
+
+Owner-directed replacements for seven newspaper illustrations, generated with built-in imagegen using `hydration-editorial.jpg` as the sole visual style reference. The six house-style rules above still apply: four inks, heavily scuffed screen-print surface, stepped flat tones, concentrated light, a simple object/animal hero and restrained detail. The new compositions deliberately vary camera, setting and time of day. They replace the seven existing JPEGs in place, at 1600×900, quality 80; their cards and article headers use the existing paths. Alt text and captions in `data/news-art.ts` now describe the new scenes.
+
+This redraw pass does not edit the hydration illustration, the social-media phone image or the selected Geordies daytime D, nor their descriptions. During the pass, a concurrent commit (`d2ba6c1`) removed the daytime D floodlight rigs; that committed update is retained and used in the contact sheet. Article wording, credits, front-page order and lead selection are unchanged. The contact sheet includes these three retained selections plus the seven redraws.
+
+| Story | Framing and setting | Light/time | Visual checks |
+| --- | --- | --- | --- |
+| Leeds analysis | High oblique aerial, misty training ground | Dawn, long hard shadows | Four blank training mannequins, one obvious empty left-side slot, no people/stadium/horizon |
+| Football evolution | Straight top-down split at halfway line | Bright late morning after rain | Exactly two complete balls: laced leather on mud, modern on striped turf |
+| Norway preview | Worm's-eye, directly upward from six-yard box | Pale overcast midday | Exactly one ball; one cropped crossbar/upright corner and connected net |
+| France preview | Side-on cockerel silhouette, very low pitch horizon | Amber sunset | One bird, two legs gripping a single bare pole; no flag/pennant |
+| Arsenal tone | Close three-quarter desk interior | One amber lamp, late evening | Six countable cup trophies on lower left pan, one on raised right pan; coherent scale suspension |
+| Football hooliganism | Eye-level close-up at a street-side railing | Dusk/blue hour | Two distinct plain scarves joined in a knot; no people or violence |
+| England World Cup | Flat frontal garden-wall elevation | Summer afternoon | One grounded ball, one two-sleeved shirt, chalk goal, mud marks rather than extra balls |
+
+The first Leeds result (`exec-1edf2378-3dcd-46b6-85d9-347c02edb841.png`) retained a horizon and was too low. It was rejected. A second generation tightened only the camera/framing requirement: high above the ground, no sky/horizon/treeline, small mannequins and map-like ground. That correction is the selected Leeds file below. No conspicuous anatomy, count, suspension, net or goal-geometry failure was found in the selected set. All scenes omit faces, club branding, readable words and numbers. The cockerel's bare pole intentionally has no flag.
+
+### Exact prompt set
+
+Each initial generation prompt is the shared prefix below followed by one newline and the corresponding story block. Every call used the hydration image as its sole reference and an opaque background. The selected Leeds correction uses the same prefix plus its replacement block recorded afterwards.
+
+**Shared prefix**
+
+```text
+Use case: illustration-story.
+Asset: an original football newspaper editorial print, landscape 16:9 for final 1600×900 delivery.
+The supplied hydration-editorial.jpg is the SOLE STYLE REFERENCE. Match its INK LANGUAGE, not its camera, layout, bottles or stadium.
+Strict four-ink palette: inky navy/slate, teal-green, amber/ochre, cream. Amber is the only warm ink, concentrated at the focal idea with a few tiny echoes elsewhere. Daytime may lift the values with pale cream sky or paper.
+Screen-print / risograph surface: flat colour shapes, heavy grain speckle and dry-brush scuffing on every surface. Texture REPLACES detail. No smooth gradients and no contour outlines.
+Stepped shading: only two or three flat tones per form and a hard cast-shadow shape. Mostly dark or subdued surroundings, concentrated light at the focal idea. One bold simple object or animal group; everything else collapses into repeated pattern or ink grain.
+No people unless the scene explicitly requests tiny featureless marks. No faces, crests, badges, flags, sponsors, lettering, readable text, numbers, watermarks or logos. No copied branded kit. No comic outlines or human expressions on animals. Do not use the old low-pitch scene with a large front-left object, receding diagonal chalk line, small horizon goal and two corner floodlights. Use the specified new framing exactly.
+```
+
+**leeds-analysis — initial story block**
+
+```text
+HIGH OBLIQUE AERIAL over a misty outdoor TRAINING GROUND AT DAWN, with no stadium at all. Look steeply down from above onto a row of plain cream training mannequins arranged as a football defensive back line. The mannequins are simple blank rigid training cut-outs on short bases, not people; no faces or anatomy detail. Make FIVE implied evenly spaced positions but only FOUR mannequins: the SECOND POSITION FROM THE LEFT IS EMPTY, creating one unmistakable wide gap on the viewer's left side of the line. The leftmost single mannequin and the remaining three make this gap unambiguous.
+This gapped cream row is the graphic hero near the middle of the image; do not enlarge any single mannequin in the front-left foreground. Mist and distant grass collapse into teal/slate grainy bands. Low amber dawn light stretches long amber-and-navy hard-edged shadow shapes away from the mannequins, all in a consistent direction. A thin pale dawn mist at the top, no stadium, goal, crowd, ball, pitch-level viewpoint or floodlights. Quiet strategic image about a missing left-back position. Exactly four training mannequins, no other upright figures.
+```
+
+**football-evolution — initial story block**
+
+```text
+STRAIGHT TOP-DOWN at a football HALFWAY LINE, a graphic split between two eras. Cool bright LATE MORNING after rain, seen vertically down with NO sky, horizon or perspective recession. A single broad worn cream halfway line runs vertically through the centre and acts as the SEAM: LEFT HALF is churned dark 1970s mud with rough ink divots, RIGHT HALF is pristine modern teal turf with clear parallel mowing stripes.
+EXACTLY TWO BALLS: on the muddy left, ONE old amber/ochre leather football with a simple visible laced seam; on the clean right, ONE modern cream-and-navy patterned football. The two separated balls are a single balanced comparison, similarly sized and fully inside the frame, away from the front-left edge. Shape each ball with just two or three flat ink tones and one small hard cast shadow. No other ball, boot, person, hand, flag, stadium or goal. The laces are a few deliberate ink marks, not lettering. The surface distinction is made with coarse scuffing and pattern, not fine detail. The halfway line stays constant-width and top-down.
+```
+
+**norway-preview — initial story block**
+
+```text
+WORM'S-EYE view from the six-yard box, looking STRAIGHT UP into a VAST PALE CREAM DAYTIME SKY at an overcast MIDDAY. The whole picture looks upward, with no pitch surface, crowd, stadium bowl or horizon visible.
+EXACTLY ONE ordinary unbranded cream-and-navy football hangs near the top of its arc in the upper-middle sky, a clean complete circle, surrounded by ample open grainy sky. Put a restrained amber scuffed light patch on the ball as the focal warm accent. The ball is large enough to read, but it must float overhead rather than sit on the ground.
+Only a CROPPED CORNER OF A SINGLE CROSSBAR and a little connected goal net enter the LOWER RIGHT edge, foreshortened consistently from directly beneath. A simple L-shaped meeting of crossbar and upright, with a small logically attached net grid; no complete goal, duplicate posts, tangled ropes or multiple balls. The ball, tiny goal corner and open sky carry the football story without a player. Print-like cream/slate cloud patches, no smooth sky gradient. No floodlights, faces or people.
+```
+
+**france-preview — initial story block**
+
+```text
+SIDE-ON SILHOUETTE with a VERY LOW HORIZON at SUNSET. One naturally shaped COCKEREL crows on top of a plain corner FLAGPOLE, but the pole is BARE: absolutely NO flag or pennant. Render the cockerel as one simple dark navy silhouette with a crest/comb belonging to the BIRD, pointed open beak, compact wings, two legs and natural curved tail feathers; no human expression, no fine feather detail. Its two feet grip the top of the single narrow vertical pole securely, with no floating or extra feet.
+The huge sky occupies about 85 percent of the frame and is AMBER/OCHRE with cream scuffed cloud marks, using only flat ink bands and heavy dry-print grain. This broad sunset field is the intended warm focal setting for the silhouette. The pitch is only a THIN DARK TEAL/NAVY BAND at the bottom, not a receding field. Put the cockerel and pole slightly right of centre, not a front-left hero. A quiet, calm scene with one crowing bird, no people, ball, stadium bowl, goal, floodlight or diagonal chalk line. Exact side profile and a flat low horizon.
+```
+
+**arsenal-tone — initial story block**
+
+```text
+DARK INTERIOR in the LATE EVENING. Close THREE-QUARTER view of an old brass BALANCE SCALE on a plain desk, lit from the SIDE by ONE small amber desk lamp. No window or stadium. The scale is the simple central hero in warm ochre/amber and cream ink planes with hard navy shadows; the rest of the room sinks into flat navy/slate grain.
+The scale has ONE central support, ONE clearly tilted beam and TWO hanging pans, with consistent suspension chains. The LEFT pan is LOW and weighed down by EXACTLY SIX SMALL PLAIN TROPHIES; the RIGHT pan is HIGH with EXACTLY ONE matching small plain trophy. Total SEVEN trophies, no extra trophy or decorative cup anywhere. Make all six left-pan trophies fully countable and separated: arrange THREE in a slightly higher back row and THREE in a lower front row on the broad pan, no overlap hiding one. Simple identical miniature cup silhouettes with short stems and bases, no writing, emblems or ribbons. The right single trophy is separated and clearly countable.
+The beam slopes from the low left pan towards the high right pan. Chains connect coherently; the pans remain level and properly suspended. Keep the entire scale, both pans and every trophy inside the frame. The lamp itself may be partially cropped at the far side, with a simple shade, no lettering. No human, hand, face, ball, club crest or branded trophy. Amber is concentrated on this weighed comparison and the one lamp, not scattered through the room.
+```
+
+**football-hooliganism — initial story block**
+
+```text
+EYE-LEVEL CLOSE-UP OUTSIDE a football ground at DUSK / BLUE HOUR. EXACTLY TWO plain scarves, ONE CREAM and ONE AMBER, are KNOTTED TOGETHER around a simple metal railing near the centre. Show one legible joined knot with each distinct scarf continuing naturally through it, hanging ends and a little fringe. No patterns, stripes, emblems, words or numbers on either scarf. The cream-and-amber joined scarf group is the bold simple hero, signifying shared identity and rivalry without violence.
+Dark teal/navy rail bars are straight, evenly spaced and geometrically coherent. In the background, a row of modest TERRACED HOUSES and a softly glowing stand are reduced to simple soft-edged blocks and speckled ink pattern, with only a few tiny amber window echoes; no detailed windows, street signs or readable posters. The sky is muted slate/teal dusk, not sunset orange. Render the background as indistinct print pattern, with no lens blur effect. No people, police, fighting, weapons, fire, ball, flags or pitch. Keep the viewpoint upright at scarf height, a close street-side still life, no aerial view or stadium panorama.
+```
+
+**england-world-cup — initial story block**
+
+```text
+FLAT FRONTAL ELEVATION of a BACK-GARDEN BRICK WALL on a warm SUMMER AFTERNOON. Face the wall square-on, with level horizontal brick courses and vertical mortar joints; no perspective recession. A plain rectangular GOAL is CHALKED directly onto the bricks, no physical posts and no net. Draw one simple straight horizontal crossbar mark and two vertical upright chalk marks, all on the same flat wall plane. A cluster of dark muddy BALL-IMPACT MARKS sits inside its UPPER RIGHT CORNER, showing repeated practice at a dangerous target.
+EXACTLY ONE unbranded cream-and-navy football rests at the foot of the wall below the goal. The muddy impact marks are dark irregular circular scuffs on the wall, NOT extra solid footballs. A SINGLE plain CREAM-WHITE SHIRT, with two sleeves, no numbers or badge, hangs from a simple washing line OVERHEAD with two pegs. Its simple fabric silhouette and the scuffed goal are the graphic story; no human wearer or hand.
+Represent the bricks with navy, muted ochre and cream ink planes and coarse grain; a concentrated patch of amber summer sun warms the chalked target corner, with small warm echoes on the one ball. Hard flat shadows, no smooth shading. A narrow band of garden ground, a little muted teal foliage at the sides and a pale cream summer sky at the top. No actual stadium, crowd, flag, floodlights or diagonal white sideline. Friendly private practice scene, one shirt and one ball.
+```
+
+**leeds-analysis — selected replacement story block**
+
+```text
+HIGH OBLIQUE AERIAL FROM FAR ABOVE a misty outdoor TRAINING GROUND AT DAWN. The viewpoint is approximately FORTY METRES ABOVE THE GROUND looking DOWN at a steep 65-degree angle. The frame contains ONLY THE GROUND: ABSOLUTELY NO SKY, HORIZON, TREELINE, SUN DISC, STADIUM OR BUILDING. Show the training field as a broad map-like teal plane with a few thin constant-width pitch marks, visible from above, not converging towards a horizon.
+A row of FOUR SMALL plain cream training mannequins is set out as a back line near the centre. Their blank rigid cut-out shapes and rectangular bases are seen from HIGH ABOVE and foreshortened, with the upper edges and bases visible. Each mannequin occupies NO MORE THAN ONE TENTH of the image height. No large foreground mannequin, no pitch-level view.
+Use FIVE implied evenly spaced positions but leave the SECOND POSITION FROM THE LEFT EMPTY. Thus there is one mannequin, then an obvious wide empty gap, then three mannequins. The gap on the viewer's LEFT is the idea of a missing left back. No extra mannequins or people.
+Amber dawn light enters from OFF-FRAME and creates long sharply edged navy cast shadows with warm amber ink around their feet, all shadows stretching in the same direction across the grass. Thin bands of pale cream/teal ground mist lie across the upper part of the field, with no visible horizon. The row and its gap are one graphic hero group in a large dark grainy field. No ball, goal, floodlight or receding diagonal sideline. Keep the hydration reference's four inks and scuffed flat print shapes; change its framing completely.
+```
+
+### Current selected redraws
+
+| Delivered file | Selected generated PNG | JPEG bytes | SHA-256 |
+| --- | --- | ---: | --- |
+| `news/leeds-analysis.jpg` | `exec-8e3c5a7b-e849-4033-a7ab-9c434ce2dd64.png` | 718577 | `6a1f400beca8135981a7707cddb1f57bbf7969d4d2eff12e2d3c154ca2a61cac` |
+| `news/football-evolution.jpg` | `exec-cf28321d-bee4-4ed7-a48f-f7f7670ce53e.png` | 813970 | `2610e0276a30a1dc59a6bd1db6e1d9643ce92c48f04a16f9f5c8e46257d1976c` |
+| `news/norway-preview.jpg` | `exec-c50b2139-18f4-4c6d-8d9c-5ef18f3285de.png` | 781253 | `8f2a273bfba16e4656e4ee370a6a6caf671fd9285d07e95233a861dd31148951` |
+| `news/france-preview.jpg` | `exec-145e8443-0721-43c3-b61a-ea990b2f4a0f.png` | 640989 | `52be88fa2a61062024fbc776b59ba974e38115ec7142027d9ca4525827d22e90` |
+| `news/arsenal-tone.jpg` | `exec-2e99673f-dea5-4e93-b4da-479ed3a7748d.png` | 619680 | `7873e99316aae9564a5baf0fa2d389e2ee993f7131261b18dc8d348e3c0b6bdf` |
+| `news/football-hooliganism.jpg` | `exec-12680189-86a0-4ed8-8d14-382a23512a52.png` | 607874 | `69b177f03af7919ede1ed148766e8e87d6e94f1ca243b07ba3aabfba6235d90f` |
+| `news/england-world-cup.jpg` | `exec-24fb2c77-80af-4cc5-8b57-cc50e91abc53.png` | 827672 | `3e65cbbbca5ed7feae2793af243ee0451b95e17b1d0548803471871122e81df6` |
+
+### All-art review sheet
+
+`/Users/joshuagordonjones/Documents/ChatGPT/Toucan Learn/outputs/final-pass-20261028/harry-news/all-art-v2.jpg` presents all ten current newspaper images in front-page reading order, numbered and labelled outside the art: Hydration; Geordies; football evolution; Leeds analysis; Norway; France; England World Cup; Arsenal; hooliganism; social media. It uses two columns and five rows, 1200×675 contain-fit image cells, and preserves the full 3:2 hydration composition without cropping or stretching. Locally assembled with AppKit at 2472×3819, JPEG quality 80. Labels are review furniture only and are not included in article image files.
+
+Owner kept the previous leeds-analysis, norway-preview and football-hooliganism illustrations (29 Oct 2026); their v2 redraws are archived in outputs/final-pass-20261028/harry-news/rejected-v2 and not used.
