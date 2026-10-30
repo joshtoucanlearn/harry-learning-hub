@@ -242,13 +242,18 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
               ))}
             </div>
           </div>
-          <section className="news-more" aria-label="Analysis">
+          <section className="news-more" aria-label="Football forecast">
             <div className="news-section-heading">
-              <h2>The long view</h2>
-              <span>Analysis</span>
+              <h2>Football forecast</h2>
+              <span>Predictions & analysis</span>
             </div>
             <div className="news-two">
-              {offFront('Analysis').map((a) => (
+              {[
+                ...offFront('Analysis'),
+                ...archiveWriting.filter(
+                  (a) => editorial[a.id].section === 'Match previews',
+                ),
+              ].map((a) => (
                 <StoryCard key={a.id} story={a} />
               ))}
             </div>
@@ -266,19 +271,6 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
               </div>
             </section>
           )}
-          <section className="news-more" aria-label="Match previews">
-            <div className="news-section-heading">
-              <h2>Before the whistle</h2>
-              <span>Harry’s original match calls</span>
-            </div>
-            <div className="news-two">
-              {archiveWriting
-                .filter((a) => editorial[a.id].section === 'Match previews')
-                .map((a) => (
-                  <StoryCard key={a.id} story={a} />
-                ))}
-            </div>
-          </section>
           <section className="news-more" aria-label="More opinion">
             <div className="news-section-heading">
               <h2>The talking points</h2>
