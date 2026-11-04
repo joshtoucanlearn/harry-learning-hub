@@ -10,7 +10,7 @@ export function BrandIdentity({ className = '' }: { className?: string }) {
         alt=""
       />
       <span className="identity-wordmark">
-        Harry Baker<span>MEDIA</span>
+        HarryLFC<span>MEDIA</span>
       </span>
     </span>
   );

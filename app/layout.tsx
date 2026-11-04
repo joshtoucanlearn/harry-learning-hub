@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 export const metadata: Metadata = {
-  title: 'Harry Baker MEDIA',
+  title: 'HarryLFC MEDIA',
   icons: { icon: '/harry-media-crest.png' },
   description:
     'Football predictions, journalism, past work and maths practice.',

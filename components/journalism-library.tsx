@@ -110,11 +110,11 @@ export function JournalismLibrary({ articleId }: { articleId: string | null }) {
   const item = archiveWriting.find((a) => a.id === articleId);
   useEffect(() => {
     document.title = item
-      ? `${item.title} | Harry Baker MEDIA`
-      : 'Football | Harry Baker MEDIA';
+      ? `${item.title} | HarryLFC MEDIA`
+      : 'Football | HarryLFC MEDIA';
     titleRef.current?.focus({ preventScroll: true });
     return () => {
-      document.title = 'Harry Baker MEDIA';
+      document.title = 'HarryLFC MEDIA';
     };
   }, [articleId, item]);
 

@@ -7,9 +7,9 @@ import ts from 'typescript';
 const hub = fileURLToPath(new URL('.', import.meta.url));
 const anonymise = (source: string) => source
   .replace(/\bharry (?=kane|maguire)/gi, '')
-  .replace(/Harry Baker MEDIA/g, 'Football')
+  .replace(/HarryLFC MEDIA/g, 'Football')
   .replace(/Watch the clip Harry analysed/g, 'Watch the clip analysed')
-  .replace(/\bHarry(?: Baker)?\b/gi, 'Learner')
+  .replace(/\bHarry(?:LFC| Baker)?\b/gi, 'Learner')
   .replace(/\bJoe\b/gi, 'Learner')
   .replace(/\bBaker\b/gi, '')
   .replace(/\bJosh\b/g, 'Tutor');

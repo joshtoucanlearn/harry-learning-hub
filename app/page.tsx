@@ -618,7 +618,7 @@ export default function Home() {
         )}
       </main>
       <footer hidden={tab === 'Home'}>
-        Harry Baker MEDIA{' '}
+        HarryLFC MEDIA{' '}
         <span>Saved on this browser. Your desk, your calls.</span>
       </footer>
     </>
