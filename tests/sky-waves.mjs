@@ -21,6 +21,9 @@ const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright')
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const url = process.env.HUB_URL || 'http://127.0.0.1:4173/harry-learning-hub/';
 const page = await browser.newPage({ viewport: {width: 1440, height: 1000} });
+// The opening crest plays once per session; these checks start on the finished home page.
+const skipIntro = target => target.addInitScript(() => { try { sessionStorage.setItem('harry-media-intro-seen', '1'); } catch {} });
+await skipIntro(page);
 const errors = [];
 page.on('pageerror', error => errors.push(error.message));
 const renderer = (target, mode) => target.locator(`.galaxy-backdrop[data-ripple-renderer="${mode}"]`).waitFor();
@@ -43,7 +46,7 @@ const softwarePixels = target => target.locator('.galaxy-sky').last().evaluate(c
 try {
   await page.goto(url);
   await renderer(page, 'pixel-warp-webgl');
-  assert.equal(await page.getByRole('combobox', { name: 'Background preset' }).inputValue(), 'pixel');
+  assert.equal(await page.locator('.sky-dock, select[aria-label="Background preset"]').count(), 0, 'The sky has no controls');
   assert.equal(await page.locator('.galaxy-sky').first().evaluate(canvas => getComputedStyle(canvas).opacity), '1', 'Pixel sky must use the real renderer');
   const baseline = await gpuPixels(page);
   await page.mouse.click(1000, 600);
@@ -58,21 +61,8 @@ try {
   assert.ok(count >= 2, 'Overlapping waves must remain visible together');
   await page.screenshot({ path: 'qa/pixel-sky-waves.png' });
 
-  await page.getByRole('button', { name: 'CALM', exact: true }).click();
-  const calm = await gpuPixels(page);
-  await page.mouse.click(1000, 600);
-  await page.waitForTimeout(300);
-  assert.equal(await gpuPixels(page), calm, 'Calm must stop motion and ignore sky input');
-  await page.getByRole('combobox', { name: 'Background preset' }).selectOption('earth');
-  assert.notEqual(await gpuPixels(page), calm, 'Earth retains its separate palette');
-  await page.getByRole('button', { name: 'WAKE SKY', exact: true }).click();
-  const earth = await gpuPixels(page);
-  await page.waitForTimeout(500);
-  assert.notEqual(await gpuPixels(page), earth, 'Earth still animates');
-  await page.getByRole('combobox', { name: 'Background preset' }).selectOption('pixel');
   await page.reload();
   await renderer(page, 'pixel-warp-webgl');
-  assert.equal(await page.getByRole('combobox', { name: 'Background preset' }).inputValue(), 'pixel');
 
   await page.locator('.galaxy-sky').first().evaluate(canvas => canvas.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext());
   await renderer(page, 'pixel-warp-2d');
@@ -83,6 +73,7 @@ try {
 
   const phone = await browser.newPage({ viewport: {width: 390, height: 844}, isMobile: true, hasTouch: true });
   phone.on('pageerror', error => errors.push(error.message));
+  await skipIntro(phone);
   await phone.addInitScript(() => {
     const getContext = HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext = function(type, ...args) {
@@ -99,15 +90,16 @@ try {
   assert.equal(await phone.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
 
   const reduced = await browser.newPage({ reducedMotion: 'reduce' });
+  await skipIntro(reduced);
   await reduced.goto(url);
   await renderer(reduced, 'pixel-warp-webgl');
-  await reduced.getByRole('button', { name: 'WAKE SKY', exact: true }).waitFor();
+  await reduced.waitForTimeout(300);
   const still = await gpuPixels(reduced);
   await reduced.mouse.click(850, 450);
   await reduced.waitForTimeout(200);
   assert.equal(await gpuPixels(reduced), still, 'Reduced motion remains calm by default');
   assert.deepEqual(errors, []);
-  console.log('PASS: real source-pixel displacement, default Pixel WebGL waves, overlapping clicks, Earth palette/motion, saved preset, calm, reduced motion, context-loss and mobile software fallback.');
+  console.log('PASS: real source-pixel displacement, Pixel WebGL waves with no sky controls, overlapping clicks, reduced motion, context-loss and mobile software fallback.');
 } finally {
   await browser.close();
 }

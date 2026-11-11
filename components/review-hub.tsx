@@ -1,23 +1,11 @@
 'use client';
 import { useState } from 'react';
-import { BrandIdentity } from './brand-mark';
 import {
   topics,
   topicProgress,
   type Topic,
   type ReviewProgress,
 } from '@/data/review-topics';
-export function LearningHome() {
-  return (
-    <section className="welcome-home">
-      <h1 className="welcome-heading">
-        <span className="welcome-prefix">Welcome to</span>
-        <BrandIdentity className="welcome-identity" />
-      </h1>
-    </section>
-  );
-}
-
 export function ReviewHub({
   progress,
   save,

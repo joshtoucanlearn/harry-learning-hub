@@ -1,10 +1,16 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { BrandIdentity } from '@/components/brand-mark';
-import { InteractiveSky } from '@/components/interactive-sky';
+import { SiteSky } from '@/components/site-sky';
+import { HarryHome } from '@/components/harry-home';
+import {
+  OpeningIntro,
+  shouldPlayIntro,
+  type IntroPhase,
+} from '@/components/opening-intro';
 import { JournalismLibrary } from '@/components/journalism-library';
 import { LearningArchive } from '@/components/learning-archive';
-import { LearningHome, ReviewHub } from '@/components/review-hub';
+import { ReviewHub } from '@/components/review-hub';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -72,6 +78,12 @@ export default function Home() {
   const [reviewTopic, setReviewTopic] = useState<string | undefined>();
   const [articleId, setArticleId] = useState<string | null>(null);
   const [tab, setTab] = useState<Tab>('Home');
+  const [intro, setIntro] = useState<IntroPhase>(() =>
+    shouldPlayIntro() ? 'hold' : 'off',
+  );
+  useEffect(() => {
+    if (tab !== 'Home') setIntro('off');
+  }, [tab]);
   const [data, setData] = useState<Data>(EMPTY);
   const [ready, setReady] = useState(false);
   const [storageBlocked, setStorageBlocked] = useState(false);
@@ -196,18 +208,18 @@ export default function Home() {
   };
   return (
     <>
-      <InteractiveSky
-        owner="Harry's"
-        storageKey="harry-media-sky-preset"
+      <SiteSky
         assetPrefix={
           ((import.meta as unknown as { env?: { BASE_URL?: string } }).env
             ?.BASE_URL || '/')
             .replace(/\/$/, '')
         }
-        defaultPreset="pixel"
       />
+      {tab === 'Home' && <OpeningIntro phase={intro} setPhase={setIntro} />}
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-        <SheetTrigger className="menu-toggle">
+        <SheetTrigger
+          className={`menu-toggle${tab === 'Home' ? ` intro-${intro}` : ''}`}
+        >
           <Menu size={18} /> Menu
         </SheetTrigger>
         <SheetContent
@@ -235,15 +247,15 @@ export default function Home() {
           </nav>
         </SheetContent>
       </Sheet>
-      <main className={tab === 'Home' ? 'welcome-page' : undefined}>
+      <main className={tab === 'Home' ? 'home-page' : undefined}>
         <div className="status" role="status" aria-live="polite">
           {message}
         </div>
         {!ready ? (
-          <p>Opening your desk…</p>
+          intro === 'off' && <p>Opening your desk…</p>
         ) : (
           <>
-            {tab === 'Home' && <LearningHome />}
+            {tab === 'Home' && <HarryHome open={switchTab} intro={intro} />}
             {tab === 'Review' && (
               <ReviewHub
                 key={reviewTopic || 'all'}

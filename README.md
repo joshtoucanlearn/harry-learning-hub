@@ -7,7 +7,7 @@ Harry’s football and learning workspace:
 - **Football Journalism:** a newspaper-style football page with its original illustrated Hydration lead, ten full pieces and plans, topic filters and individual article links. The October final version of The Battering of the Geordies is in Match reports.
 - **The Record:** six historical calls, separate result-evidence/reflection notes, and 26 lesson entries from Josh and Aaron.
 
-Home is a simple welcome with the combined crest and wordmark. The Menu opens each activity. Teacher provides lesson prompts, notes, printable records and JSON backups.
+On first visit in a browser session, Harry's crest opens alone on the pixel sky, then moves into the home header (tap or any key skips; deep links skip it). Home has big tiles for Newspaper, Matchday, Review, The Record and his DARTY game project. The Menu opens every section. Teacher provides lesson prompts, notes, printable records and JSON backups.
 
 ## Run locally
 

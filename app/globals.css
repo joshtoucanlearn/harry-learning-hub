@@ -2933,56 +2933,7 @@ main {
   }
 }
 
-/* A simple welcome page, with everything else in the Menu. */
-main.welcome-page {
-  min-height: calc(100svh - 112px);
-  display: grid;
-  align-content: center;
-}
-.welcome-home {
-  text-align: center;
-  padding: 20px 0 60px;
-}
-.welcome-heading {
-  margin: 0;
-  letter-spacing: 0;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.welcome-prefix {
-  display: block;
-  font:
-    400 clamp(1.2rem, 2.8vw, 1.7rem)/1.4 Georgia,
-    serif;
-  color: var(--ink);
-  margin-bottom: 24px;
-  text-shadow: 0 2px 16px #06101a;
-}
-.welcome-identity {
-  text-align: left;
-  gap: clamp(16px, 3vw, 28px);
-  text-shadow: 0 2px 18px #06101a;
-}
-.welcome-identity .brand-crest {
-  width: clamp(72px, 12vw, 140px);
-  height: clamp(78px, 13vw, 154px);
-}
-.welcome-identity .identity-wordmark {
-  font-size: clamp(1.8rem, 5vw, 4rem);
-}
-.welcome-identity .identity-wordmark > span {
-  font-size: clamp(0.8rem, 1.4vw, 1rem);
-  letter-spacing: 0.3em;
-  margin-top: 13px;
-}
-@media (max-width: 480px) {
-  .welcome-identity {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-/* Evan's paintable sky, while Harry's original midnight pixel art stays the default preset. */
+/* Harry's dark pixel sky: one fixed background, no controls. */
 .sky-experience { display: contents; }
 .galaxy-backdrop {
   position: fixed;
@@ -2998,38 +2949,290 @@ main.welcome-page {
 .galaxy-touch { position: fixed; inset: 0; z-index: 1; pointer-events: none; outline-offset: -6px !important; }
 .galaxy-touch:focus-visible { outline: 2px solid #e4be78; }
 .keyboard-hint { position: fixed; z-index: 70; left: 50%; top: 76px; transform: translateX(-50%); margin: 0; padding: 9px 13px; border: 1px solid rgba(170,197,217,.35); border-radius: 6px; background: rgba(8,24,38,.94); color: #edf4f7; font-size: .8rem; pointer-events: none; }
-.sky-dock {
-  position: fixed;
-  z-index: 55;
-  top: 20px;
-  right: max(24px, calc((100vw - 1200px) / 2));
-  bottom: auto;
-  left: auto;
-  display: flex;
-  align-items: stretch;
-  gap: 5px;
-  padding: 6px;
-  border: 1px solid rgba(170,197,217,.28);
-  border-radius: 7px;
-  background: rgba(18,31,43,.94);
-  box-shadow: 0 8px 34px rgba(0,0,0,.34);
-  color: #edf4f7;
-  pointer-events: auto;
-}
-.sky-dock button,
-.sky-select { min-height: 40px; border: 0; border-radius: 5px; background: transparent; color: inherit; font-size: .68rem; font-weight: 700; letter-spacing: .06em; }
-.sky-dock button { display: inline-flex; align-items: center; gap: 7px; padding: 0 10px; cursor: pointer; }
-.sky-dock button:hover,
-.sky-dock button:focus-visible { background: #284256; }
-.sky-select { display: flex; align-items: center; gap: 6px; padding-left: 8px; }
-.sky-select > span { color: #9fc8c6; }
-.sky-select select { min-height: 36px; max-width: 108px; padding: 0 7px; border: 0; border-radius: 5px; background: #132538; color: #edf4f7; font-size: .72rem; font-weight: 650; cursor: pointer; }
-.sky-swatch { width: 9px; height: 9px; border-radius: 50%; background: #7cffe2; box-shadow: 0 0 8px currentColor; }
-.sky-swatch-1 { background: #c49dff; }
-.sky-swatch-2 { background: #ffc078; }
 
-@media (max-width: 760px) {
-  .sky-dock { top: 68px; right: 10px; left: 10px; max-width: calc(100vw - 20px); overflow-x: auto; }
-  main { margin-top: 128px; }
+/* Opening: Harry's crest alone on the sky, then it flies into the home header. */
+.opening-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
 }
-@media print { .sky-dock { display: none !important; } }
+.intro-crest {
+  width: clamp(230px, 46vmin, 360px);
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 10px 40px rgba(3, 9, 16, 0.75));
+  transform-origin: center;
+  animation: intro-crest-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.opening-intro.is-leave .intro-crest {
+  animation: none;
+  transition:
+    transform 0.9s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.9s ease;
+}
+.opening-intro.is-leave:not(.is-flying) .intro-crest {
+  opacity: 0;
+  transform: translateY(-40px) scale(0.6);
+}
+.opening-intro.is-reduced .intro-crest {
+  animation: none;
+  transition: opacity 0.3s linear;
+}
+.opening-intro.is-reduced.is-leave .intro-crest {
+  transform: none;
+}
+@keyframes intro-crest-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+.menu-toggle.intro-hold {
+  opacity: 0;
+  pointer-events: none;
+}
+.menu-toggle.intro-leave {
+  transition: opacity 0.6s ease 0.35s;
+}
+.harry-home.intro-hold .home-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.harry-home.intro-hold .harry-home-brand,
+.harry-home.intro-leave .harry-home-brand {
+  transform: none;
+}
+.harry-home.intro-hold .harry-home-brand .brand-crest,
+.harry-home.intro-leave .harry-home-brand .brand-crest {
+  opacity: 0;
+}
+.harry-home.intro-hold .harry-home-brand .identity-wordmark {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+.harry-home.intro-leave .harry-home-brand .identity-wordmark {
+  transition:
+    opacity 0.6s ease 0.35s,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+.harry-home.intro-leave .home-reveal {
+  transition:
+    opacity 0.6s ease calc(0.25s + var(--i, 0) * 0.06s),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) calc(0.2s + var(--i, 0) * 0.06s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .harry-home.intro-hold .home-reveal,
+  .harry-home.intro-hold .harry-home-brand .identity-wordmark {
+    transform: none;
+  }
+  .harry-home.intro-leave .home-reveal,
+  .harry-home.intro-leave .harry-home-brand .identity-wordmark,
+  .menu-toggle.intro-leave {
+    transition: opacity 0.3s linear;
+  }
+  .harry-home.intro-leave .harry-home-brand .brand-crest {
+    opacity: 1;
+    transition: opacity 0.3s linear;
+  }
+}
+
+/* Harry's home: crest and name, then big tiles for each section. */
+main.home-page {
+  margin-top: 64px;
+  padding-top: 20px;
+}
+.harry-home {
+  display: grid;
+  gap: 30px;
+}
+.harry-home-brand {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0;
+}
+.harry-home-identity {
+  gap: 20px;
+  text-shadow: 0 2px 18px #06101a;
+}
+.harry-home-identity .brand-crest {
+  width: 104px;
+  height: 104px;
+  filter: drop-shadow(0 6px 18px rgba(3, 9, 16, 0.6));
+}
+.harry-home-identity .identity-wordmark {
+  font-size: 2.6rem;
+}
+.harry-home-identity .identity-wordmark > span {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  margin-top: 10px;
+}
+.harry-home-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(170px, auto);
+  gap: 16px;
+}
+.home-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(3, 9, 16, 0.35);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    translate 0.2s ease;
+}
+.home-tile:hover {
+  border-color: var(--accent);
+  background: #172736;
+  translate: 0 -3px;
+}
+.home-tile:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.tile-icon {
+  color: var(--accent);
+}
+.tile-copy {
+  display: grid;
+  gap: 6px;
+  margin-top: auto;
+}
+.tile-title {
+  font:
+    600 1.5rem/1.1 Georgia,
+    serif;
+  letter-spacing: -0.02em;
+}
+.tile-line {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.tile-arrow {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+.home-tile:hover .tile-arrow {
+  color: var(--accent);
+}
+.darty-tile {
+  grid-column: span 2;
+  grid-row: span 2;
+  border-color: #6b5a33;
+  background: linear-gradient(180deg, rgba(24, 36, 30, 0.96), rgba(16, 24, 33, 0.96));
+}
+.pixel-pitch {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 3px solid #0c1610;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #4a6b4f;
+}
+.darty-tile .tile-copy {
+  margin-top: 4px;
+}
+.tile-eyebrow {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.darty-tile .tile-title {
+  font-size: 2.2rem;
+  letter-spacing: 0.04em;
+}
+.tile-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding: 9px 14px;
+  border-radius: 5px;
+  background: var(--accent);
+  color: var(--primary-foreground);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+@media (max-width: 1000px) {
+  .harry-home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  main.home-page {
+    margin-top: 70px;
+    padding-top: 8px;
+  }
+  .harry-home {
+    gap: 22px;
+  }
+  .harry-home-identity {
+    gap: 14px;
+  }
+  .harry-home-identity .brand-crest {
+    width: 64px;
+    height: 64px;
+  }
+  .harry-home-identity .identity-wordmark {
+    font-size: 1.8rem;
+  }
+  .harry-home-identity .identity-wordmark > span {
+    font-size: 0.72rem;
+    margin-top: 7px;
+  }
+  .harry-home-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+    gap: 12px;
+  }
+  .darty-tile {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .darty-tile .tile-title {
+    font-size: 1.8rem;
+  }
+  .home-tile:not(.darty-tile) {
+    flex-direction: row;
+    align-items: center;
+    padding: 18px;
+  }
+  .home-tile:not(.darty-tile) .tile-copy {
+    margin-top: 0;
+    padding-right: 24px;
+  }
+  .home-tile:not(.darty-tile) .tile-arrow {
+    top: 50%;
+    translate: 0 -50%;
+  }
+  .tile-title {
+    font-size: 1.3rem;
+  }
+}
+@media print {
+  .opening-intro {
+    display: none !important;
+  }
+}
