@@ -3175,6 +3175,29 @@ main.home-page {
   font-size: 0.9rem;
   font-weight: 700;
 }
+/* Owner, 11 Nov: preview picture at the top of every tile. */
+.tile-preview-frame {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 3px solid #0c1610;
+  border-radius: 4px;
+  background: #0c1610;
+}
+.tile-preview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8 / 3;
+  height: auto;
+  object-fit: cover;
+}
+.home-tile:not(.darty-tile) .tile-arrow {
+  top: auto;
+  bottom: 24px;
+}
+.home-tile:hover .tile-preview-frame {
+  border-color: #2a2414;
+}
 @media (max-width: 1000px) {
   .harry-home-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3222,6 +3245,16 @@ main.home-page {
   .home-tile:not(.darty-tile) .tile-copy {
     margin-top: 0;
     padding-right: 24px;
+  }
+  .home-tile:not(.darty-tile) .tile-preview-frame {
+    flex: none;
+    width: 96px;
+  }
+  .home-tile:not(.darty-tile) img.tile-preview {
+    aspect-ratio: 4 / 3;
+  }
+  .home-tile:not(.darty-tile) .tile-preview-frame {
+    width: 112px;
   }
   .home-tile:not(.darty-tile) .tile-arrow {
     top: 50%;
